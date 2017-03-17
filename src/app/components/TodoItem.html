@@ -10,7 +10,7 @@
       class="toggle"
       type="checkbox"
       ng-checked="$ctrl.todo.completed"
-      ng-click="$ctrl.completeTodo({id: $ctrl.todo.id})"
+      ng-click="$ctrl.completeTodo($ctrl.todo.id)"
       />
     <label ng-dblclick="$ctrl.handleDoubleClick()">{{$ctrl.todo.text}}</label>
     <button class="destroy" ng-click="$ctrl.deleteTodo($ctrl.todo.id)"></button>

@@ -1,25 +1,33 @@
+import {completeTodo, deleteTodo, editTodo} from '../actions/index';
+import {IScope} from 'angular';
+
+const todoActions = {
+  editTodo,
+  deleteTodo,
+  completeTodo
+};
+
 class TodoItemController {
   editing: boolean = false;
-  onSave: Function;
-  onDestroy: Function;
   todo: any;
+
+  static onUpdate(state: any) {
+    return {
+      todo: state.todo
+    };
+  }
+
+  constructor($ngRedux: any, $scope: IScope) {
+    let disconnect = $ngRedux.connect(
+      state => TodoItemController.onUpdate(state),
+      todoActions
+    )(this);
+
+    $scope.$on('$destroy', disconnect);
+  }
 
   handleDoubleClick() {
     this.editing = true;
-  }
-
-  handleSave(text: string) {
-    this.onSave({
-      todo: {
-        text,
-        id: this.todo.id
-      }
-    });
-    this.editing = false;
-  }
-
-  handleDestroy(id: number) {
-    this.onDestroy({id});
   }
 }
 
@@ -28,8 +36,5 @@ export const TodoItem: angular.IComponentOptions = {
   controller: TodoItemController,
   bindings: {
     todo: '<',
-    onDestroy: '&',
-    onChange: '&',
-    onSave: '&'
   }
 };

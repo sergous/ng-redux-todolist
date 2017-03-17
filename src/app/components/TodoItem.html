@@ -3,16 +3,16 @@
     ng-if="$ctrl.editing"
     text="$ctrl.todo.text"
     editing="$ctrl.editing"
-    on-save="$ctrl.handleSave(text)"
+    on-save="$ctrl.editTodo($ctrl.todo.id, text); $ctrl.editing = false;"
     ></todo-text-input>
   <div class="view" ng-if="!$ctrl.editing">
     <input
       class="toggle"
       type="checkbox"
       ng-checked="$ctrl.todo.completed"
-      ng-click="$ctrl.onChange({id: $ctrl.todo.id})"
+      ng-click="$ctrl.completeTodo({id: $ctrl.todo.id})"
       />
     <label ng-dblclick="$ctrl.handleDoubleClick()">{{$ctrl.todo.text}}</label>
-    <button class="destroy" ng-click="$ctrl.handleDestroy($ctrl.todo.id)"></button>
+    <button class="destroy" ng-click="$ctrl.deleteTodo($ctrl.todo.id)"></button>
   </div>
 </li>

@@ -1,7 +1,13 @@
 {
   "dependencies": {
     "angular": "^1.6.2",
-    "angular-ui-router": "1.0.0-beta.3",
+    "angular-ui-router": "1.0.0-rc.1",
+    "ng-redux": "^3.4.0-beta.1",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.8.2",
+    "redux-thunk": "^2.2.0",
+    "redux-ui-router": "^0.7.1-rc.1",
+    "reselect": "2.5.4",
     "todomvc-app-css": "^2.0.6"
   },
   "devDependencies": {

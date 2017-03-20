@@ -3,6 +3,7 @@ import 'todomvc-app-css/index.css';
 import 'angular-ui-router';
 import ngRedux from 'ng-redux';
 import * as createLogger from 'redux-logger';
+import ngReduxDevTools from 'ng-redux-dev-tools';
 
 import {TodoService} from './app/todos/todos';
 import {App} from './app/containers/App';
@@ -19,7 +20,7 @@ import rootReducer from './app/reducers/index';
 const logger = createLogger();
 
 export default angular
-  .module('app', ['ui.router', ngRedux])
+  .module('app', ['ui.router', ngRedux, ngReduxDevTools])
   .config(routesConfig)
   .service('todoService', TodoService)
   .component('app', App)
@@ -28,11 +29,12 @@ export default angular
   .component('mainSection', MainSection)
   .component('todoTextInput', TodoTextInput)
   .component('todoItem', TodoItem)
-  .config(($ngReduxProvider) => {
+  .config(($ngReduxProvider, devToolsServiceProvider) => {
     $ngReduxProvider.createStoreWith(
       rootReducer,
-      [logger]
+      [logger],
+      [devToolsServiceProvider.instrument()]
     );
   })
-  .name;
+  .name
 

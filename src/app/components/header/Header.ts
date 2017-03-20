@@ -1,4 +1,4 @@
-import {TodoService, Todo} from '../todos/todos';
+import {TodoService, Todo} from '../../todos/todos';
 
 class HeaderController {
   todos: Todo[];

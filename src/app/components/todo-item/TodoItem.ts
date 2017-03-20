@@ -1,4 +1,4 @@
-import {completeTodo, deleteTodo, editTodo} from '../actions/index';
+import {completeTodo, deleteTodo, editTodo} from '../../actions/index';
 import {IScope} from 'angular';
 
 const todoActions = {

@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 import 'angular-mocks';
 import {Header} from './Header';
-import {Todo} from '../todos/todos';
+import {Todo} from '../../todos/todos';
 
 describe('Header component', () => {
   const todos: Todo[] = [

@@ -1,4 +1,4 @@
-import {TodoService} from '../todos/todos';
+import {TodoService} from '../../todos/todos';
 import {IScope} from 'angular';
 
 class TodoTextInputController {

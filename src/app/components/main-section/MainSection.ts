@@ -1,7 +1,7 @@
-import visibilityFilters from '../constants/VisibilityFilters';
-import {TodoService, Todo} from '../todos/todos';
+import visibilityFilters from '../../constants/VisibilityFilters';
+import {TodoService, Todo} from '../../todos/todos';
 import {IScope} from 'angular';
-import {completeTodo, deleteTodo, editTodo} from '../actions/index';
+import {completeTodo, deleteTodo, editTodo} from '../../actions/index';
 
 const todoActions = {
   editTodo,

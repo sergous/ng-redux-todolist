@@ -16,7 +16,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.ts$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         loader: 'tslint-loader',
         enforce: 'pre'
@@ -31,7 +31,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.ts$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         loaders: [
           'ng-annotate-loader',
@@ -77,7 +77,8 @@ module.exports = {
       '.webpack.js',
       '.web.js',
       '.js',
-      '.ts'
+      '.ts',
+      '.tsx'
     ]
   },
   entry: `./${conf.path.src('index')}`

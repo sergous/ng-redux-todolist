@@ -1,0 +1,65 @@
+$slate: #434857;
+$charcoal: #252830;
+$blue: #1997c6;
+
+.btn {
+  padding: 5px !important;
+  border-radius: 5px !important;
+}
+
+.btn-default {
+  border: 1px solid $blue;
+  color: white;
+  background: $blue;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: $blue !important;
+    border: 1px solid $blue !important;
+    color: #fff !important;
+  }
+
+  &.active {
+    background: $blue !important;
+    border: 1px solid $blue !important;
+    color: #fff !important;
+  }
+}
+
+.global-debug {
+  background-color: $slate;
+  color: #fff;
+  display: block;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  overflow: auto;
+  max-width: 680px;
+
+  &.expanded {
+    bottom: 0;
+  }
+
+  .log-monitor {
+    button {
+      color: white;
+      border-radius: 3px !important;
+      background: $blue;
+      margin-top: 5px;
+      margin-right: 5px;
+      padding: 5px;
+    }
+  }
+}
+
+.global-debugger {
+  display: block;
+  margin: 15px;
+}
+
+.hidden {
+  display: none;
+}

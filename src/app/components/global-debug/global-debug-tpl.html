@@ -1,0 +1,25 @@
+<div
+  class="global-debug"
+  ng-init="debug.showState = false; debug.showLog = false;">
+
+  <button
+    class="btn btn-default"
+    ng-click="debug.showState = !debug.showState;">
+    Toggle State
+  </button>
+  <button
+    class="btn btn-default"
+    ng-click="debug.showLog = !debug.showLog;">
+    Toggle Log
+  </button>
+  <pre
+    class="global-debugger"
+    ng-show="debug.showState">
+    {{ debug.globalState | json }}
+  </pre>
+  <div ng-show="debug.showLog">
+    <dock-monitor>
+      <log-monitor></log-monitor>
+    </dock-monitor>
+  </div>
+</div>

@@ -11,15 +11,15 @@ class TodoItemController {
   editing: boolean = false;
   todo: any;
 
-  static onUpdate(state: any) {
+  onUpdate(state: any) {
     return {
-      todo: state.todo
+      todos: state.todos
     };
   }
 
   constructor($ngRedux: any, $scope: IScope) {
     let disconnect = $ngRedux.connect(
-      state => TodoItemController.onUpdate(state),
+      state => this.onUpdate(state),
       todoActions
     )(this);
 

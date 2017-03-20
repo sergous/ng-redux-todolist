@@ -7,12 +7,6 @@ class TodoTextInputController {
   newTodo: boolean;
   onSave: Function;
 
-  static onUpdate(state: any) {
-    return {
-      text: state.text
-    };
-  }
-
   /** @ngInject */
   constructor(
     public todoService: TodoService,
@@ -28,13 +22,19 @@ class TodoTextInputController {
     }
 
     let disconnect = $ngRedux.connect(
-      state => TodoTextInputController.onUpdate(state)
+      state => this.onUpdate(state)
     )(this);
 
     $scope.$on('$destroy', disconnect);
 
     this.handleBlur = this.handleBlur.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  onUpdate(state: any) {
+    return {
+      text: state.text
+    };
   }
 
   handleBlur() {

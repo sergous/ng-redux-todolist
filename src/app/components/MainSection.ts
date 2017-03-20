@@ -1,5 +1,13 @@
 import visibilityFilters from '../constants/VisibilityFilters';
 import {TodoService, Todo} from '../todos/todos';
+import {IScope} from 'angular';
+import {completeTodo, deleteTodo, editTodo} from '../actions/index';
+
+const todoActions = {
+  editTodo,
+  deleteTodo,
+  completeTodo
+};
 
 class MainSectionController {
   selectedFilter: any;
@@ -8,9 +16,22 @@ class MainSectionController {
   todos: any[];
 
   /** @ngInject */
-  constructor(public todoService: TodoService) {
+  constructor(public todoService: TodoService, $ngRedux: any, $scope: IScope) {
     this.selectedFilter = visibilityFilters[this.filter];
     this.completeReducer = (count: number, todo: Todo): number => todo.completed ? count + 1 : count;
+
+    let disconnect = $ngRedux.connect(
+      state => this.onUpdate(state),
+      todoActions
+    )(this);
+
+    $scope.$on('$destroy', disconnect);
+  }
+
+  onUpdate(state: any) {
+    return {
+      todos: state.todos
+    };
   }
 
   handleClearCompleted() {

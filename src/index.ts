@@ -4,6 +4,7 @@ import 'angular-ui-router';
 import ngRedux from 'ng-redux';
 import * as createLogger from 'redux-logger';
 import ngReduxDevTools from 'ng-redux-dev-tools';
+import devToolsEnhancer from 'remote-redux-devtools';
 
 import {TodoService} from './app/todos/todos';
 import routesConfig from './routes';
@@ -25,11 +26,11 @@ export default angular
   .config(routesConfig)
   .service('todoService', TodoService)
   .component('app', App)
-  .config(($ngReduxProvider, devToolsServiceProvider) => {
+  .config(($ngReduxProvider) => {
     $ngReduxProvider.createStoreWith(
       rootReducer,
       [logger],
-      [devToolsServiceProvider.instrument()]
+      [devToolsEnhancer({ realtime: true })]
     );
   })
   .name;

@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 import 'angular-mocks';
-import {MainSection} from './MainSection';
+import MainSection from './';
 
 describe('MainSection component', () => {
   class MockTodoService {

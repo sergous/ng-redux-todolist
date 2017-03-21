@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 import 'angular-mocks';
-import {TodoItem} from './TodoItem';
+import TodoItem from './';
 
 describe('TodoItem component', () => {
   beforeEach(() => {

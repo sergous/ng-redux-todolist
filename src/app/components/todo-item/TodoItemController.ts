@@ -7,7 +7,7 @@ const todoActions = {
   completeTodo
 };
 
-class TodoItemController {
+export default class TodoItemController {
   editing: boolean = false;
   todo: any;
 
@@ -30,11 +30,3 @@ class TodoItemController {
     this.editing = true;
   }
 }
-
-export const TodoItem: angular.IComponentOptions = {
-  template: require('./TodoItem.html'),
-  controller: TodoItemController,
-  bindings: {
-    todo: '<',
-  }
-};

@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 import 'angular-mocks';
-import {Header} from './Header';
+import Header from './';
 import {Todo} from '../../todos/todos';
 
 describe('Header component', () => {

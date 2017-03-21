@@ -7,12 +7,12 @@
     ></todo-text-input>
   <div class="view" ng-if="!todo.editing">
     <input
-      class="toggle"
+      class="toggle pointer"
       type="checkbox"
       ng-checked="todo.todo.completed"
       ng-click="todo.completeTodo(todo.todo.id)"
       />
     <label ng-dblclick="todo.handleDoubleClick()">{{todo.todo.text}}</label>
-    <button class="destroy" ng-click="todo.deleteTodo(todo.todo.id)"></button>
+    <button class="destroy pointer" ng-click="todo.deleteTodo(todo.todo.id)"></button>
   </div>
 </li>

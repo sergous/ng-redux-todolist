@@ -1,6 +1,6 @@
 <section class="main">
   <input ng-if="main.todos.length"
-    class="toggle-all"
+    class="toggle-all pointer"
     type="checkbox"
     ng-checked="main.todos.reduce(main.completeReducer, 0) === main.todos.length"
     ng-click="main.completeAll()"

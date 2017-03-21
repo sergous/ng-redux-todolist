@@ -1,4 +1,4 @@
-import {SHOW_ALL} from '../../constants/TodoFilters';
+import {SHOW_ACTIVE, SHOW_ALL} from '../../constants/TodoFilters';
 import {initialTodo, Todo} from '../../todos/todos';
 import IScope = angular.IScope;
 

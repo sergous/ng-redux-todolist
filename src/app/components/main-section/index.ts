@@ -12,7 +12,7 @@ export default angular
       restrict: 'E',
       scope: {
         todos: '=',
-        filter: '<'
+        filter: '='
       }
     };
   })

@@ -17,8 +17,8 @@
   <footer-component ng-if="main.todos.length"
     completed-count="main.todos.reduce(main.completeReducer, 0)"
     active-count="main.todos.length - main.todos.reduce(main.completeReducer, 0)"
-    filter="main.selectedFilter"
+    filter="main.filter"
     on-clear-completed="main.clearCompleted()"
-    on-show="main.handleShow(filter)"
+    on-set-filter="main.handleSetFilter(filter)"
   ></footer-component>
 </section>

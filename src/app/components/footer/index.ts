@@ -15,7 +15,7 @@ export default angular
         activeCount: '<',
         selectedFilter: '<filter',
         onClearCompleted: '&',
-        onShow: '&'
+        onSetFilter: '&'
       }
     };
   })

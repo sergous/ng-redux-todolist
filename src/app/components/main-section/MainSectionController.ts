@@ -29,6 +29,8 @@ export default class MainSectionController {
       todoActions
     )(this);
 
+    this.handleSetFilter = this.handleSetFilter.bind(this);
+
     $scope.$on('$destroy', disconnect);
   }
 
@@ -38,7 +40,7 @@ export default class MainSectionController {
     };
   }
 
-  handleShow(filter: string) {
+  handleSetFilter(filter: string) {
     this.filter = filter;
     this.selectedFilter = visibilityFilters[filter];
   }

@@ -3,7 +3,7 @@ import globalDebug from './global-debug';
 import Footer from './footer';
 import Header from './header';
 import MainSection from './main-section';
-import {TodoTextInput} from './todo-text-input/TodoTextInput';
+import TodoTextInput from './todo-text-input';
 import TodoItem from './todo-item';
 export default angular
   .module('app.components', [
@@ -11,8 +11,8 @@ export default angular
     Header,
     Footer,
     MainSection,
-    TodoItem
+    TodoItem,
+    TodoTextInput
   ])
-  .component('todoTextInput', TodoTextInput)
   .name;
 

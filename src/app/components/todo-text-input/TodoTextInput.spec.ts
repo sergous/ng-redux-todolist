@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 import 'angular-mocks';
-import {TodoTextInput} from './TodoTextInput';
+import TodoTextInput from './';
 
 describe('TodoTextInput component', () => {
   class MockTodoService {

@@ -1,7 +1,6 @@
-import {TodoService} from '../../todos/todos';
 import {IScope} from 'angular';
 
-class TodoTextInputController {
+export default class TodoTextInputController {
   editing: boolean;
   text: string;
   newTodo: boolean;
@@ -9,7 +8,6 @@ class TodoTextInputController {
 
   /** @ngInject */
   constructor(
-    public todoService: TodoService,
     public $window: any,
     public $timeout: any,
     $ngRedux: any,
@@ -61,15 +59,3 @@ class TodoTextInputController {
     }, 0);
   }
 }
-
-export const TodoTextInput: angular.IComponentOptions = {
-  template: require('./TodoTextInput.html'),
-  controller: TodoTextInputController,
-  bindings: {
-    onSave: '&',
-    placeholder: '@',
-    newTodo: '@',
-    editing: '@',
-    text: '<'
-  }
-};

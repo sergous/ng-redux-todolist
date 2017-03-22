@@ -5,38 +5,16 @@ export default function mainRouterConfig($urlRouterProvider: any, $stateProvider
   $stateProvider
     .state('main.todos', {
       url: 'todos/',
-      abstract: true,
-      views: {
-        'todos@main': {
-          template: '<div ui-view="todos"></div>',
-          controller: 'MainSectionController',
-          controllerAs: 'main'
-        }
-      }
+      abstract: true
     })
     .state('main.todos.all', {
-      url: 'all',
-      views: {
-        'todos@main.todos': {
-          template: '<div ui-view="todos"></div>'
-        }
-      }
+      url: 'all'
     })
     .state('main.todos.active', {
-      url: 'active',
-      views: {
-        'todos@main.todos': {
-          template: '<div ui-view="todos"></div>'
-        }
-      }
+      url: 'active'
     })
     .state('main.todos.completed', {
-      url: 'completed',
-      views: {
-        'todos@main.todos': {
-          template: '<div ui-view="todos"></div>'
-        }
-      }
+      url: 'completed'
     })
   ;
 }

@@ -5,15 +5,9 @@
     ng-checked="main.todos.reduce(main.completeReducer, 0) === main.todos.length"
     ng-click="main.completeAll()"
     />
-  <ul class="todo-list">
-    <todo-item
-      ng-repeat="todo in main.todos | filter : main.selectedFilter.filter"
-      todo="todo"
-      on-destroy="main.deleteTodo(id)"
-      on-change="main.completeTodo(id)"
-      on-save="main.handleSave(todo)"
-    ></todo-item>
-  </ul>
+  <todo-list
+    todos="main.todos"
+  ></todo-list>
   <footer-component ng-if="main.todos.length"
     completed-count="main.todos.reduce(main.completeReducer, 0)"
     active-count="main.todos.length - main.todos.reduce(main.completeReducer, 0)"

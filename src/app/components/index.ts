@@ -6,6 +6,7 @@ import MainSection from './main-section';
 import TodoTextInput from './todo-text-input';
 import TodoItem from './todo-item';
 import TodoListContainer from './todo-list-container';
+import TodoList from './todo-list';
 
 export default angular
   .module('app.components', [
@@ -15,7 +16,8 @@ export default angular
     MainSection,
     TodoItem,
     TodoTextInput,
-    TodoListContainer
+    TodoListContainer,
+    TodoList
   ])
   .name;
 

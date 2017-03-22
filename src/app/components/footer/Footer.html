@@ -4,7 +4,7 @@
   </span>
   <ul class="filters">
     <li key="filter" ng-repeat="filter in footer.filters">
-      <a class="pointer" ng-class="{'selected': filter === footer.selectedFilter}" ng-click="footer.onShow(filter)">{{footer.filterTitles[filter]}}</a>
+      <a class="pointer" ui-sref-active="selected" ui-sref="{{'main.todos' + footer.filterStates[filter]}}">{{footer.filterTitles[filter]}}</a>
     </li>
   </ul>
   <button ng-if="footer.completedCount > 0"

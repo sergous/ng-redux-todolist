@@ -5,7 +5,7 @@ import Header from './header';
 import MainSection from './main-section';
 import TodoTextInput from './todo-text-input';
 import TodoItem from './todo-item';
-import TodoList from './todo-list';
+import TodoListContainer from './todo-list-container';
 
 export default angular
   .module('app.components', [
@@ -15,7 +15,7 @@ export default angular
     MainSection,
     TodoItem,
     TodoTextInput,
-    TodoList
+    TodoListContainer
   ])
   .name;
 

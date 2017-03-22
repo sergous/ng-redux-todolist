@@ -2,7 +2,7 @@ import {SHOW_ACTIVE, SHOW_ALL} from '../../constants/TodoFilters';
 import {initialTodo, Todo} from '../../todos/todos';
 import IScope = angular.IScope;
 
-export default class TodoListController {
+export default class TodoListContainerController {
   todos: Todo[];
   filter: string;
 

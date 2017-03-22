@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 import 'todomvc-app-css/index.css';
-import 'angular-ui-router';
+import router from './app/router';
 import ngRedux from 'ng-redux';
 import * as createLogger from 'redux-logger';
 import ngReduxDevTools from 'ng-redux-dev-tools';
@@ -18,7 +18,7 @@ const logger = createLogger();
 
 export default angular
   .module('app', [
-    'ui.router',
+    router,
     ngRedux,
     ngReduxDevTools,
     components

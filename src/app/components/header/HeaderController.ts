@@ -19,6 +19,8 @@ export default class HeaderController {
       todoActions
     )(this);
 
+    this.handleSave = this.handleSave.bind(this);
+
     //noinspection TypeScriptUnresolvedFunction
     $scope.$on('$destroy', disconnect);
   }

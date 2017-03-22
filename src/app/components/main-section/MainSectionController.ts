@@ -30,6 +30,7 @@ export default class MainSectionController {
     )(this);
 
     this.handleSetFilter = this.handleSetFilter.bind(this);
+    this.handleSave = this.handleSave.bind(this);
 
     $scope.$on('$destroy', disconnect);
   }

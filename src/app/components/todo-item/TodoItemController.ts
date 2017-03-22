@@ -23,6 +23,8 @@ export default class TodoItemController {
       todoActions
     )(this);
 
+    this.handleDoubleClick = this.handleDoubleClick.bind(this);
+
     $scope.$on('$destroy', disconnect);
   }
 

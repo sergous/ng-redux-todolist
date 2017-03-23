@@ -1,6 +1,7 @@
+import {INgRedux} from 'ng-redux';
 import {Todo} from '../../todos/todos';
 import {addTodo} from '../../actions/index';
-import IScope = angular.IScope;
+import {IScope} from 'angular';
 
 const todoActions = {
   addTodo,
@@ -11,7 +12,7 @@ export default class HeaderController {
   dispatcher: any;
 
   /** @ngInject */
-  constructor($ngRedux: any, $scope: IScope) {
+  constructor($ngRedux: INgRedux, $scope: IScope) {
     this.dispatcher = $ngRedux.dispatch;
 
     let disconnect = $ngRedux.connect(
@@ -21,7 +22,6 @@ export default class HeaderController {
 
     this.handleSave = this.handleSave.bind(this);
 
-    //noinspection TypeScriptUnresolvedFunction
     $scope.$on('$destroy', disconnect);
   }
 

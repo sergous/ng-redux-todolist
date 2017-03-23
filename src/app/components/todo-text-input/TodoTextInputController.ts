@@ -1,4 +1,5 @@
 import {IScope} from 'angular';
+import {INgRedux} from 'ng-redux';
 
 export default class TodoTextInputController {
   editing: boolean;
@@ -10,7 +11,7 @@ export default class TodoTextInputController {
   constructor(
     public $window: any,
     public $timeout: any,
-    $ngRedux: any,
+    $ngRedux: INgRedux,
     $scope: IScope
   ) {
     this.editing = this.editing || false;

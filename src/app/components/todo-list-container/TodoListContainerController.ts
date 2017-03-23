@@ -1,6 +1,7 @@
-import {SHOW_ACTIVE, SHOW_ALL} from '../../constants/TodoFilters';
+import {SHOW_ALL} from '../../constants/TodoFilters';
 import {initialTodo, Todo} from '../../todos/todos';
-import IScope = angular.IScope;
+import {IScope} from 'angular';
+import {INgRedux} from 'ng-redux';
 
 export default class TodoListContainerController {
   todos: Todo[];
@@ -8,7 +9,7 @@ export default class TodoListContainerController {
 
   /** @ngInject */
   constructor(
-    $ngRedux: any,
+    $ngRedux: INgRedux,
     $scope: IScope
   ) {
     this.todos = [initialTodo];

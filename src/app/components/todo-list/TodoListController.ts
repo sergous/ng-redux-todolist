@@ -2,6 +2,7 @@ import VisibilityFilters from '../../constants/VisibilityFilters';
 import {IScope} from 'angular';
 import {completeTodo, deleteTodo, editTodo} from '../../actions/index';
 import {SHOW_ALL} from '../../constants/TodoFilters';
+import {INgRedux} from 'ng-redux';
 
 const todoActions = {
   editTodo,
@@ -15,7 +16,7 @@ export default class TodoListController {
   dispatcher: any;
 
   /** @ngInject */
-  constructor($ngRedux: any, $scope: IScope, $transitions: any, $state: any) {
+  constructor($ngRedux: INgRedux, $scope: IScope, $transitions: any, $state: any) {
     this.selectedFilter = VisibilityFilters['show_' + $state.current.name] || VisibilityFilters[SHOW_ALL];
     this.dispatcher = $ngRedux.dispatch;
     let disconnect = $ngRedux.connect(

@@ -1,5 +1,6 @@
 import {completeTodo, deleteTodo, editTodo} from '../../actions/index';
 import {IScope} from 'angular';
+import {INgRedux} from 'ng-redux';
 
 const todoActions = {
   editTodo,
@@ -18,7 +19,7 @@ export default class TodoItemController {
   }
 
   /** @ngInject */
-  constructor($ngRedux: any, $scope: IScope) {
+  constructor($ngRedux: INgRedux, $scope: IScope) {
     let disconnect = $ngRedux.connect(
       state => this.onUpdate(state),
       todoActions

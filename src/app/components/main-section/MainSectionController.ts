@@ -1,6 +1,7 @@
 import {Todo} from '../../todos/todos';
 import {IScope} from 'angular';
 import {clearCompleted, completeAll} from '../../actions/index';
+import {INgRedux} from 'ng-redux';
 
 const todoActions = {
   clearCompleted,
@@ -13,7 +14,7 @@ export default class MainSectionController {
   dispatcher: any;
 
   /** @ngInject */
-  constructor($ngRedux: any, $scope: IScope) {
+  constructor($ngRedux: INgRedux, $scope: IScope) {
     this.completeReducer = (count: number, todo: Todo): number => todo.completed ? count + 1 : count;
     this.dispatcher = $ngRedux.dispatch;
 

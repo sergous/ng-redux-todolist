@@ -1,18 +1,18 @@
-<li ng-class="{'editing': todo.editing, 'completed': todo.todo.completed}">
+<li ng-class="{'editing': $ctrl.editing, 'completed': $ctrl.todo.completed}">
   <todo-text-input
-    ng-if="todo.editing"
-    text="todo.todo.text"
-    editing="todo.editing"
-    on-save="todo.editTodo(todo.todo.id, text); todo.editing = false;"
+    ng-if="$ctrl.editing"
+    text="$ctrl.todo.text"
+    editing="$ctrl.editing"
+    on-save="$ctrl.editTodo($ctrl.todo.id, text); $ctrl.editing = false;"
     ></todo-text-input>
-  <div class="view" ng-if="!todo.editing">
+  <div class="view" ng-if="!$ctrl.editing">
     <input
       class="toggle pointer"
       type="checkbox"
-      ng-checked="todo.todo.completed"
-      ng-click="todo.completeTodo(todo.todo.id)"
+      ng-checked="$ctrl.todo.completed"
+      ng-click="$ctrl.completeTodo($ctrl.todo.id)"
       />
-    <label ng-dblclick="todo.handleDoubleClick()" ng-click="todo.handleDoubleClick()">{{todo.todo.text}}</label>
-    <button class="destroy pointer" ng-click="todo.deleteTodo(todo.todo.id)"></button>
+    <label ng-dblclick="$ctrl.handleDoubleClick()" ng-click="$ctrl.handleDoubleClick()">{{$ctrl.todo.text}}</label>
+    <button class="destroy pointer" ng-click="$ctrl.deleteTodo($ctrl.todo.id)"></button>
   </div>
 </li>

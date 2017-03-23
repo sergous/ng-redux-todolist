@@ -1,9 +1,9 @@
 <ul class="todo-list">
   <todo-item
-    ng-repeat="todo in todoList.todos | filter : todoList.selectedFilter.filter"
+    ng-repeat="todo in $ctrl.todos | filter : $ctrl.selectedFilter.filter"
     todo="todo"
-    on-destroy="todoList.deleteTodo(id)"
-    on-change="todoList.completeTodo(id)"
-    on-save="todoList.handleSave(todo)"
+    on-destroy="$ctrl.deleteTodo(id)"
+    on-change="$ctrl.completeTodo(id)"
+    on-save="$ctrl.handleSave(todo)"
   ></todo-item>
 </ul>

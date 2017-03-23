@@ -1,15 +1,15 @@
 <footer class="footer">
   <span class="todo-count">
-    <strong>{{footer.activeCount || 'No'}}</strong> {{footer.activeCount === 1 ? 'item' : 'items'}} left
+    <strong>{{$ctrl.activeCount || 'No'}}</strong> {{$ctrl.activeCount === 1 ? 'item' : 'items'}} left
   </span>
   <ul class="filters">
-    <li key="filter" ng-repeat="filter in footer.filters">
-      <a class="pointer" ui-sref-active="selected" ui-sref="{{'main.todos' + footer.filterStates[filter]}}">{{footer.filterTitles[filter]}}</a>
+    <li key="filter" ng-repeat="filter in $ctrl.filters">
+      <a class="pointer" ui-sref-active="selected" ui-sref="{{'main.todos' + $ctrl.filterStates[filter]}}">{{$ctrl.filterTitles[filter]}}</a>
     </li>
   </ul>
-  <button ng-if="footer.completedCount > 0"
+  <button ng-if="$ctrl.completedCount > 0"
     class="clear-completed"
-    ng-click="footer.onClearCompleted()"
+    ng-click="$ctrl.onClearCompleted()"
     >
     Clear completed
   </button>

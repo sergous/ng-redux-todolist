@@ -1,18 +1,18 @@
 <section class="main">
-  <input ng-if="main.todos.length"
+  <input ng-if="$ctrl.todos.length"
     class="toggle-all pointer"
     type="checkbox"
-    ng-checked="main.todos.reduce(main.completeReducer, 0) === main.todos.length"
-    ng-click="main.completeAll()"
+    ng-checked="$ctrl.todos.reduce($ctrl.completeReducer, 0) === $ctrl.todos.length"
+    ng-click="$ctrl.completeAll()"
     />
   <todo-list
-    todos="main.todos"
+    todos="$ctrl.todos"
   ></todo-list>
-  <footer-component ng-if="main.todos.length"
-    completed-count="main.todos.reduce(main.completeReducer, 0)"
-    active-count="main.todos.length - main.todos.reduce(main.completeReducer, 0)"
-    filter="main.filter"
-    on-clear-completed="main.clearCompleted()"
-    on-set-filter="main.handleSetFilter(filter)"
+  <footer-component ng-if="$ctrl.todos.length"
+    completed-count="$ctrl.todos.reduce($ctrl.completeReducer, 0)"
+    active-count="$ctrl.todos.length - $ctrl.todos.reduce($ctrl.completeReducer, 0)"
+    filter="$ctrl.filter"
+    on-clear-completed="$ctrl.clearCompleted()"
+    on-set-filter="$ctrl.handleSetFilter(filter)"
   ></footer-component>
 </section>

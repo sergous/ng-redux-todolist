@@ -1,23 +1,15 @@
 import * as angular from 'angular';
 import FooterController from './FooterController';
 
-export default angular
-  .module('app.components.Footer', [])
-  .directive('footerComponent', () => {
-    return {
-      template: require('./Footer.html'),
-      controller: FooterController,
-      controllerAs: 'footer',
-      bindToController: true,
-      restrict: 'E',
-      scope: {
-        completedCount: '<',
-        activeCount: '<',
-        selectedFilter: '<filter',
-        onClearCompleted: '&',
-        onSetFilter: '&'
-      }
-    };
-  })
-  .name;
-
+const Footer: angular.IComponentOptions = {
+  template: require('./Footer.html'),
+  controller: FooterController,
+  bindings: {
+    completedCount: '<',
+    activeCount: '<',
+    selectedFilter: '<filter',
+    onClearCompleted: '&',
+    onSetFilter: '&'
+  }
+};
+export default Footer;

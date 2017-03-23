@@ -17,6 +17,7 @@ export default class TodoItemController {
     };
   }
 
+  /** @ngInject */
   constructor($ngRedux: any, $scope: IScope) {
     let disconnect = $ngRedux.connect(
       state => this.onUpdate(state),

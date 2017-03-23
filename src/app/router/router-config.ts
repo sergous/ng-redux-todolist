@@ -1,3 +1,4 @@
+/** @ngInject */
 export default function routerConfig($urlRouterProvider: any, $stateProvider: any) {
   $urlRouterProvider.otherwise('/todos');
   $stateProvider
@@ -23,5 +24,3 @@ export default function routerConfig($urlRouterProvider: any, $stateProvider: an
       url: 'completed'
     });
 }
-
-routerConfig.$inject = ['$urlRouterProvider', '$stateProvider'];

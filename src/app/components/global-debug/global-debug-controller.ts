@@ -1,5 +1,6 @@
 import {IScope} from 'angular';
 export default class GlobalDebugController {
+  /** @ngInject */
   constructor($ngRedux: any, $scope: IScope) {
 
     let _onChange = (state) => ({

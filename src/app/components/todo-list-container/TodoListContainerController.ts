@@ -6,6 +6,7 @@ export default class TodoListContainerController {
   todos: Todo[];
   filter: string;
 
+  /** @ngInject */
   constructor(
     $ngRedux: any,
     $scope: IScope

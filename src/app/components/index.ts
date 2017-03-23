@@ -1,6 +1,4 @@
 import * as angular from 'angular';
-import uiRouter from 'angular-ui-router';
-import mainRouterConfig from './main-section/main-router-config';
 import Header from './header';
 import MainSection from './main-section';
 import TodoListContainer from './todo-list-container';
@@ -10,10 +8,7 @@ import TodoTextInput from './todo-text-input';
 import Footer from './footer';
 
 export default angular
-  .module('app.components', [
-    uiRouter,
-  ])
-  .config(mainRouterConfig)
+  .module('app.components', [])
   .component('headerComponent', Header)
   .component('mainSection', MainSection)
   .component('todoListContainer', TodoListContainer)

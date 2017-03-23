@@ -5,7 +5,7 @@ import Footer from './';
 describe('Footer component', () => {
   beforeEach(() => {
     angular
-      .module('footerComponent', ['app/components/Footer.html'])
+      .module('footerComponent', ['app/components/footer/Footer.html'])
       .component('footerComponent', Footer);
     angular.mock.module('footerComponent');
   });
@@ -31,19 +31,19 @@ describe('Footer component', () => {
     };
     const component = $componentController('footerComponent', {}, bindings);
     spyOn(component, 'onClearCompleted').and.callThrough();
-    component.handleClear();
+    component.onClearCompleted();
     expect(component.onClearCompleted).toHaveBeenCalled();
   }));
 
-  it('shoud call onShow', angular.mock.inject($componentController => {
+  it('should call onSetFilter', angular.mock.inject(($componentController) => {
     const bindings = {
-      onShow: () => {
+      onSetFilter: () => {
         return;
       }
     };
     const component = $componentController('footerComponent', {}, bindings);
-    spyOn(component, 'onShow').and.callThrough();
-    component.handleChange('show_all');
-    expect(component.onShow).toHaveBeenCalledWith({filter: 'show_all'});
+    spyOn(component, 'onSetFilter').and.callThrough();
+    component.onSetFilter({filter: 'show_all'});
+    expect(component.onSetFilter).toHaveBeenCalledWith({filter: 'show_all'});
   }));
 });

@@ -32,14 +32,14 @@ describe('Header component', () => {
     angular.mock.module('headerComponent');
   });
 
-  it('should render correctly', angular.mock.inject(($rootScope: ng.IRootScopeService, $compile: ng.ICompileService) => {
+  it('should render correctly', angular.mock.inject(($rootScope: angular.IRootScopeService, $compile: angular.ICompileService) => {
     const element = $compile('<header-component></header-component>')($rootScope);
     $rootScope.$digest();
     const header = element.find('h1');
     expect(header.html().trim()).toEqual('todos');
   }));
 
-  it('should get the todos binded to the component', angular.mock.inject(($rootScope: ng.IRootScopeService, $compile: ng.ICompileService, $componentController) => {
+  it('should get the todos binded to the component', angular.mock.inject(($rootScope: angular.IRootScopeService, $compile: angular.ICompileService, $componentController) => {
     const component = $componentController('headerComponent', {}, {todos});
     spyOn(component, 'handleSave').and.callThrough();
     expect(component.todos.length).toEqual(1);

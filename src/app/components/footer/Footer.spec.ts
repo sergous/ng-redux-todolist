@@ -10,11 +10,11 @@ describe('Footer component', () => {
     angular.mock.module('footerComponent');
   });
 
-  interface IMyScope extends ng.IScope {
+  interface IMyScope extends angular.IScope {
     activeCount: number;
   }
 
-  it('should render correctly', angular.mock.inject(($rootScope: ng.IRootScopeService, $compile: ng.ICompileService) => {
+  it('should render correctly', angular.mock.inject(($rootScope: angular.IRootScopeService, $compile: angular.ICompileService) => {
     const $scope: IMyScope = <IMyScope> $rootScope.$new();
     $scope.activeCount = 2;
     const element = $compile('<footer-component active-count="activeCount"></footer-component>')($scope);

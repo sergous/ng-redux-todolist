@@ -14,7 +14,7 @@ describe('TodoTextInput component', () => {
     angular.mock.module('todoTextInput');
   });
 
-  it('should render correctly', angular.mock.inject(($rootScope: ng.IRootScopeService, $compile: ng.ICompileService) => {
+  it('should render correctly', angular.mock.inject(($rootScope: angular.IRootScopeService, $compile: angular.ICompileService) => {
     const $scope = $rootScope.$new();
     const element = $compile('<todo-text-input></todo-text-input>')($scope);
     $scope.$digest();

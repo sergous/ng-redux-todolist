@@ -10,7 +10,7 @@ describe('TodoItem component', () => {
     angular.mock.module('todoItem');
   });
 
-  it('should render correctly', angular.mock.inject(($rootScope: ng.IRootScopeService, $compile: ng.ICompileService) => {
+  it('should render correctly', angular.mock.inject(($rootScope: angular.IRootScopeService, $compile: angular.ICompileService) => {
     const $scope = $rootScope.$new();
     const element = $compile('<todo-item></todo-item>')($scope);
     $scope.$digest();

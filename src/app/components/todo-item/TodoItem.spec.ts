@@ -1,12 +1,19 @@
 import * as angular from 'angular';
 import 'angular-mocks';
+import ngRedux from 'ng-redux';
 import TodoItem from './';
+import rootReducer from '../../reducers/index';
 
 describe('TodoItem component', () => {
   beforeEach(() => {
     angular
-      .module('todoItem', ['app/components/TodoItem.html'])
-      .component('todoItem', TodoItem);
+      .module('todoItem', [ngRedux, 'app/components/todo-item/TodoItem.html'])
+      .component('todoItem', TodoItem)
+      .config(($ngReduxProvider) => {
+        $ngReduxProvider.createStoreWith(
+          rootReducer
+        );
+      });
     angular.mock.module('todoItem');
   });
 

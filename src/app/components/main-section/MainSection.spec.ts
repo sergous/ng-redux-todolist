@@ -1,6 +1,8 @@
 import * as angular from 'angular';
 import 'angular-mocks';
+import ngRedux from 'ng-redux';
 import MainSection from './';
+import rootReducer from '../../reducers/index';
 
 describe('MainSection component', () => {
   class MockTodoService {
@@ -16,9 +18,14 @@ describe('MainSection component', () => {
 
   beforeEach(() => {
     angular
-      .module('mainSection', ['app/components/MainSection.html'])
+      .module('mainSection', [ngRedux, 'app/components/main-section/MainSection.html'])
       .service('todoService', MockTodoService)
-      .component('mainSection', MainSection);
+      .component('mainSection', MainSection)
+      .config(($ngReduxProvider) => {
+        $ngReduxProvider.createStoreWith(
+          rootReducer
+        );
+      });
     angular.mock.module('mainSection');
   });
 

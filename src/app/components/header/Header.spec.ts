@@ -1,35 +1,43 @@
 import * as angular from 'angular';
 import 'angular-mocks';
+import ngRedux from 'ng-redux';
 import Header from './';
 import {Todo} from '../../todos/todos';
+import HeaderController from './HeaderController';
+import rootReducer from '../../reducers/index';
 
 describe('Header component', () => {
-  const todos: Todo[] = [
-    {
-      text: 'Use ngrx/store',
-      completed: false,
-      id: 0
-    }
-  ];
-
-  class MockTodoService {
-    addTodo(text: string, todos: Todo[]) {
-      return [
-        {
-          id: (todos.length === 0) ? 0 : todos[0].id + 1,
-          completed: false,
-          text
-        }
-      ].concat(todos);
-    }
-  }
+  let todos: Todo[];
+  let defaultState;
+  let store;
+  let targetObj;
+  let connect;
 
   beforeEach(() => {
+    todos = [
+      {
+        text: 'Use ngrx/store',
+        completed: false,
+        id: 0
+      }
+    ];
+
+    defaultState = {
+      todos
+    };
+
     angular
-      .module('headerComponent', ['app/components/Header.html'])
-      .service('todoService', MockTodoService)
-      .component('headerComponent', Header);
+      .module('headerComponent', [ngRedux, 'app/components/header/Header.html'])
+      .component('headerComponent', Header)
+      .controller('HeaderController', HeaderController)
+      .config(($ngReduxProvider) => {
+        $ngReduxProvider.createStoreWith(
+          rootReducer
+        );
+      });
+
     angular.mock.module('headerComponent');
+
   });
 
   it('should render correctly', angular.mock.inject(($rootScope: angular.IRootScopeService, $compile: angular.ICompileService) => {

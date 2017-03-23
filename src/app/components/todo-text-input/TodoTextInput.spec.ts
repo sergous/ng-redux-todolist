@@ -1,6 +1,8 @@
 import * as angular from 'angular';
 import 'angular-mocks';
+import ngRedux from 'ng-redux';
 import TodoTextInput from './';
+import rootReducer from '../../reducers/index';
 
 describe('TodoTextInput component', () => {
   class MockTodoService {
@@ -8,9 +10,14 @@ describe('TodoTextInput component', () => {
 
   beforeEach(() => {
     angular
-      .module('todoTextInput', ['app/components/TodoTextInput.html'])
+      .module('todoTextInput', [ngRedux, 'app/components/todo-text-input/TodoTextInput.html'])
       .service('todoService', MockTodoService)
-      .component('todoTextInput', TodoTextInput);
+      .component('todoTextInput', TodoTextInput)
+      .config(($ngReduxProvider) => {
+        $ngReduxProvider.createStoreWith(
+          rootReducer
+        );
+      });
     angular.mock.module('todoTextInput');
   });
 

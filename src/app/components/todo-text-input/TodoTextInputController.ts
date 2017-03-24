@@ -1,6 +1,3 @@
-import {IScope} from 'angular';
-import {INgRedux} from 'ng-redux';
-
 export default class TodoTextInputController {
   editing: boolean;
   text: string;
@@ -11,29 +8,11 @@ export default class TodoTextInputController {
   constructor(
     public $window: any,
     public $timeout: any,
-    $ngRedux: INgRedux,
-    $scope: IScope
   ) {
-    this.editing = this.editing || false;
-    this.text = this.text || '';
-    if (this.text.length) {
-      this.focus();
-    }
-
-    let disconnect = $ngRedux.connect(
-      state => this.onUpdate(state)
-    )(this);
-
-    $scope.$on('$destroy', disconnect);
-
     this.handleBlur = this.handleBlur.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  onUpdate(state: any) {
-    return {
-      text: state.text
-    };
+    this.focus = this.focus.bind(this);
+    this.focus();
   }
 
   handleBlur() {
@@ -54,7 +33,7 @@ export default class TodoTextInputController {
   focus() {
     this.$timeout(() => {
       const element = this.$window.document.querySelector('.editing .textInput');
-      if (element) {
+      if (element && element.value.length) {
         element.focus();
       }
     }, 0);

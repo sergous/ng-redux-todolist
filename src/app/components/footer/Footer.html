@@ -2,11 +2,13 @@
   <span class="todo-count">
     <strong>{{$ctrl.activeCount || 'No'}}</strong> {{$ctrl.activeCount === 1 ? 'item' : 'items'}} left
   </span>
-  <ul class="filters">
-    <li key="filter" ng-repeat="filter in $ctrl.filters">
-      <a class="pointer" ui-sref-active="selected" ui-sref="{{'main.todos' + $ctrl.filterStates[filter]}}">{{$ctrl.filterTitles[filter]}}</a>
-    </li>
-  </ul>
+  <md-tabs md-dynamic-height="">
+    <md-tab ng-repeat="filter in $ctrl.filters" 
+            label="{{$ctrl.filterTitles[filter]}}" 
+            md-active="$ctrl.selectedFilter == filter"
+            md-on-select="$ctrl.handleSetFilter(filter)">
+    </md-tab>
+  </md-tabs>
   <button ng-if="$ctrl.completedCount > 0"
     class="clear-completed"
     ng-click="$ctrl.onClearCompleted()"

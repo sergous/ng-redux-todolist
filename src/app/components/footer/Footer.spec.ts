@@ -1,11 +1,12 @@
 import * as angular from 'angular';
+import uiRouter from 'angular-ui-router';
 import 'angular-mocks';
 import Footer from './';
 
 describe('Footer component', () => {
   beforeEach(() => {
     angular
-      .module('footerComponent', ['app/components/footer/Footer.html'])
+      .module('footerComponent', [uiRouter, 'app/components/footer/Footer.html'])
       .component('footerComponent', Footer);
     angular.mock.module('footerComponent');
   });

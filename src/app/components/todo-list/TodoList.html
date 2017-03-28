@@ -1,4 +1,4 @@
-<ul class="todo-list">
+<md-list ng-cloak="">
   <todo-item
     ng-repeat="todo in $ctrl.todos | filter : $ctrl.selectedFilter.filter"
     todo="todo"
@@ -6,4 +6,4 @@
     on-change="$ctrl.completeTodo(id)"
     on-save="$ctrl.handleSave(todo)"
   ></todo-item>
-</ul>
+</md-list>

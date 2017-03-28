@@ -1,18 +1,29 @@
-<li ng-class="{'editing': $ctrl.editing, 'completed': $ctrl.todo.completed}">
+<md-list-item ng-class="{'editing': $ctrl.editing, 'completed': $ctrl.todo.completed}">
+  <md-checkbox
+    aria-label="Checkbox Toggle"
+    ng-checked="$ctrl.todo.completed"
+    ng-disabled="$ctrl.editing"
+    ng-click="$ctrl.completeTodo($ctrl.todo.id)"
+  ></md-checkbox>  
+  <h3 ng-if="!$ctrl.editing">
+    {{$ctrl.todo.text}}
+  </h3>
   <todo-text-input
     ng-if="$ctrl.editing"
     text="$ctrl.todo.text"
     editing="$ctrl.editing"
     on-save="$ctrl.editTodo($ctrl.todo.id, text); $ctrl.editing = false;"
     ></todo-text-input>
-  <div class="view" ng-if="!$ctrl.editing">
-    <input
-      class="toggle pointer"
-      type="checkbox"
-      ng-checked="$ctrl.todo.completed"
-      ng-click="$ctrl.completeTodo($ctrl.todo.id)"
-      />
-    <label ng-dblclick="$ctrl.handleDoubleClick()" ng-click="$ctrl.handleDoubleClick()">{{$ctrl.todo.text}}</label>
-    <button class="destroy pointer" ng-click="$ctrl.deleteTodo($ctrl.todo.id)"></button>
-  </div>
-</li>
+  <span flex=""></span>
+  <span>
+    <md-button aria-label="Edit" ng-click="$ctrl.handleDoubleClick()">
+      <md-icon md-no-ink="" class="material-icons">mode_edit</md-icon> Edit
+    </md-button>
+  </span>
+  <span>
+    <md-button class="md-icon-button" ng-click="$ctrl.deleteTodo($ctrl.todo.id)">
+      <md-icon md-no-ink="" class="material-icons" aria-label="Remove">delete_forever</md-icon>
+    </md-button>
+  </span>
+</md-list-item>
+<md-divider></md-divider>

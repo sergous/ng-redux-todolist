@@ -1,9 +1,11 @@
-<input
-  class="textInput"
-  ng-class="{'edit': $ctrl.editing, 'new-todo': $ctrl.newTodo}"
-  ng-model="$ctrl.text"
-  ng-keypress="$ctrl.handleSubmit($event)"
-  ng-blur="$ctrl.handleBlur()"
-  placeholder="{{$ctrl.placeholder}}"
-  type="text"
-/>
+<md-input-container class="md-block" flex-gt-sm>
+  <input
+    class="textInput"
+    ng-class="{'edit': $ctrl.editing, 'new-todo': $ctrl.newTodo}"
+    ng-model="$ctrl.text"
+    ng-keypress="$ctrl.handleSubmit($event)"
+    ng-blur="$ctrl.handleBlur()"
+    placeholder="{{$ctrl.placeholder}}"
+    type="text"
+  />
+</md-input-container>

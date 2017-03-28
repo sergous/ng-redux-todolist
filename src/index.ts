@@ -1,11 +1,16 @@
 import * as angular from 'angular';
-import 'todomvc-app-css/index.css';
-import router from './app/router';
+import '../node_modules/angular-material/angular-material.css';
+import 'angular-animate';
+import 'angular-aria';
+import 'angular-material';
+import 'angular-messages';
+
 import ngRedux from 'ng-redux';
 import * as createLogger from 'redux-logger';
 import ngReduxDevTools from 'ng-redux-dev-tools';
 import devToolsEnhancer from 'remote-redux-devtools';
 
+import router from './app/router';
 import {TodoService} from './app/todos/todos';
 import routesConfig from './routes';
 import components from './app/components';
@@ -18,6 +23,7 @@ const logger = createLogger();
 
 export default angular
   .module('app', [
+    'ngMaterial',
     router,
     ngRedux,
     ngReduxDevTools,

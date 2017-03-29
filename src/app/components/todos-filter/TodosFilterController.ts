@@ -1,6 +1,6 @@
 import {SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE} from '../../constants/TodoFilters';
 
-export default class FooterController {
+export default class TodosFooterController {
   filters: string[];
   filterTitles: any;
   filterStates: any;

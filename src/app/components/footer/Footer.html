@@ -1,11 +1,7 @@
 <footer class="footer">
-  <md-tabs md-dynamic-height="">
-    <md-tab ng-repeat="filter in $ctrl.filters" 
-            label="{{$ctrl.filterTitles[filter]}}" 
-            md-active="$ctrl.selectedFilter == filter"
-            md-on-select="$ctrl.handleSetFilter(filter)">
-    </md-tab>
-  </md-tabs>
+  <todos-filter
+    filter="$ctrl.selectedFilter"
+  ></todos-filter>
   <button ng-if="$ctrl.completedCount > 0"
     class="clear-completed"
     ng-click="$ctrl.onClearCompleted()"

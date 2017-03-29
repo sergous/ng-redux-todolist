@@ -2,13 +2,13 @@ import * as angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import 'angular-mocks';
 import Footer from './';
-import FooterController from './FooterController';
+import TodosFilter from '../todos-filter';
 
 describe('Footer component', () => {
   beforeEach(() => {
     angular
       .module('footerComponent', [uiRouter, 'app/components/footer/Footer.html'])
-      .controller('FooterController', FooterController)
+      .component('todosFilter', TodosFilter)
       .component('footerComponent', Footer);
     angular.mock.module('footerComponent');
   });
@@ -38,17 +38,5 @@ describe('Footer component', () => {
     spyOn(component, 'onClearCompleted').and.callThrough();
     component.onClearCompleted();
     expect(component.onClearCompleted).toHaveBeenCalled();
-  }));
-
-  it('should call onSetFilter', angular.mock.inject(($componentController) => {
-    const bindings = {
-      onSetFilter: () => {
-        return;
-      }
-    };
-    const component = $componentController('footerComponent', {}, bindings);
-    spyOn(component, 'onSetFilter').and.callThrough();
-    component.onSetFilter({filter: 'show_all'});
-    expect(component.onSetFilter).toHaveBeenCalledWith({filter: 'show_all'});
   }));
 });

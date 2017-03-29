@@ -4,9 +4,11 @@ export default class FooterController {
   filters: string[];
   filterTitles: any;
   filterStates: any;
-  go: Function;
 
-  constructor($state: any) {
+  /** @ngInject */
+  constructor(
+    public $state: any
+  ) {
     this.filters = [SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED];
     this.filterTitles = {
       [SHOW_ALL]: 'All',
@@ -18,10 +20,9 @@ export default class FooterController {
       [SHOW_ACTIVE]: '.active',
       [SHOW_COMPLETED]: '.completed'
     };
-    this.go = $state.go;
   }
 
   handleSetFilter(filter: string) {
-    this.go('main.todos' + this.filterStates[filter]);
+    this.$state.go('main.todos' + this.filterStates[filter]);
   }
 }

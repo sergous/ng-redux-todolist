@@ -9,12 +9,12 @@ const todoActions = {
 
 export default class HeaderController {
   todos: Todo[];
-  dispatcher: any;
 
   /** @ngInject */
-  constructor($ngRedux: INgRedux, $scope: IScope) {
-    this.dispatcher = $ngRedux.dispatch;
-
+  constructor(
+    public $ngRedux: INgRedux,
+    $scope: IScope
+  ) {
     let disconnect = $ngRedux.connect(
       state => this.onUpdate(state),
       todoActions
@@ -33,7 +33,7 @@ export default class HeaderController {
 
   handleSave(text: string) {
     if (text.length !== 0) {
-      this.todos = this.dispatcher(addTodo(text));
+      this.todos = this.$ngRedux.dispatch(addTodo(text));
     }
   }
 }

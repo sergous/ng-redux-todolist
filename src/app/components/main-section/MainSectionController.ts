@@ -10,12 +10,12 @@ const todoActions = {
 
 export default class MainSectionController {
   todos: any[];
-  dispatcher: any;
 
   /** @ngInject */
-  constructor($ngRedux: INgRedux, $scope: IScope) {
-    this.dispatcher = $ngRedux.dispatch;
-
+  constructor(
+    $ngRedux: INgRedux,
+    $scope: IScope
+  ) {
     let disconnect = $ngRedux.connect(
       state => this.onUpdate(state),
       todoActions

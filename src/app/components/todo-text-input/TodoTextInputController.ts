@@ -11,7 +11,6 @@ export default class TodoTextInputController {
   ) {
     this.handleBlur = this.handleBlur.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.focus = this.focus.bind(this);
     this.focus();
   }
 

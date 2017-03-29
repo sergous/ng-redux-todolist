@@ -3,6 +3,7 @@ import { Todo } from '../../todos/todos';
 export default class TodosCountController {
   todos: Todo[];
 
+  /** @ngInject */
   constructor() {
     this.completedCount = this.completedCount.bind(this);
     this.activeCount = this.activeCount.bind(this);

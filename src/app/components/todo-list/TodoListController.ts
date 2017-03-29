@@ -13,12 +13,15 @@ const todoActions = {
 export default class TodoListController {
   selectedFilter: any;
   todos: any[];
-  dispatcher: any;
 
   /** @ngInject */
-  constructor($ngRedux: INgRedux, $scope: IScope, $transitions: any, $state: any) {
+  constructor(
+    public $ngRedux: INgRedux,
+    $scope: IScope,
+    $transitions: any,
+    $state: any
+  ) {
     this.selectedFilter = VisibilityFilters['show_' + $state.current.name] || VisibilityFilters[SHOW_ALL];
-    this.dispatcher = $ngRedux.dispatch;
     let disconnect = $ngRedux.connect(
       state => this.onUpdate(state),
       todoActions
@@ -50,10 +53,9 @@ export default class TodoListController {
 
   handleSave(e: any) {
     if (e.text.length === 0) {
-      this.todos = this.dispatcher(deleteTodo(e.id));
+      this.todos = this.$ngRedux.dispatch(deleteTodo(e.id));
     } else {
-      this.todos = this.dispatcher(editTodo(e.id, e.text));
+      this.todos = this.$ngRedux.dispatch(editTodo(e.id, e.text));
     }
   }
-
 }

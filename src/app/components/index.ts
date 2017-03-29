@@ -5,6 +5,7 @@ import TodoListContainer from './todo-list-container';
 import TodoList from './todo-list';
 import TodoItem from './todo-item';
 import TodoTextInput from './todo-text-input';
+import TodosCount from './todos-count';
 import Footer from './footer';
 
 export default angular
@@ -16,6 +17,7 @@ export default angular
   .component('todoItem', TodoItem)
   .component('todoTextInput', TodoTextInput)
   .component('footerComponent', Footer)
+  .component('todosCount', TodosCount)
   .name;
 
 

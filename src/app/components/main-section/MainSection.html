@@ -1,12 +1,9 @@
 <section class="main">
   <md-checkbox  class="toggle-all" name="Select All" color="primary"
-        ng-if="$ctrl.todos.length" 
-        ng-checked="$ctrl.todos.reduce($ctrl.completeReducer, 0) === $ctrl.todos.length"
+        ng-if="$ctrl.todos.length"
         ng-click="$ctrl.completeAll()">
   </md-checkbox>
   <footer-component ng-if="$ctrl.todos.length"
-    completed-count="$ctrl.todos.reduce($ctrl.completeReducer, 0)"
-    active-count="$ctrl.todos.length - $ctrl.todos.reduce($ctrl.completeReducer, 0)"
     filter="$ctrl.filter"
     on-clear-completed="$ctrl.clearCompleted()"
     on-set-filter="$ctrl.handleSetFilter(filter)"
@@ -14,4 +11,7 @@
   <todo-list
     todos="$ctrl.todos"
   ></todo-list>
+  <todos-count
+    todos="$ctrl.todos"
+  ></todos-count>
 </section>

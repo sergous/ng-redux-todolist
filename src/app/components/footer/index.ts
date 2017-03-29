@@ -5,8 +5,6 @@ const Footer: angular.IComponentOptions = {
   template: require('./Footer.html'),
   controller: FooterController,
   bindings: {
-    completedCount: '<',
-    activeCount: '<',
     selectedFilter: '<filter',
     onClearCompleted: '&',
     onSetFilter: '&'

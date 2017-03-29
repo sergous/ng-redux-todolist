@@ -9,13 +9,11 @@ const todoActions = {
 };
 
 export default class MainSectionController {
-  completeReducer: Function;
   todos: any[];
   dispatcher: any;
 
   /** @ngInject */
   constructor($ngRedux: INgRedux, $scope: IScope) {
-    this.completeReducer = (count: number, todo: Todo): number => todo.completed ? count + 1 : count;
     this.dispatcher = $ngRedux.dispatch;
 
     let disconnect = $ngRedux.connect(

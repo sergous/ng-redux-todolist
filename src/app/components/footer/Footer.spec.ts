@@ -2,11 +2,13 @@ import * as angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import 'angular-mocks';
 import Footer from './';
+import FooterController from './FooterController';
 
 describe('Footer component', () => {
   beforeEach(() => {
     angular
       .module('footerComponent', [uiRouter, 'app/components/footer/Footer.html'])
+      .controller('FooterController', FooterController)
       .component('footerComponent', Footer);
     angular.mock.module('footerComponent');
   });
@@ -17,11 +19,13 @@ describe('Footer component', () => {
 
   it('should render correctly', angular.mock.inject(($rootScope: angular.IRootScopeService, $compile: angular.ICompileService) => {
     const $scope: IMyScope = <IMyScope> $rootScope.$new();
-    $scope.activeCount = 2;
-    const element = $compile('<footer-component active-count="activeCount"></footer-component>')($scope);
+    $scope.selectedFilter = 'show_active';
+    const element = $compile('<footer-component filter="selectedFilter"></footer-component>')($scope);
     $scope.$digest();
-    const footer = element.find('strong');
-    expect(footer.html().trim()).toEqual('2');
+    const tabs = element.find('md-tabs');
+    expect(tabs.length).toEqual(1);
+    const button = element.find('button');
+    expect(button.length).toEqual(0);
   }));
 
   it('shoud call onClearCompleted', angular.mock.inject($componentController => {

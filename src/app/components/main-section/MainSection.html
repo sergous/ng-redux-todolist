@@ -1,17 +1,14 @@
 <section class="main">
-  <md-checkbox  class="toggle-all" name="Select All" color="primary"
-        ng-if="$ctrl.todos.length"
-        ng-click="$ctrl.completeAll()">
-  </md-checkbox>
-  <footer-component ng-if="$ctrl.todos.length"
-    filter="$ctrl.filter"
-    on-clear-completed="$ctrl.clearCompleted()"
-    on-set-filter="$ctrl.handleSetFilter(filter)"
-  ></footer-component>
+  <todos-filter
+    filter="$ctrl.selectedFilter"
+  ></todos-filter>
   <todo-list
     todos="$ctrl.todos"
   ></todo-list>
-  <todos-count
-    todos="$ctrl.todos"
-  ></todos-count>
+  <footer-component ng-if="$ctrl.todos.length"
+    active-count="$ctrl.activeCount()"
+    completed-count="$ctrl.completedCount()"
+    on-clear-completed="$ctrl.clearCompleted()"
+    on-complete-all="$ctrl.completeAll()"
+  ></footer-component>
 </section>

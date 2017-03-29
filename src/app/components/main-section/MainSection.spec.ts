@@ -3,6 +3,12 @@ import 'angular-mocks';
 import ngRedux from 'ng-redux';
 import MainSection from './';
 import rootReducer from '../../reducers/index';
+import { Todo } from '../../todos/todos';
+
+const todos = [
+  {id: 0, text: 'Active task', completed: false},
+  {id: 1, text: 'Done task', completed: true}
+];
 
 describe('MainSection component', () => {
   let component;
@@ -35,4 +41,17 @@ describe('MainSection component', () => {
     expect(component.onUpdate).toHaveBeenCalled();
   });
 
+  it('shoud call activeCount', angular.mock.inject($componentController => {
+    const bindings = { todos };
+    const component = $componentController('mainSection', {}, bindings);
+    const active = component.activeCount();
+    expect(active).toEqual(1);
+  }));
+
+  it('shoud call completedCount', angular.mock.inject($componentController => {
+    const bindings = { todos };
+    const component = $componentController('mainSection', {}, bindings);
+    const completed = component.completedCount();
+    expect(completed).toEqual(1);
+  }));
 });

@@ -1,11 +1,15 @@
 <footer class="footer">
-  <todos-filter
-    filter="$ctrl.selectedFilter"
-  ></todos-filter>
-  <button ng-if="$ctrl.completedCount > 0"
-    class="clear-completed"
+  <todos-count
+    active-count="$ctrl.activeCount"
+  ></todos-count>
+  <md-button ng-if="$ctrl.activeCount > 0"
+    md-no-ink class="md-primary"
+    ng-click="$ctrl.onCompleteAll()">Complete All
+  </md-button>
+  <md-button ng-if="$ctrl.completedCount > 0"
+    md-no-ink class="md-primary"
     ng-click="$ctrl.onClearCompleted()"
     >
     Clear completed
-  </button>
+  </md-button>
 </footer>

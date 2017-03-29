@@ -2,13 +2,13 @@ import * as angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import 'angular-mocks';
 import Footer from './';
-import TodosFilter from '../todos-filter';
+import TodosCount from '../todos-count';
 
 describe('Footer component', () => {
   beforeEach(() => {
     angular
       .module('footerComponent', [uiRouter, 'app/components/footer/Footer.html'])
-      .component('todosFilter', TodosFilter)
+      .component('todosCount', TodosCount)
       .component('footerComponent', Footer);
     angular.mock.module('footerComponent');
   });
@@ -22,21 +22,29 @@ describe('Footer component', () => {
     $scope.selectedFilter = 'show_active';
     const element = $compile('<footer-component filter="selectedFilter"></footer-component>')($scope);
     $scope.$digest();
-    const tabs = element.find('md-tabs');
-    expect(tabs.length).toEqual(1);
+    const count = element.find('span');
+    expect(count.hasClass('todo-count')).toBeTruthy();
     const button = element.find('button');
     expect(button.length).toEqual(0);
   }));
 
   it('shoud call onClearCompleted', angular.mock.inject($componentController => {
     const bindings = {
-      onClearCompleted: () => {
-        return;
-      }
+      onClearCompleted: () => { return; }
     };
     const component = $componentController('footerComponent', {}, bindings);
     spyOn(component, 'onClearCompleted').and.callThrough();
     component.onClearCompleted();
     expect(component.onClearCompleted).toHaveBeenCalled();
+  }));
+
+  it('shoud call onCompleteAll', angular.mock.inject($componentController => {
+    const bindings = {
+      onCompleteAll: () => { return; }
+    };
+    const component = $componentController('footerComponent', {}, bindings);
+    spyOn(component, 'onCompleteAll').and.callThrough();
+    component.onCompleteAll();
+    expect(component.onCompleteAll).toHaveBeenCalled();
   }));
 });

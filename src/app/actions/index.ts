@@ -27,3 +27,15 @@ export function deleteAll() {
 export function clearCompleted() {
   return {type: types.CLEAR_COMPLETED};
 }
+
+const todoActions = {
+  clearCompleted,
+  completeAll,
+  deleteAll,
+  deleteTodo,
+  editTodo,
+  addTodo,
+  completeTodo
+};
+
+export default todoActions;

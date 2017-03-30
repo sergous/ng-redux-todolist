@@ -2,15 +2,21 @@
   <h1>todos</h1>
   <todo-text-input
     new-todo="true"
-    on-save="$ctrl.handleAdd(text)"
+    on-save="$ctrl.addTodo(text)"
     placeholder="What needs to be done?"
   ></todo-text-input>
   <todos-filter
     filter="$ctrl.filter"
   ></todos-filter>
-  <todo-list
-    todos="$ctrl.todos"
-  ></todo-list>
+  <md-list ng-cloak="">
+    <todo-item
+      ng-repeat="todo in $ctrl.todos | filter : $ctrl.selectedFilter.filter"
+      todo="todo"
+      on-destroy="$ctrl.deleteTodo(id)"
+      on-change="$ctrl.completeTodo(id)"
+      on-save="$ctrl.editTodo(todo.id, todo.text)"
+    ></todo-item>
+  </md-list>
   <footer-component ng-if="$ctrl.todos.length"
     active-count="$ctrl.activeCount()"
     completed-count="$ctrl.completedCount()"

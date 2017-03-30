@@ -1,29 +1,33 @@
 import { Todo, initialTodo } from '../../todos/todos';
 import {IScope} from 'angular';
-import { clearCompleted, completeAll, deleteTodo, editTodo, addTodo } from '../../actions/index';
+import todoActions from '../../actions/index';
 import { INgRedux } from 'ng-redux';
 import completeReducer from '../../reducers/complete';
 import { SHOW_ALL } from '../../constants/TodoFilters';
-
-const todoActions = {
-  clearCompleted,
-  completeAll,
-  deleteTodo,
-  editTodo,
-  addTodo
-};
+import VisibilityFilters from '../../constants/VisibilityFilters';
 
 export default class MainSectionController {
   todos: Todo[];
   filter: any;
+  selectedFilter: any;
 
   /** @ngInject */
   constructor(
     public $ngRedux: INgRedux,
-    $scope: IScope
+    $scope: IScope,
+    $transitions: any,
+    $state: any
   ) {
     this.todos = [initialTodo];
     this.filter = SHOW_ALL;
+    this.selectedFilter = VisibilityFilters['show_' + $state.current.name] || VisibilityFilters[SHOW_ALL];
+
+    let updateFilter = (trans) => {
+      let state = trans.router.stateService;
+      const newFilterName = state.current.url;
+      this.handleSetFilter(newFilterName);
+    };
+    $transitions.onSuccess({ }, updateFilter.bind(this));
 
     let disconnect = $ngRedux.connect(
       state => this.onUpdate(state),
@@ -33,7 +37,13 @@ export default class MainSectionController {
     $scope.$on('$destroy', disconnect);
     this.completedCount = this.completedCount.bind(this);
     this.activeCount = this.activeCount.bind(this);
-    this.handleAdd = this.handleAdd.bind(this);
+    this.handleSetFilter = this.handleSetFilter.bind(this);
+  }
+
+  onUpdate(state: any) {
+    return {
+      todos: state.todos
+    };
   }
 
   completedCount() {
@@ -44,14 +54,7 @@ export default class MainSectionController {
      return this.todos.length - this.todos.reduce(completeReducer, 0);
   }
 
-  handleAdd(text: string) {
-    if (text.length === 0) { return; };
-    this.todos = this.$ngRedux.dispatch(todoActions.addTodo(text));
-  }
-
-  onUpdate(state: any) {
-    return {
-      todos: state.todos
-    };
+  handleSetFilter(filter: string) {
+    this.selectedFilter = VisibilityFilters['show_' + filter];
   }
 }

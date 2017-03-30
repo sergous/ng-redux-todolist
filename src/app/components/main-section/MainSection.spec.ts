@@ -1,9 +1,11 @@
 import * as angular from 'angular';
+import uiRouter from 'angular-ui-router';
 import 'angular-mocks';
 import ngRedux from 'ng-redux';
 import MainSection from './';
 import rootReducer from '../../reducers/index';
 import { Todo } from '../../todos/todos';
+import { SHOW_COMPLETED } from '../../constants/TodoFilters';
 
 const todos = [
   {id: 0, text: 'Active task', completed: false},
@@ -15,7 +17,7 @@ describe('MainSection component', () => {
 
   beforeEach(() => {
     angular
-      .module('mainSection', [ngRedux, 'app/components/main-section/MainSection.html'])
+      .module('mainSection', [ngRedux, uiRouter, 'app/components/main-section/MainSection.html'])
       .component('mainSection', MainSection)
       .config(($ngReduxProvider) => {
         $ngReduxProvider.createStoreWith(
@@ -25,7 +27,7 @@ describe('MainSection component', () => {
     angular.mock.module('mainSection');
   });
 
-  beforeEach(angular.mock.inject($componentController => {
+  beforeEach(angular.mock.inject(($transitions, $componentController) => {
     component = $componentController('mainSection', {}, {});
   }));
 
@@ -54,4 +56,22 @@ describe('MainSection component', () => {
     const completed = component.completedCount();
     expect(completed).toEqual(1);
   }));
+
+  it('shoud call completeTodo', () => {
+    spyOn(component, 'onUpdate').and.callThrough();
+    component.completeTodo(0);
+    expect(component.onUpdate).toHaveBeenCalled();
+  });
+
+  it('shoud delete todo', () => {
+    spyOn(component, 'onUpdate').and.callThrough();
+    component.deleteTodo(0);
+    expect(component.onUpdate).toHaveBeenCalled();
+  });
+
+  it('shoud set selectedFilter', () => {
+    component.handleSetFilter('completed');
+    expect(component.selectedFilter.type).toEqual(SHOW_COMPLETED);
+    expect(component.selectedFilter.filter({completed: true})).toEqual(true);
+  });
 });

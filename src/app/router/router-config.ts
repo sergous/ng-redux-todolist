@@ -13,14 +13,5 @@ export default function routerConfig($urlRouterProvider: any, $stateProvider: an
     .state('main.todos', {
       url: 'todos/',
       abstract: true
-    })
-    .state('main.todos.all', {
-      url: 'all'
-    })
-    .state('main.todos.active', {
-      url: 'active'
-    })
-    .state('main.todos.completed', {
-      url: 'completed'
     });
 }

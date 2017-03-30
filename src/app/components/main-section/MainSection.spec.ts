@@ -1,5 +1,4 @@
 import * as angular from 'angular';
-import uiRouter from 'angular-ui-router';
 import 'angular-mocks';
 import ngRedux from 'ng-redux';
 import MainSection from './';
@@ -17,7 +16,7 @@ describe('MainSection component', () => {
 
   beforeEach(() => {
     angular
-      .module('mainSection', [ngRedux, uiRouter, 'app/components/main-section/MainSection.html'])
+      .module('mainSection', [ngRedux, 'app/components/main-section/MainSection.html'])
       .component('mainSection', MainSection)
       .config(($ngReduxProvider) => {
         $ngReduxProvider.createStoreWith(
@@ -27,7 +26,7 @@ describe('MainSection component', () => {
     angular.mock.module('mainSection');
   });
 
-  beforeEach(angular.mock.inject(($transitions, $componentController) => {
+  beforeEach(angular.mock.inject($componentController => {
     component = $componentController('mainSection', {}, {});
   }));
 
@@ -67,11 +66,5 @@ describe('MainSection component', () => {
     spyOn(component, 'onUpdate').and.callThrough();
     component.deleteTodo(0);
     expect(component.onUpdate).toHaveBeenCalled();
-  });
-
-  it('shoud set selectedFilter', () => {
-    component.handleSetFilter('completed');
-    expect(component.selectedFilter.type).toEqual(SHOW_COMPLETED);
-    expect(component.selectedFilter.filter({completed: true})).toEqual(true);
   });
 });

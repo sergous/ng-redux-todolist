@@ -7,7 +7,15 @@
   ></todo-text-input>
   <todos-filter
     filter="$ctrl.filter"
+    on-set-filter="$ctrl.handleSetFilter(filter)"
   ></todos-filter>
+  <md-tabs md-dynamic-height="">
+    <md-tab ng-repeat="filter in $ctrl.filters"
+            label="{{filter.name}}"
+            md-active="$ctrl.selectedFilter == filter"
+            md-on-select="$ctrl.selectedFilter = filter">
+    </md-tab>
+  </md-tabs>
   <md-list ng-cloak="">
     <todo-item
       ng-repeat="todo in $ctrl.todos | filter : $ctrl.selectedFilter.filter"

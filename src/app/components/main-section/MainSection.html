@@ -12,9 +12,10 @@
     <todo-item
       ng-repeat="todo in $ctrl.todos | filter : $ctrl.selectedFilter.filter"
       todo="todo"
-      on-destroy="$ctrl.deleteTodo(id)"
-      on-change="$ctrl.completeTodo(id)"
-      on-save="$ctrl.editTodo(todo.id, todo.text)"
+      editing="false"
+      on-delete="$ctrl.deleteTodo(id)"
+      on-complete="$ctrl.completeTodo(id)"
+      on-save="$ctrl.editTodo(id, text)"
     ></todo-item>
   </md-list>
   <footer-component ng-if="$ctrl.todos.length"

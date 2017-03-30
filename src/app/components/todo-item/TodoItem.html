@@ -3,8 +3,8 @@
     aria-label="Checkbox Toggle"
     ng-checked="$ctrl.todo.completed"
     ng-disabled="$ctrl.editing"
-    ng-click="$ctrl.completeTodo($ctrl.todo.id)"
-  ></md-checkbox>  
+    ng-click="$ctrl.onComplete({id: $ctrl.todo.id})"
+  ></md-checkbox>
   <h3 ng-if="!$ctrl.editing">
     {{$ctrl.todo.text}}
   </h3>
@@ -12,16 +12,16 @@
     ng-if="$ctrl.editing"
     text="$ctrl.todo.text"
     editing="$ctrl.editing"
-    on-save="$ctrl.editTodo($ctrl.todo.id, text); $ctrl.editing = false;"
+    on-save="$ctrl.onSave({id: $ctrl.todo.id, text}); $ctrl.editing = false"
     ></todo-text-input>
   <span flex=""></span>
   <span>
-    <md-button aria-label="Edit" ng-click="$ctrl.handleDoubleClick()">
+    <md-button aria-label="Edit" ng-click="$ctrl.editing = !$ctrl.editing;">
       <md-icon md-no-ink="" class="material-icons">mode_edit</md-icon> Edit
     </md-button>
   </span>
   <span>
-    <md-button class="md-icon-button" ng-click="$ctrl.deleteTodo($ctrl.todo.id)">
+    <md-button class="md-icon-button" ng-click="$ctrl.onDelete({id: $ctrl.todo.id})">
       <md-icon md-no-ink="" class="material-icons" aria-label="Remove">delete_forever</md-icon>
     </md-button>
   </span>

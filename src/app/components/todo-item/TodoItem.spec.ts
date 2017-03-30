@@ -1,19 +1,18 @@
 import * as angular from 'angular';
 import 'angular-mocks';
-import ngRedux from 'ng-redux';
 import TodoItem from './';
-import rootReducer from '../../reducers/index';
+
+const todo = {
+        text: 'Hello',
+        completed: false,
+        id: 0
+      };
 
 describe('TodoItem component', () => {
   beforeEach(() => {
     angular
-      .module('todoItem', [ngRedux, 'app/components/todo-item/TodoItem.html'])
-      .component('todoItem', TodoItem)
-      .config(($ngReduxProvider) => {
-        $ngReduxProvider.createStoreWith(
-          rootReducer
-        );
-      });
+      .module('todoItem', ['app/components/todo-item/TodoItem.html'])
+      .component('todoItem', TodoItem);
     angular.mock.module('todoItem');
   });
 
@@ -23,29 +22,5 @@ describe('TodoItem component', () => {
     $scope.$digest();
     const li = element.find('li');
     expect(li).not.toBeNull();
-  }));
-
-  it('should call set editing to true', angular.mock.inject($componentController => {
-    const component = $componentController('todoItem', {}, {});
-    spyOn(component, 'handleDoubleClick').and.callThrough();
-    component.handleDoubleClick();
-    expect(component.handleDoubleClick).toHaveBeenCalled();
-    expect(component.editing).toEqual(true);
-  }));
-
-  it('should call onUpdate on call editTodo', angular.mock.inject($componentController => {
-    const bindings = {
-      todo: {
-        text: 'Use ngrx/store',
-        completed: false,
-        id: 0
-      }
-    };
-    const component = $componentController('todoItem', {}, bindings);
-    spyOn(component, 'onUpdate').and.callThrough();
-    component.editTodo(0, 'Hello');
-    expect(component.onUpdate).toHaveBeenCalledWith({
-      todos: [{text: 'Hello', id: 0, completed: false}]
-    });
   }));
 });

@@ -58,7 +58,6 @@ describe('TodoTextInput component', () => {
   it('should call onSave', angular.mock.inject($componentController => {
     const bindings = {
       onSave: () => {return; },
-      newTodo: false,
       text: 'Hello'
     };
     const component = $componentController('todoTextInput', {}, bindings);
@@ -70,8 +69,7 @@ describe('TodoTextInput component', () => {
   it('should not call onSave', angular.mock.inject($componentController => {
     const bindings = {
       onSave: () => {return; },
-      newTodo: true,
-      text: 'Hello'
+      text: ''
     };
     const component = $componentController('todoTextInput', {}, bindings);
     spyOn(component, 'onSave').and.callThrough();

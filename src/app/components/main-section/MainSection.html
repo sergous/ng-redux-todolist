@@ -5,10 +5,6 @@
     on-save="$ctrl.addTodo(text)"
     placeholder="What needs to be done?"
   ></todo-text-input>
-  <todos-filter
-    filter="$ctrl.filter"
-    on-set-filter="$ctrl.handleSetFilter(filter)"
-  ></todos-filter>
   <md-tabs md-dynamic-height="">
     <md-tab ng-repeat="filter in $ctrl.filters"
             label="{{filter.name}}"

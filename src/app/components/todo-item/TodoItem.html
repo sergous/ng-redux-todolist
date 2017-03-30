@@ -1,6 +1,6 @@
 <md-list-item ng-class="{'editing': $ctrl.editing, 'completed': $ctrl.todo.completed}">
   <md-checkbox
-    aria-label="Checkbox Toggle"
+    aria-label="Complete Toggle"
     ng-checked="$ctrl.todo.completed"
     ng-disabled="$ctrl.editing"
     ng-click="$ctrl.onComplete({id: $ctrl.todo.id})"
@@ -21,8 +21,8 @@
     </md-button>
   </span>
   <span>
-    <md-button class="md-icon-button" ng-click="$ctrl.onDelete({id: $ctrl.todo.id})">
-      <md-icon md-no-ink="" class="material-icons" aria-label="Remove">delete_forever</md-icon>
+    <md-button aria-label="Delete" class="md-icon-button" ng-click="$ctrl.onDelete({id: $ctrl.todo.id})">
+      <md-icon md-no-ink="" class="material-icons">delete_forever</md-icon>
     </md-button>
   </span>
 </md-list-item>

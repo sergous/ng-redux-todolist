@@ -1,13 +1,16 @@
 import { Todo, initialTodo } from '../../todos/todos';
 import {IScope} from 'angular';
-import {clearCompleted, completeAll} from '../../actions/index';
+import { clearCompleted, completeAll, deleteTodo, editTodo, addTodo } from '../../actions/index';
 import { INgRedux } from 'ng-redux';
 import completeReducer from '../../reducers/complete';
 import { SHOW_ALL } from '../../constants/TodoFilters';
 
 const todoActions = {
   clearCompleted,
-  completeAll
+  completeAll,
+  deleteTodo,
+  editTodo,
+  addTodo
 };
 
 export default class MainSectionController {
@@ -16,7 +19,7 @@ export default class MainSectionController {
 
   /** @ngInject */
   constructor(
-    $ngRedux: INgRedux,
+    public $ngRedux: INgRedux,
     $scope: IScope
   ) {
     this.todos = [initialTodo];
@@ -30,6 +33,7 @@ export default class MainSectionController {
     $scope.$on('$destroy', disconnect);
     this.completedCount = this.completedCount.bind(this);
     this.activeCount = this.activeCount.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
   }
 
   completedCount() {
@@ -38,6 +42,11 @@ export default class MainSectionController {
 
   activeCount() {
      return this.todos.length - this.todos.reduce(completeReducer, 0);
+  }
+
+  handleAdd(text: string) {
+    if (text.length === 0) { return; };
+    this.todos = this.$ngRedux.dispatch(todoActions.addTodo(text));
   }
 
   onUpdate(state: any) {

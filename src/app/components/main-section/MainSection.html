@@ -1,5 +1,10 @@
 <section class="main">
-  <header-component todos="$ctrl.todos"></header-component>
+  <h1>todos</h1>
+  <todo-text-input
+    new-todo="true"
+    on-save="$ctrl.handleAdd(text)"
+    placeholder="What needs to be done?"
+  ></todo-text-input>
   <todos-filter
     filter="$ctrl.filter"
   ></todos-filter>

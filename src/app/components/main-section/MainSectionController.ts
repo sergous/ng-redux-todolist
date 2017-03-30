@@ -1,8 +1,9 @@
-import {Todo} from '../../todos/todos';
+import { Todo, initialTodo } from '../../todos/todos';
 import {IScope} from 'angular';
 import {clearCompleted, completeAll} from '../../actions/index';
 import { INgRedux } from 'ng-redux';
 import completeReducer from '../../reducers/complete';
+import { SHOW_ALL } from '../../constants/TodoFilters';
 
 const todoActions = {
   clearCompleted,
@@ -10,13 +11,17 @@ const todoActions = {
 };
 
 export default class MainSectionController {
-  todos: any[];
+  todos: Todo[];
+  filter: any;
 
   /** @ngInject */
   constructor(
     $ngRedux: INgRedux,
     $scope: IScope
   ) {
+    this.todos = [initialTodo];
+    this.filter = SHOW_ALL;
+
     let disconnect = $ngRedux.connect(
       state => this.onUpdate(state),
       todoActions

@@ -4,9 +4,13 @@ import TodoItem from './todo-item';
 import TodoTextInput from './todo-text-input';
 import TodosCount from './todos-count';
 import Footer from './footer';
+import scopeElementDirective from '../directives/scopeElementDirective';
+import initFocusDirective from '../directives/initFocusDirective';
 
 export default angular
   .module('app.components', [])
+  .directive('scopeElement', scopeElementDirective)
+  .directive('initFocus', initFocusDirective)
   .component('mainSection', MainSection)
   .component('todoItem', TodoItem)
   .component('todoTextInput', TodoTextInput)

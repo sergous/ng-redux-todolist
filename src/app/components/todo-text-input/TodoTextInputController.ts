@@ -6,11 +6,11 @@ export default class TodoTextInputController {
 
   /** @ngInject */
   constructor(
-    public $window: any,
-    public $timeout: any,
+    public $element: angular.IRootElementService
   ) {
     this.handleBlur = this.handleBlur.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.focus = this.focus.bind(this);
     this.focus();
   }
 
@@ -30,11 +30,8 @@ export default class TodoTextInputController {
   }
 
   focus() {
-    this.$timeout(() => {
-      const element = this.$window.document.querySelector('.editing .textInput');
-      if (element && element.value.length) {
-        element.focus();
-      }
-    }, 0);
+    const input = this.$element.find('input');
+    if (!input) { return; };
+    input.focus();
   }
 }

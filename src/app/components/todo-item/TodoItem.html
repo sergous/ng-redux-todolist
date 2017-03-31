@@ -11,6 +11,7 @@
   <todo-text-input
     ng-if="$ctrl.editing"
     text="$ctrl.todo.text"
+    placeholder="New todo name"
     editing="$ctrl.editing"
     on-save="$ctrl.onSave({id: $ctrl.todo.id, text}); $ctrl.editing = false"
     ></todo-text-input>

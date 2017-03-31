@@ -7,8 +7,8 @@ const TodoTextInput: angular.IComponentOptions = {
   bindings: {
     onSave: '&',
     placeholder: '@',
-    newTodo: '@',
-    editing: '@',
+    newTodo: '<',
+    editing: '<',
     text: '<'
   }
 };

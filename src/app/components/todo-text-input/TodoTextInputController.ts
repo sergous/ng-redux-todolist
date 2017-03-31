@@ -11,17 +11,19 @@ export default class TodoTextInputController {
   }
 
   handleBlur() {
-    if (!this.newTodo && this.text.length) {
-      this.onSave({text: this.text});
-    }
+    if (!this.text) return;
+    if (this.text.length === 0) return;
+    if (this.newTodo) return;
+    this.onSave({text: this.text});
   }
 
   handleSubmit(e: any) {
-    if (e.keyCode === 13 && this.text.length) {
-      this.onSave({text: this.text});
-      if (this.newTodo) {
-        this.text = '';
-      }
-    }
+    if (!this.text) return;
+    if (this.text.length === 0) return;
+    if (e.keyCode !== 13) return;
+    this.onSave({text: this.text});
+    if (!this.newTodo) return;
+    this.text = '';
   }
 }
+

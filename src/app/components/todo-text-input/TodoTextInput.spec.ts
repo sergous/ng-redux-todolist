@@ -3,7 +3,6 @@ import 'angular-mocks';
 import TodoTextInput from './';
 
 describe('TodoTextInput', () => {
-
   beforeEach(() => {
     angular
       .module('todoTextInput', ['app/components/todo-text-input/TodoTextInput.html'])
@@ -30,32 +29,12 @@ describe('TodoTextInput', () => {
     });
 
     describe('component', () => {
-      const element = angular.element('<div></div>');
       it('should bind the text to the element', angular.mock.inject($componentController => {
         const bindings = {
           text: 'Hello'
         };
-        const component = $componentController('todoTextInput', {$element: element}, bindings);
+        const component = $componentController('todoTextInput', {}, bindings);
         expect(component.text).toEqual('Hello');
-      }));
-
-      xit('should call focus on element construction', angular.mock.inject($componentController => {
-        const focusSpy = jasmine.createSpy('focusSpy');
-        const bindings = {
-          text: 'Hello',
-          focus: focusSpy
-        };
-        const component = $componentController('todoTextInput', {$element: element}, bindings);
-        expect(component.focus).toHaveBeenCalled();
-      }));
-
-      it('should not call focus on element construction', angular.mock.inject($componentController => {
-        const focusSpy = jasmine.createSpy('focusSpy');
-        const bindings = {
-          focus: focusSpy
-        };
-        const component = $componentController('todoTextInput', {$element: element}, bindings);
-        expect(component.focus).not.toHaveBeenCalled();
       }));
 
       it('should call onSave', angular.mock.inject($componentController => {
@@ -63,7 +42,7 @@ describe('TodoTextInput', () => {
           onSave: () => {return; },
           text: 'Hello'
         };
-        const component = $componentController('todoTextInput', {$element: element}, bindings);
+        const component = $componentController('todoTextInput', {}, bindings);
         spyOn(component, 'onSave').and.callThrough();
         component.handleBlur();
         expect(component.onSave).toHaveBeenCalled();
@@ -74,7 +53,7 @@ describe('TodoTextInput', () => {
           onSave: () => {return; },
           text: ''
         };
-        const component = $componentController('todoTextInput', {$element: element}, bindings);
+        const component = $componentController('todoTextInput', {}, bindings);
         spyOn(component, 'onSave').and.callThrough();
         component.handleBlur();
         expect(component.onSave).not.toHaveBeenCalled();
@@ -86,7 +65,7 @@ describe('TodoTextInput', () => {
           newTodo: true,
           text: 'Hello'
         };
-        const component = $componentController('todoTextInput', {$element: element}, bindings);
+        const component = $componentController('todoTextInput', {}, bindings);
         spyOn(component, 'onSave').and.callThrough();
         component.handleSubmit({keyCode: 13});
         expect(component.onSave).toHaveBeenCalled();

@@ -5,13 +5,9 @@ export default class TodoTextInputController {
   onSave: Function;
 
   /** @ngInject */
-  constructor(
-    public $element: angular.IRootElementService
-  ) {
+  constructor() {
     this.handleBlur = this.handleBlur.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.focus = this.focus.bind(this);
-    this.focus();
   }
 
   handleBlur() {
@@ -27,11 +23,5 @@ export default class TodoTextInputController {
         this.text = '';
       }
     }
-  }
-
-  focus() {
-    const input = this.$element.find('input');
-    if (!input) { return; };
-    input.focus();
   }
 }

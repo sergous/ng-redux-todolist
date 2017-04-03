@@ -12,24 +12,6 @@
     <link rel="icon" type="image/png" href="http://fountainjs.io/assets/imgs/fountain.png" />
   </head>
   <body ng-cloak="" ng-app="app">
-    <md-toolbar layout="row" class="md-toolbar-tools">
-      <h1>Shopping List</h1>
-    </md-toolbar>
-    <div flex="" layout="row">
-      <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
-        <md-list>
-          <md-list-item>
-            <md-button>
-              Todo List
-            </md-button>
-          </md-list-item>
-        </md-list>
-      </md-sidenav>
-      <md-content flex="" id="content">
-        <div class="todoapp">
-          <ui-view></ui-view>
-        </div>
-      </md-content>
-    </div>
+    <ui-view></ui-view>
   </body>
 </html>

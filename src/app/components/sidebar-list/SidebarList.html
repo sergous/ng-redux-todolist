@@ -1,7 +1,11 @@
 <md-list>
   <sidebar-list-item
-    ng-repeat="item in $ctrl.items"
+    ng-repeat="item in $ctrl.lists"
     item="item"
+    editing='false'
+    on-delete="$ctrl.deleteList(id)"
+    on-save="$ctrl.editList(item.id, name)"
+    ng-click="$ctrl.selectedItem = item"
     is-active="item == $ctrl.selectedItem"></sidebar-list-item>
   <md-list-item>
     <md-button ng-if="!$ctrl.isAdding" class="md-icon-button" ng-click="$ctrl.isAdding = true">

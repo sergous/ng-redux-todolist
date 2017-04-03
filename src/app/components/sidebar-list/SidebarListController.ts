@@ -1,9 +1,10 @@
 import { INgRedux } from "ng-redux";
 import { IScope } from "@types/angular";
+import listActions from '../../actions/list.actions';
 import { initialList, IListItem } from '../../reducers/lists';
 
 export default class SidebarListController {
-  items: IListItem[];
+  lists: IListItem[];
   selectedItem: IListItem;
   isAdding: false;
 
@@ -12,7 +13,20 @@ export default class SidebarListController {
     public $ngRedux: INgRedux,
     $scope: IScope
   ) {
-    this.items = initialList;
-    this.selectedItem = this.items[0];
+    this.lists = initialList;
+    this.selectedItem = this.lists[0];
+
+    let disconnect = $ngRedux.connect(
+      state => this.onUpdate(state),
+      listActions
+    )(this);
+
+    $scope.$on('$destroy', disconnect);
   };
+
+  onUpdate(state: any) {
+    return {
+      lists: state.lists
+    };
+  }
 }

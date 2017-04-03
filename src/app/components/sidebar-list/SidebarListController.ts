@@ -13,6 +13,7 @@ const initialList: IListItem[] = [
 export default class SidebarListController {
   items: IListItem[];
   selectedItem: IListItem;
+  isAdding: false;
 
   /** @ngInject */
   constructor(

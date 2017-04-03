@@ -3,4 +3,14 @@
     ng-repeat="item in $ctrl.items"
     item="item"
     is-active="item == $ctrl.selectedItem"></sidebar-list-item>
+  <md-list-item>
+    <md-button ng-if="!$ctrl.isAdding" class="md-icon-button" ng-click="$ctrl.isAdding = true">
+      <md-icon>add</md-icon>
+    </md-button>
+    <todo-text-input ng-if="$ctrl.isAdding"
+      placeholder="New list name"
+      newTodo="true"
+      on-save="$ctrl.addList(text); $ctrl.isAdding = false"
+      ></todo-text-input>
+  </md-list-item>
 </md-list>

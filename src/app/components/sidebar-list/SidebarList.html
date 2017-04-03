@@ -1,7 +1,10 @@
 <md-list ng-repeat="item in $ctrl.items">
-  <md-list-item>
-    <md-button>
-      {{item.name}}
+  <md-list-item ng-class="{'md-active': item === $ctrl.selectedItem}"
+                ng-disabled="item === $ctrl.currentItem">
+    <md-button  class="md-raised"
+                ng-class="{'md-primary': item === $ctrl.selectedItem}"
+                ng-click="$ctrl.selectedItem = item">
+        {{item.name}}
     </md-button>
   </md-list-item>
 </md-list>

@@ -2,12 +2,17 @@ import { INgRedux } from "ng-redux";
 import { IScope } from "@types/angular";
 
 interface IListItem {
+  id: number;
   name: string;
 }
-const initialList: IListItem[] = [{name: 'Default'}];
+const initialList: IListItem[] = [
+  {id: 0, name: 'Default'},
+  {id: 1, name: 'Shopping List'},
+];
 
 export default class SidebarListController {
   items: IListItem[];
+  selectedItem: IListItem;
 
   /** @ngInject */
   constructor(
@@ -15,5 +20,6 @@ export default class SidebarListController {
     $scope: IScope
   ) {
     this.items = initialList;
+    this.selectedItem = this.items[0];
   };
 }

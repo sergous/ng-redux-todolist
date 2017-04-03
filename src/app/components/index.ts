@@ -5,6 +5,7 @@ import TodoTextInput from './todo-text-input';
 import TodosCount from './todos-count';
 import Footer from './footer';
 import SidebarList from './sidebar-list';
+import SidebarListItem from './sidebar-list-item';
 import scopeElementDirective from '../directives/scopeElementDirective';
 import initFocusDirective from '../directives/initFocusDirective';
 
@@ -18,6 +19,7 @@ export default angular
   .component('footerComponent', Footer)
   .component('todosCount', TodosCount)
   .component('sidebarList', SidebarList)
+  .component('sidebarListItem', SidebarListItem)
   .name;
 
 

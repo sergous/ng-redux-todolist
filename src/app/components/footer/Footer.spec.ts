@@ -8,7 +8,6 @@ describe('Footer component', () => {
   beforeEach(() => {
     angular
       .module('footerComponent', [uiRouter, 'app/components/footer/Footer.html'])
-      .component('todosCount', TodosCount)
       .component('footerComponent', Footer);
     angular.mock.module('footerComponent');
   });
@@ -22,8 +21,6 @@ describe('Footer component', () => {
     $scope.selectedFilter = 'show_active';
     const element = $compile('<footer-component filter="selectedFilter"></footer-component>')($scope);
     $scope.$digest();
-    const count = element.find('span');
-    expect(count.hasClass('todo-count')).toBeTruthy();
     const button = element.find('button');
     expect(button.length).toEqual(0);
   }));

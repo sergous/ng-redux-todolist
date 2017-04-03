@@ -23,8 +23,8 @@
     ></todo-item>
   </md-list>
   <footer-component ng-if="$ctrl.todos.length"
-    active-count="$ctrl.activeCount()"
-    completed-count="$ctrl.completedCount()"
+    active-count="$ctrl.handleActiveCount()"
+    completed-count="$ctrl.handleCompletedCount()"
     on-clear-completed="$ctrl.clearCompleted()"
     on-complete-all="$ctrl.completeAll()"
   ></footer-component>

@@ -25,8 +25,8 @@ export default class MainSectionController {
     )(this);
 
     $scope.$on('$destroy', disconnect);
-    this.completedCount = this.completedCount.bind(this);
-    this.activeCount = this.activeCount.bind(this);
+    this.handleCompletedCount = this.handleCompletedCount.bind(this);
+    this.handleActiveCount = this.handleActiveCount.bind(this);
   }
 
   onUpdate(state: any) {
@@ -35,11 +35,11 @@ export default class MainSectionController {
     };
   }
 
-  completedCount() {
+  handleCompletedCount() {
      return this.todos.reduce(completeReducer, 0);
   }
 
-  activeCount() {
+  handleActiveCount() {
      return this.todos.length - this.todos.reduce(completeReducer, 0);
   }
 }

@@ -5,3 +5,6 @@ export const COMPLETE_TODO = 'COMPLETE_TODO';
 export const COMPLETE_ALL = 'COMPLETE_ALL';
 export const DELETE_ALL = 'DELETE_ALL';
 export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
+export const ADD_LIST = 'ADD_LIST';
+export const DELETE_LIST = 'DELETE_LIST';
+export const EDIT_LIST = 'EDIT_LIST';

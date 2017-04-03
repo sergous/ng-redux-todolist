@@ -1,14 +1,6 @@
 import { INgRedux } from "ng-redux";
 import { IScope } from "@types/angular";
-
-interface IListItem {
-  id: number;
-  name: string;
-}
-const initialList: IListItem[] = [
-  {id: 0, name: 'Default'},
-  {id: 1, name: 'Shopping List'},
-];
+import { initialList, IListItem } from '../../reducers/lists';
 
 export default class SidebarListController {
   items: IListItem[];

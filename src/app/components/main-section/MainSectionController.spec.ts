@@ -1,12 +1,15 @@
 import * as angular from 'angular';
 import 'angular-mocks';
 import ngRedux from 'ng-redux';
+import {combineReducers} from 'redux';
+import todos from '../../reducers/todos';
 import MainSection from './';
-import rootReducer from '../../reducers/index';
 import { Todo } from '../../todos/todos';
 import { SHOW_COMPLETED } from '../../constants/TodoFilters';
 
-
+const todosReducer = combineReducers({
+  todos
+});
 
 describe('MainSection controller', () => {
   let component;
@@ -22,7 +25,7 @@ describe('MainSection controller', () => {
       .component('mainSection', MainSection)
       .config(($ngReduxProvider) => {
         $ngReduxProvider.createStoreWith(
-          rootReducer
+          todosReducer
         );
       });
     angular.mock.module('mainSection');

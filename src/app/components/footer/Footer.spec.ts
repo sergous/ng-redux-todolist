@@ -2,7 +2,13 @@ import * as angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import 'angular-mocks';
 import Footer from './';
-import TodosCount from '../todos-count';
+
+interface IFooterScope extends angular.IScope {
+  activeCount?: number;
+  completedCount?: number;
+  onCompleteAll: Function;
+  onClearCompleted: Function;
+}
 
 describe('Footer component', () => {
   beforeEach(() => {
@@ -12,36 +18,48 @@ describe('Footer component', () => {
     angular.mock.module('footerComponent');
   });
 
-  interface IMyScope extends angular.IScope {
-    activeCount: number;
-  }
-
   it('should render correctly', angular.mock.inject(($rootScope: angular.IRootScopeService, $compile: angular.ICompileService) => {
-    const $scope: IMyScope = <IMyScope> $rootScope.$new();
-    $scope.selectedFilter = 'show_active';
-    const element = $compile('<footer-component filter="selectedFilter"></footer-component>')($scope);
+    const bindings = {
+      activeCount: 1
+    };
+    const $scope: IFooterScope = <IFooterScope> Object.assign($rootScope.$new(), bindings);
+    const element = $compile('<footer-component active-count="activeCount"></footer-component>')($scope);
     $scope.$digest();
-    const button = element.find('button');
-    expect(button.length).toEqual(0);
+    const button = element.find('md-button');
+    expect(button.length).toEqual(1);
   }));
 
-  it('shoud call onClearCompleted', angular.mock.inject($componentController => {
-    const bindings = {
-      onClearCompleted: () => { return; }
-    };
-    const component = $componentController('footerComponent', {}, bindings);
-    spyOn(component, 'onClearCompleted').and.callThrough();
-    component.onClearCompleted();
-    expect(component.onClearCompleted).toHaveBeenCalled();
-  }));
+  describe('button Complete All', () => {
+    it('should call onCompleteAll', angular.mock.inject(($rootScope: angular.IRootScopeService, $compile: angular.ICompileService) => {
+      const onCompleteAllSpy = jasmine.createSpy('onCompleteAllSpy');
+      const bindings = {
+        activeCount: 1,
+        onCompleteAll: onCompleteAllSpy,
+      };
+      const $scope: IFooterScope = <IFooterScope> Object.assign($rootScope.$new(), bindings);
+      const element = $compile('<footer-component active-count="activeCount" on-complete-all="onCompleteAll()"></footer-component>')($scope);
+      $scope.$digest();
+      const completeAllButton: HTMLElement = element.find('md-button')[0];
+      expect(completeAllButton.textContent).toContain('Complete All');
+      completeAllButton.click();
+      expect(onCompleteAllSpy).toHaveBeenCalled();
+    }));
+  });
 
-  it('shoud call onCompleteAll', angular.mock.inject($componentController => {
-    const bindings = {
-      onCompleteAll: () => { return; }
-    };
-    const component = $componentController('footerComponent', {}, bindings);
-    spyOn(component, 'onCompleteAll').and.callThrough();
-    component.onCompleteAll();
-    expect(component.onCompleteAll).toHaveBeenCalled();
-  }));
+  describe('button Clear completed', () => {
+    it('should call onClearCompleted', angular.mock.inject(($rootScope: angular.IRootScopeService, $compile: angular.ICompileService) => {
+      const onClearCompletedSpy = jasmine.createSpy('onClearCompletedSpy');
+      const bindings = {
+        completedCount: 1,
+        onClearCompleted: onClearCompletedSpy,
+      };
+      const $scope: IFooterScope = <IFooterScope> Object.assign($rootScope.$new(), bindings);
+      const element = $compile('<footer-component completed-count="completedCount" on-clear-completed="onClearCompleted()"></footer-component>')($scope);
+      $scope.$digest();
+      const clearCompletedButton = element.find('md-button')[0];
+      expect(clearCompletedButton.textContent).toContain('Clear completed');
+      clearCompletedButton.click();
+      expect(onClearCompletedSpy).toHaveBeenCalled();
+    }));
+  });
 });

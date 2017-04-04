@@ -1,6 +1,6 @@
 import { Todo, initialTodo } from '../../todos/todos';
 import {IScope} from 'angular';
-import todoActions from '../../actions/index';
+import todoActions from '../../actions/todo.actions';
 import { INgRedux } from 'ng-redux';
 import completeReducer from '../../reducers/complete';
 import { SHOW_ALL } from '../../constants/TodoFilters';

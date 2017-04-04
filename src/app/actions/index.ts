@@ -1,2 +1,6 @@
 import todoActions from './todo.actions';
-export default todoActions;
+import listActions from './list.actions';
+export default {
+  ...todoActions,
+  ...listActions
+};

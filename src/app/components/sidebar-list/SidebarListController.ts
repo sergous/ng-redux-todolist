@@ -7,6 +7,7 @@ export default class SidebarListController {
   lists: IListItem[];
   selectedItem: IListItem;
   isAdding: false;
+  isConfig: false;
 
   /** @ngInject */
   constructor(

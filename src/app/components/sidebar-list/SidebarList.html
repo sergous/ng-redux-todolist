@@ -3,18 +3,28 @@
     ng-repeat="item in $ctrl.lists | orderBy:'id'"
     item="item"
     editing='false'
+    is-config="$ctrl.isConfig"
     on-delete="$ctrl.deleteList(id)"
     on-save="$ctrl.editList(item.id, name)"
     ng-click="$ctrl.selectedItem = item"
     is-active="item == $ctrl.selectedItem"></sidebar-list-item>
   <md-list-item>
-    <md-button ng-if="!$ctrl.isAdding" class="md-icon-button" ng-click="$ctrl.isAdding = true">
-      <md-icon>add</md-icon>
-    </md-button>
-    <todo-text-input ng-if="$ctrl.isAdding"
-      placeholder="New list name"
-      newTodo="true"
-      on-save="$ctrl.addList(text); $ctrl.isAdding = false"
-      ></todo-text-input>
+    <div flex="" layout="row">
+      <span flex="">
+        <md-button ng-if="!$ctrl.isAdding" class="md-icon-button" ng-click="$ctrl.isAdding = true">
+          <md-icon>add</md-icon>
+        </md-button>
+        <todo-text-input flex="" ng-if="$ctrl.isAdding"
+          placeholder="New list name"
+          newTodo="true"
+          on-save="$ctrl.addList(text); $ctrl.isAdding = false"
+          ></todo-text-input>
+      </span>
+      <span flex="" class="text-right" ng-click="$ctrl.isConfig = !$ctrl.isConfig">
+        <md-button class="md-icon-button" ng-class="{'md-warn': $ctrl.isConfig}">
+          <md-icon>settings</md-icon>
+        </md-button>
+      </span>
+    </div>
   </md-list-item>
 </md-list>

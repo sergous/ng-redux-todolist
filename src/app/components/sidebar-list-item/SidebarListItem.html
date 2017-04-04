@@ -11,10 +11,10 @@
       editing="true"
       on-save="$ctrl.onSave({name: text}); $ctrl.editing = false"
       ></todo-text-input>
-  <md-button class="md-icon-button" ng-click="$ctrl.editing = true">
+  <md-button class="md-icon-button" ng-click="$ctrl.editing = true" ng-if="$ctrl.isConfig">
     <md-icon>mode_edit</md-icon>
   </md-button>
-  <md-button class="md-icon-button" ng-click="$ctrl.onDelete({id: $ctrl.item.id})">
+  <md-button class="md-icon-button" ng-click="$ctrl.onDelete({id: $ctrl.item.id})" ng-if="$ctrl.isConfig">
     <md-icon>remove</md-icon>
   </md-button>
 </md-list-item>

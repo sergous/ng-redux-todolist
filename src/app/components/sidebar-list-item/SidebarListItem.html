@@ -7,6 +7,7 @@
       {{$ctrl.item.name}}
   </md-button>
   <todo-text-input ng-if="$ctrl.editing"
+      text="$ctrl.item.name"
       placeholder="New list name"
       editing="true"
       on-save="$ctrl.onSave({name: text}); $ctrl.editing = false"

@@ -7,7 +7,14 @@ const initialState = [
   {
     text: 'Use Redux',
     completed: false,
-    id: 0
+    id: 0,
+    listId: 0
+  },
+  {
+    text: 'Get milk',
+    completed: false,
+    id: 1,
+    listId: 1
   }
 ];
 
@@ -18,7 +25,8 @@ export default function todos(state: any = initialState, action: any) {
         {
           id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
           completed: false,
-          text: action.text
+          text: action.text,
+          listId: action.listId
         },
         ...state
       ];

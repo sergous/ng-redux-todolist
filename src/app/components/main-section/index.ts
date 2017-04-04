@@ -3,7 +3,10 @@ import MainSectionController from './MainSectionController';
 
 const MainSection: angular.IComponentOptions = {
   template: require('./MainSection.html'),
-  controller: MainSectionController
+  controller: MainSectionController,
+  bindings: {
+    listId: '<'
+  }
 };
 
 export default MainSection;

@@ -1,7 +1,7 @@
 import * as types from '../constants/ActionTypes';
 
-export function addTodo(text: string) {
-  return {type: types.ADD_TODO, text};
+export function addTodo(text: string, listId: number) {
+  return {type: types.ADD_TODO, text, listId};
 }
 
 export function deleteTodo(id: number) {

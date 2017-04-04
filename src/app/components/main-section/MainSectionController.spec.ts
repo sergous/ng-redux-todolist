@@ -14,10 +14,10 @@ const todosReducer = combineReducers({
 describe('MainSection controller', () => {
   let component;
   const todos = [
-    {id: 0, text: 'Active task', completed: false},
-    {id: 1, text: 'Done task', completed: true}
+    {id: 0, text: 'Active task', completed: false, listId: 0},
+    {id: 1, text: 'Done task', completed: true, listId: 0}
   ];
-  const newTodo: Todo = {id: 0, text: 'New todo', completed: false};
+  const newTodo: Todo = {id: 0, text: 'New todo', completed: false, listId: 0};
 
   beforeEach(() => {
     angular
@@ -38,12 +38,12 @@ describe('MainSection controller', () => {
 
   it('should call add Todo', () => {
     spyOn(component, 'onUpdate').and.callThrough();
-    component.addTodo(newTodo.text);
+    component.addTodo(newTodo.text, 0);
     expect(component.onUpdate).toHaveBeenCalledWith({todos: [newTodo]});
   });
 
   it('shoud call completeTodo', () => {
-    component.addTodo(newTodo.text);
+    component.addTodo(newTodo.text, 0);
     spyOn(component, 'onUpdate').and.callThrough();
     component.completeTodo(0);
     const doneTodo = Object.assign(newTodo, {completed: true});
@@ -51,14 +51,14 @@ describe('MainSection controller', () => {
   });
 
   it('shoud delete todo', () => {
-    component.addTodo(newTodo.text);
+    component.addTodo(newTodo.text, 0);
     spyOn(component, 'onUpdate').and.callThrough();
     component.deleteTodo(0);
     expect(component.onUpdate).toHaveBeenCalledWith({todos: []});
   });
 
   it('shoud call completeAll', () => {
-    component.addTodo(newTodo.text);
+    component.addTodo(newTodo.text, 0);
     const doneTodo = Object.assign(newTodo, {completed: true});
     spyOn(component, 'onUpdate').and.callThrough();
     component.completeAll();
@@ -66,7 +66,7 @@ describe('MainSection controller', () => {
   });
 
   it('shoud call clearCompleted', () => {
-    component.addTodo(newTodo.text);
+    component.addTodo(newTodo.text, 0);
     component.completeTodo(0);
     spyOn(component, 'onUpdate').and.callThrough();
     component.clearCompleted();

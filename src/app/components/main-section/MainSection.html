@@ -1,7 +1,7 @@
 <section class="main">
   <todo-text-input
     new-todo="true"
-    on-save="$ctrl.addTodo(text)"
+    on-save="$ctrl.addTodo(text, $ctrl.listId)"
     placeholder="What needs to be done?"
   ></todo-text-input>
   <md-tabs md-dynamic-height="">

@@ -9,7 +9,13 @@ describe('todos reducer', () => {
       {
         text: 'Use Redux',
         completed: false,
-        id: 0
+        id: 0,
+        listId: 0
+      }, {
+        text: 'Get milk',
+        completed: false,
+        id: 1,
+        listId: 1
       }
     ]);
   });
@@ -18,13 +24,15 @@ describe('todos reducer', () => {
     expect(
       todos([], {
         type: types.ADD_TODO,
-        text: 'Run the tests'
+        text: 'Run the tests',
+        listId: 0
       })
     ).toEqual([
       {
         text: 'Run the tests',
         completed: false,
-        id: 0
+        id: 0,
+        listId: 0
       }
     ]);
 
@@ -33,21 +41,25 @@ describe('todos reducer', () => {
         {
           text: 'Use Redux',
           completed: false,
-          id: 0
+          id: 0,
+          listId: 0
         }
       ], {
         type: types.ADD_TODO,
-        text: 'Run the tests'
+        text: 'Run the tests',
+        listId: 0
       })
     ).toEqual([
       {
         text: 'Run the tests',
         completed: false,
-        id: 1
+        id: 1,
+        listId: 0
       }, {
         text: 'Use Redux',
         completed: false,
-        id: 0
+        id: 0,
+        listId: 0
       }
     ]);
 
@@ -56,29 +68,35 @@ describe('todos reducer', () => {
         {
           text: 'Run the tests',
           completed: false,
-          id: 1
+          id: 1,
+          listId: 0
         }, {
           text: 'Use Redux',
           completed: false,
-          id: 0
+          id: 0,
+          listId: 0
         }
       ], {
         type: types.ADD_TODO,
-        text: 'Fix the tests'
+        text: 'Fix the tests',
+        listId: 0
       })
     ).toEqual([
       {
         text: 'Fix the tests',
         completed: false,
-        id: 2
+        id: 2,
+        listId: 0
       }, {
         text: 'Run the tests',
         completed: false,
-        id: 1
+        id: 1,
+        listId: 0
       }, {
         text: 'Use Redux',
         completed: false,
-        id: 0
+        id: 0,
+        listId: 0
       }
     ]);
   });
@@ -89,11 +107,13 @@ describe('todos reducer', () => {
         {
           text: 'Run the tests',
           completed: false,
-          id: 1
+          id: 1,
+          listId: 0
         }, {
           text: 'Use Redux',
           completed: false,
-          id: 0
+          id: 0,
+          listId: 0
         }
       ], {
         type: types.DELETE_TODO,
@@ -103,7 +123,8 @@ describe('todos reducer', () => {
       {
         text: 'Use Redux',
         completed: false,
-        id: 0
+        id: 0,
+        listId: 0
       }
     ]);
   });
@@ -114,11 +135,13 @@ describe('todos reducer', () => {
         {
           text: 'Run the tests',
           completed: false,
-          id: 1
+          id: 1,
+          listId: 0
         }, {
           text: 'Use Redux',
           completed: false,
-          id: 0
+          id: 0,
+          listId: 0
         }
       ], {
         type: types.EDIT_TODO,
@@ -129,11 +152,13 @@ describe('todos reducer', () => {
       {
         text: 'Fix the tests',
         completed: false,
-        id: 1
+        id: 1,
+        listId: 0
       }, {
         text: 'Use Redux',
         completed: false,
-        id: 0
+        id: 0,
+        listId: 0
       }
     ]);
   });
@@ -144,11 +169,13 @@ describe('todos reducer', () => {
         {
           text: 'Run the tests',
           completed: false,
-          id: 1
+          id: 1,
+          listId: 0
         }, {
           text: 'Use Redux',
           completed: false,
-          id: 0
+          id: 0,
+          listId: 0
         }
       ], {
         type: types.COMPLETE_TODO,
@@ -158,11 +185,13 @@ describe('todos reducer', () => {
       {
         text: 'Run the tests',
         completed: true,
-        id: 1
+        id: 1,
+        listId: 0
       }, {
         text: 'Use Redux',
         completed: false,
-        id: 0
+        id: 0,
+        listId: 0
       }
     ]);
   });
@@ -173,11 +202,13 @@ describe('todos reducer', () => {
         {
           text: 'Run the tests',
           completed: true,
-          id: 1
+          id: 1,
+          listId: 0
         }, {
           text: 'Use Redux',
           completed: false,
-          id: 0
+          id: 0,
+          listId: 0
         }
       ], {
         type: types.COMPLETE_ALL
@@ -186,11 +217,13 @@ describe('todos reducer', () => {
       {
         text: 'Run the tests',
         completed: true,
-        id: 1
+        id: 1,
+        listId: 0
       }, {
         text: 'Use Redux',
         completed: true,
-        id: 0
+        id: 0,
+        listId: 0
       }
     ]);
 
@@ -200,11 +233,13 @@ describe('todos reducer', () => {
         {
           text: 'Run the tests',
           completed: true,
-          id: 1
+          id: 1,
+          listId: 0
         }, {
           text: 'Use Redux',
           completed: true,
-          id: 0
+          id: 0,
+          listId: 0
         }
       ], {
         type: types.COMPLETE_ALL
@@ -213,11 +248,13 @@ describe('todos reducer', () => {
       {
         text: 'Run the tests',
         completed: false,
-        id: 1
+        id: 1,
+        listId: 0
       }, {
         text: 'Use Redux',
         completed: false,
-        id: 0
+        id: 0,
+        listId: 0
       }
     ]);
   });
@@ -228,11 +265,13 @@ describe('todos reducer', () => {
         {
           text: 'Run the tests',
           completed: true,
-          id: 1
+          id: 1,
+          listId: 0
         }, {
           text: 'Use Redux',
           completed: false,
-          id: 0
+          id: 0,
+          listId: 0
         }
       ], {
         type: types.CLEAR_COMPLETED
@@ -241,7 +280,8 @@ describe('todos reducer', () => {
       {
         text: 'Use Redux',
         completed: false,
-        id: 0
+        id: 0,
+        listId: 0
       }
     ]);
   });
@@ -256,28 +296,33 @@ describe('todos reducer', () => {
           type: types.CLEAR_COMPLETED
         }, {
           type: types.ADD_TODO,
-          text: 'Write more tests'
+          text: 'Write more tests',
+          listId: 0
         }
       ].reduce(todos, [
         {
           id: 0,
           completed: false,
-          text: 'Use Redux'
+          text: 'Use Redux',
+          listId: 0
         }, {
           id: 1,
           completed: false,
-          text: 'Write tests'
+          text: 'Write tests',
+          listId: 0
         }
       ])
     ).toEqual([
       {
         text: 'Write more tests',
         completed: false,
-        id: 2
+        id: 2,
+        listId: 0
       }, {
         text: 'Write tests',
         completed: false,
-        id: 1
+        id: 1,
+        listId: 0
       }
     ]);
   });

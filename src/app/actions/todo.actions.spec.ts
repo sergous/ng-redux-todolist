@@ -3,9 +3,10 @@ import * as actions from './todo.actions';
 
 describe('todo actions', () => {
   it('addTodo should create ADD_TODO action', () => {
-    expect(actions.addTodo('Use Redux')).toEqual({
+    expect(actions.addTodo('Use Redux', 0)).toEqual({
       type: types.ADD_TODO,
-      text: 'Use Redux'
+      text: 'Use Redux',
+      listId: 0
     });
   });
 

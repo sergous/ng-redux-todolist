@@ -1,8 +1,8 @@
 import completeReducer from './complete';
 
 const todos = [
-  {id: 0, text: 'Active task', completed: false},
-  {id: 1, text: 'Done task', completed: true}
+  {id: 0, text: 'Active task', completed: false, listId: 0},
+  {id: 1, text: 'Done task', completed: true, listId: 0}
 ];
 
 describe('completeReducer', () => {

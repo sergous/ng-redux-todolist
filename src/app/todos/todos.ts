@@ -4,12 +4,14 @@ export class Todo {
   id: number;
   completed: boolean;
   text: string;
+  listId: number;
 }
 
 export const initialTodo: Todo = {
   text: 'Use AngularJS',
   completed: false,
-  id: 0
+  id: 0,
+  listId: 0
 };
 
 export class TodoService {

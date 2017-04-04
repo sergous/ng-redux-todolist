@@ -24,3 +24,9 @@ export default {
   [SHOW_ACTIVE]: {filter: showActive, type: SHOW_ACTIVE, name: 'Active'},
   [SHOW_COMPLETED]: {filter: showCompleted, type: SHOW_COMPLETED, name: 'Completed'}
 };
+
+export function listIdFilter(listId: number): Function {
+  return function listIdFilter(todo: Todo): boolean {
+    return todo.listId === listId;
+  };
+}

@@ -6,8 +6,8 @@
     is-config="$ctrl.isConfig"
     on-delete="$ctrl.deleteList(id)"
     on-save="$ctrl.editList(item.id, name)"
-    ng-click="$ctrl.selectedItem = item"
-    is-active="item == $ctrl.selectedItem"></sidebar-list-item>
+    ng-click="$ctrl.onSelectList({listId: item.id})"
+    is-active="item.id == $ctrl.listId"></sidebar-list-item>
   <md-list-item>
     <div flex="" layout="row">
       <span flex="">

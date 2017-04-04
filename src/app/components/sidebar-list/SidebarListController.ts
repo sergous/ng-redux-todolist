@@ -5,7 +5,6 @@ import { initialList, IListItem } from '../../reducers/lists';
 
 export default class SidebarListController {
   lists: IListItem[];
-  selectedItem: IListItem;
   isAdding: false;
   isConfig: false;
 
@@ -15,7 +14,6 @@ export default class SidebarListController {
     $scope: IScope
   ) {
     this.lists = initialList;
-    this.selectedItem = this.lists[0];
 
     let disconnect = $ngRedux.connect(
       state => this.onUpdate(state),

@@ -1,30 +1,40 @@
-<section class="main">
-  <todo-text-input
-    new-todo="true"
-    on-save="$ctrl.addTodo(text, $ctrl.listId)"
-    placeholder="What needs to be done?"
-  ></todo-text-input>
-  <md-tabs md-dynamic-height="">
-    <md-tab ng-repeat="filter in $ctrl.filters"
-            label="{{filter.name}}"
-            md-active="$ctrl.selectedFilter == filter"
-            md-on-select="$ctrl.selectedFilter = filter">
-    </md-tab>
-  </md-tabs>
-  <md-list ng-cloak="">
-    <todo-item
-      ng-repeat="todo in $ctrl.todos | filter : $ctrl.selectedFilter.filter"
-      todo="todo"
-      editing="false"
-      on-delete="$ctrl.deleteTodo(id)"
-      on-complete="$ctrl.completeTodo(id)"
-      on-save="$ctrl.editTodo(id, text)"
-    ></todo-item>
-  </md-list>
-  <footer-component ng-if="$ctrl.todos.length"
-    active-count="$ctrl.handleActiveCount()"
-    completed-count="$ctrl.handleCompletedCount()"
-    on-clear-completed="$ctrl.clearCompleted()"
-    on-complete-all="$ctrl.completeAll()"
-  ></footer-component>
-</section>
+<div flex="" layout="row">
+  <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+    <sidebar-list on-select-list="$ctrl.handleSelectList(listId)" list-id="$ctrl.listId"></sidebar-list>
+  </md-sidenav>
+  <md-content flex="" id="content">
+    <div class="todoapp">
+      <section class="main">
+        <todo-text-input
+          new-todo="true"
+          on-save="$ctrl.addTodo(text, $ctrl.listId)"
+          placeholder="What needs to be done?"
+        ></todo-text-input>
+        <md-tabs md-dynamic-height="">
+          <md-tab ng-repeat="filter in $ctrl.filters"
+                  label="{{filter.name}}"
+                  md-active="$ctrl.selectedFilter == filter"
+                  md-on-select="$ctrl.selectedFilter = filter">
+          </md-tab>
+        </md-tabs>
+        <md-list ng-cloak="">
+          <todo-item
+            ng-repeat="todo in $ctrl.todos | filter : $ctrl.listIdFilter($ctrl.listId) | filter : $ctrl.selectedFilter.filter"
+            todo="todo"
+            editing="false"
+            on-delete="$ctrl.deleteTodo(id)"
+            on-complete="$ctrl.completeTodo(id)"
+            on-save="$ctrl.editTodo(id, text)"
+          ></todo-item>
+        </md-list>
+        <footer-component ng-if="$ctrl.todos.length"
+          active-count="$ctrl.handleActiveCount()"
+          completed-count="$ctrl.handleCompletedCount()"
+          on-clear-completed="$ctrl.clearCompleted()"
+          on-complete-all="$ctrl.completeAll()"
+        ></footer-component>
+      </section>
+    </div>
+  </md-content>
+</div>
+

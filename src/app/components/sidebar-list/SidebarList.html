@@ -1,6 +1,6 @@
 <md-list>
   <sidebar-list-item
-    ng-repeat="item in $ctrl.lists"
+    ng-repeat="item in $ctrl.lists | orderBy:'id'"
     item="item"
     editing='false'
     on-delete="$ctrl.deleteList(id)"

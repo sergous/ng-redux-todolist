@@ -6,9 +6,11 @@ import 'angular-material';
 import 'angular-messages';
 
 import ngRedux from 'ng-redux';
+import { compose } from 'redux';
 import * as createLogger from 'redux-logger';
 import ngReduxDevTools from 'ng-redux-dev-tools';
 import devToolsEnhancer from 'remote-redux-devtools';
+import * as persistState from 'redux-localstorage';
 
 import router from './app/router';
 import {TodoService} from './app/todos/todos';
@@ -20,6 +22,10 @@ import rootReducer from './app/reducers/index';
 import {App} from './app/containers/App';
 
 const logger = createLogger();
+
+const localStorageEnhancer = compose(
+  persistState(/*paths, config*/),
+);
 
 export default angular
   .module('app', [
@@ -36,7 +42,7 @@ export default angular
     $ngReduxProvider.createStoreWith(
       rootReducer,
       [logger],
-      [devToolsEnhancer({ realtime: true })]
+      [devToolsEnhancer({ realtime: true }), localStorageEnhancer]
     );
   })
   .name;

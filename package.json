@@ -24,7 +24,8 @@
     "redux-logger": "^2.8.2",
     "redux-thunk": "^2.2.0",
     "redux-ui-router": "^0.7.1-rc.1",
-    "reselect": "2.5.4"
+    "reselect": "2.5.4",
+    "redux-localstorage": "^0.4.1"
   },
   "devDependencies": {
     "@types/angular": "^1.6.6",

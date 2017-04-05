@@ -14,7 +14,6 @@ import * as persistState from 'redux-localstorage';
 
 import router from './app/router';
 import {TodoService} from './app/todos/todos';
-import routesConfig from './routes';
 import components from './app/components';
 
 import './index.scss';
@@ -35,7 +34,6 @@ export default angular
     ngReduxDevTools,
     components
   ])
-  .config(routesConfig)
   .service('todoService', TodoService)
   .component('app', App)
   .config(($ngReduxProvider) => {

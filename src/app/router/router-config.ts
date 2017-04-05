@@ -1,17 +1,23 @@
 /** @ngInject */
-export default function routerConfig($urlRouterProvider: any, $stateProvider: any) {
-  $urlRouterProvider.otherwise('/todos');
+export default function routerConfig(
+  $urlRouterProvider: any,
+  $stateProvider: any,
+  $locationProvider: angular.ILocationProvider
+) {
+  $locationProvider.html5Mode(true).hashPrefix('!');
+  $urlRouterProvider.otherwise('/');
+
   $stateProvider
-    .state('main', {
-      url: '/?debug_session',
-      views: {
-        '': {
-          template: require('../containers/App.html'),
-        }
-      }
+    .state('app', {
+      url: '/',
+      component: 'app'
     })
-    .state('main.todos', {
-      url: 'todos/',
-      abstract: true
+    .state('register', {
+      url: '/register',
+      component: 'register'
+    })
+    .state('login', {
+      url: '/login',
+      component: 'login'
     });
 }

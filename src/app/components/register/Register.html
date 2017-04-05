@@ -1,0 +1,53 @@
+<div class="auth-page">
+  <div class="container page">
+    <div class="row">
+
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <h1 class="text-xs-center">Sign Up</h1>
+        <a class="text-xs-center" ui-sref="login">
+            Have an account?
+        </a>
+
+        <ListErrors errors="$ctrl.errors" />
+
+        <form ng-submit="$ctrl.handleSubmit()">
+          <fieldset>
+            <fieldset class="form-group">
+              <input
+                class="form-control form-control-lg"
+                type="text"
+                placeholder="Username"
+                ng-model="$ctrl.username"
+                ng-change="$ctrl.changeUsername($ctrl.username)" />
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input
+                class="form-control form-control-lg"
+                type="text"
+                placeholder="Email"
+                ng-model="$ctrl.email"
+                ng-change="$ctrl.changeEmail($ctrl.email)" />
+            </fieldset>
+
+            <fieldset class="form-group">
+              <input
+                class="form-control form-control-lg"
+                type="password"
+                placeholder="Password"
+                ng-model="$ctrl.password"
+                ng-change="$ctrl.changePassword($ctrl.password)" />
+            </fieldset>
+
+            <button
+              class="btn btn-lg btn-primary pull-xs-right"
+              type="submit"
+              ng-disabled="$ctrl.inProgress">
+              Sign in
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

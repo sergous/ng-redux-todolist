@@ -6,6 +6,8 @@ import TodosCount from './todos-count';
 import Footer from './footer';
 import SidebarList from './sidebar-list';
 import SidebarListItem from './sidebar-list-item';
+import Register from './register';
+
 import scopeElementDirective from '../directives/scopeElementDirective';
 import initFocusDirective from '../directives/initFocusDirective';
 
@@ -20,6 +22,7 @@ export default angular
   .component('todosCount', TodosCount)
   .component('sidebarList', SidebarList)
   .component('sidebarListItem', SidebarListItem)
+  .component('register', Register)
   .name;
 
 

@@ -7,6 +7,7 @@ import Footer from './footer';
 import SidebarList from './sidebar-list';
 import SidebarListItem from './sidebar-list-item';
 import Register from './register';
+import Login from './login';
 
 import scopeElementDirective from '../directives/scopeElementDirective';
 import initFocusDirective from '../directives/initFocusDirective';
@@ -23,6 +24,7 @@ export default angular
   .component('sidebarList', SidebarList)
   .component('sidebarListItem', SidebarListItem)
   .component('register', Register)
+  .component('login', Login)
   .name;
 
 

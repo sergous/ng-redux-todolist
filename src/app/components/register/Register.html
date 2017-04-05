@@ -1,53 +1,67 @@
-<div class="auth-page">
-  <div class="container page">
-    <div class="row">
+<md-content layout="column" layout-padding ng-cloak>
+  <div layout="row" layout-align="space-between center"
+       layout-xs="column" layout-sm="column" layout-md="column"
+       layout-xl="column" layout-lg="column" >
 
-      <div class="col-md-6 offset-md-3 col-xs-12">
-        <h1 class="text-xs-center">Sign Up</h1>
-        <a class="text-xs-center" ui-sref="login">
-            Have an account?
-        </a>
-
+    <h1>Registration</h1>
+    <a ui-sref="login">
+      Have an account?
+    </a>
+    <form ng-submit="$ctrl.handleSubmit()" name="registerForm">
+      <div flex-gt-sm="80">
         <ListErrors errors="$ctrl.errors" />
-
-        <form ng-submit="$ctrl.handleSubmit()">
-          <fieldset>
-            <fieldset class="form-group">
-              <input
-                class="form-control form-control-lg"
-                type="text"
-                placeholder="Username"
-                ng-model="$ctrl.username"
-                ng-change="$ctrl.changeUsername($ctrl.username)" />
-            </fieldset>
-
-            <fieldset class="form-group">
-              <input
-                class="form-control form-control-lg"
-                type="text"
-                placeholder="Email"
-                ng-model="$ctrl.email"
-                ng-change="$ctrl.changeEmail($ctrl.email)" />
-            </fieldset>
-
-            <fieldset class="form-group">
-              <input
-                class="form-control form-control-lg"
-                type="password"
-                placeholder="Password"
-                ng-model="$ctrl.password"
-                ng-change="$ctrl.changePassword($ctrl.password)" />
-            </fieldset>
-
-            <button
-              class="btn btn-lg btn-primary pull-xs-right"
-              type="submit"
-              ng-disabled="$ctrl.inProgress">
-              Sign in
-            </button>
-          </fieldset>
-        </form>
       </div>
-    </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-icon-float md-block">
+          <md-icon>perm_identity</md-icon>
+          <input name="username" type="text" required
+                ng-change="$ctrl.changeUsername($ctrl.username)"
+                ng-model="$ctrl.username"
+                placeholder="Username" maxLength="40" minLength="3">
+          <div ng-messages="registerForm.username.$error" multiple md-auto-hide="true"
+               ng-if="registerForm.username.$invalid && registerForm.username.$touched">
+            <div ng-message="min">Min length is 3</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-icon-float md-block">
+          <md-icon>email</md-icon>
+          <input name="email" type="email" required
+                ng-model="$ctrl.email"
+                ng-change="$ctrl.changeEmail($ctrl.email)"
+                placeholder="E-mail" maxLength="40" id="email_input">
+          <div ng-messages="registerForm.email.$error" multiple md-auto-hide="true"
+               ng-if="registerForm.email.$invalid && registerForm.email.$touched">
+            <div ng-message="email">Format: name@host.com</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-icon-float md-block">
+          <md-icon>lock_outline</md-icon>
+          <input name="password" type="password" required
+                ng-model="$ctrl.password"
+                ng-change="$ctrl.changePassword($ctrl.password)"
+                placeholder="Password" maxLength="40" minLength="3">
+          <div ng-messages="registerForm.password.$error" multiple md-auto-hide="true"
+               ng-if="registerForm.password.$invalid && registerForm.password.$touched">
+            <div ng-message="min">Min length is 3</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout="row" layout-align="space-between center"
+       layout-xs="column" layout-sm="column" layout-md="column"
+       layout-xl="column" layout-lg="column" >
+        <md-button class="md-primary md-raised" type="submit"
+                   ng-disabled="$ctrl.inProgress">
+                   Register
+        </md-button>
+      </div>
+    </form>
   </div>
-</div>
+</md-content>

@@ -1,46 +1,60 @@
-<div class="auth-page">
-  <div class="container page">
-    <div class="row">
+<md-content layout="column" layout-padding ng-cloak>
+  <div layout="row" layout-align="space-between center"
+       layout-xs="column" layout-sm="column"
+       layout-md="column" layout-xl="column" layout-lg="column" >
 
-      <div class="col-md-6 offset-md-3 col-xs-12">
-        <h1 class="text-xs-center">Sign In</h1>
-        <a class="text-xs-center" ui-sref="register">
-          Need an account?
-        </a>
-
+    <h1>Login</h1>
+    <a ui-sref="register">
+      Need an account?
+    </a>
+    <form ng-submit="$ctrl.handleSubmit()" name="loginForm">
+      <div flex-gt-sm="80">
         <ListErrors errors="$ctrl.errors" />
-
-        <form ng-submit="$ctrl.handleSubmit()">
-          <fieldset>
-
-            <fieldset class="form-group">
-              <input
-                class="form-control form-control-lg"
-                type="text"
-                placeholder="Email"
-                ng-model="$ctrl.email"
-                ng-change="$ctrl.changeEmail($ctrl.email)" />
-            </fieldset>
-
-            <fieldset class="form-group">
-              <input
-                class="form-control form-control-lg"
-                type="password"
-                placeholder="Password"
-                ng-model="$ctrl.password"
-                ng-change="$ctrl.changePassword($ctrl.password)" />
-            </fieldset>
-
-            <button
-              class="btn btn-lg btn-primary pull-xs-right"
-              type="submit"
-              ng-disabled="$ctrl.inProgress">
-              Sign in
-            </button>
-
-          </fieldset>
-        </form>
       </div>
-    </div>
+      <div layout-gt-sm="row">
+        <md-input-container class="md-icon-float md-block">
+          <md-icon>email</md-icon>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            ng-model="$ctrl.email"
+            ng-change="$ctrl.changeEmail($ctrl.email)"
+            maxLength="40" />
+          <div ng-messages="loginForm.email.$error" multiple md-auto-hide="true"
+               ng-if="loginForm.email.$invalid && loginForm.email.$touched">
+            <div ng-message="email">Format: name@host.com</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-icon-float md-block">
+          <md-icon>lock_outline</md-icon>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            ng-model="$ctrl.password"
+            ng-change="$ctrl.changePassword($ctrl.password)"
+            maxLength="40" minLength="3" />
+          <div ng-messages="loginForm.password.$error" multiple md-auto-hide="true"
+               ng-if="loginForm.password.$invalid && loginForm.password.$touched">
+            <div ng-message="min">Min length is 3</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout="row" layout-align="space-between center"
+       layout-xs="column" layout-sm="column" layout-md="column"
+       layout-xl="column" layout-lg="column" >
+        <md-button
+          class="md-primary md-raised"
+          type="submit"
+          ng-disabled="$ctrl.inProgress">
+          Login
+        </md-button>
+      </div>
+    </form>
   </div>
-</div>
+</md-content>

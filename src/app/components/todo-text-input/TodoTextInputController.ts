@@ -3,29 +3,46 @@ export default class TodoTextInputController {
   text: string;
   newTodo: boolean;
   onSave: Function;
-  onBlur: Function;
+  onChancel: Function;
 
   /** @ngInject */
   constructor() {
-    this.handleBlur = this.handleBlur.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEsc = this.handleEsc.bind(this);
+    this.handleSave = this.handleSave.bind(this);
+    this.handleChancel = this.handleChancel.bind(this);
+    this.handleClear = this.handleClear.bind(this);
   }
 
-  handleBlur() {
-    this.onBlur();
+  handleClear() {
+    if (!this.newTodo) return;
+    this.text = '';
+  }
+
+  handleChancel() {
+    if (this.onChancel) {
+      this.onChancel();
+    }
+    this.handleClear();
+    if (!this.editing) return;
+    this.editing = false;
+  }
+
+  handleEsc(e: any) {
+    if (e.keyCode !== 27) return;
+    this.handleChancel();
+  }
+
+  handleSave() {
     if (!this.text) return;
     if (this.text.length === 0) return;
-    if (this.newTodo) return;
     this.onSave({text: this.text});
+    this.handleClear();
   }
 
   handleSubmit(e: any) {
-    if (!this.text) return;
-    if (this.text.length === 0) return;
     if (e.keyCode !== 13) return;
-    this.onSave({text: this.text});
-    if (!this.newTodo) return;
-    this.text = '';
+    this.handleSave();
   }
 }
 

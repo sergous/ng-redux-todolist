@@ -1,11 +1,16 @@
-<md-input-container class="md-block" flex-gt-sm>
+<md-input-container class="md-icon-right md-block">
   <input
     ng-class="{'edit': $ctrl.editing, 'new-todo': $ctrl.newTodo}"
     ng-model="$ctrl.text"
     ng-keypress="$ctrl.handleSubmit($event)"
-    ng-blur="$ctrl.handleBlur()"
+    ng-keyup="$ctrl.handleEsc($event)"
     init-focus=""
+    ng-required="!$ctrl.newTodo"
     placeholder="{{$ctrl.placeholder}}"
     type="text"
   />
+  <md-icon class="md-18">
+    <span class="pointer" ng-click="$ctrl.handleSave()" ng-show="$ctrl.text">check</span>
+    <span class="pointer" ng-click="$ctrl.handleChancel()" ng-show="$ctrl.editing || $ctrl.text">close</span>
+  </md-icon>
 </md-input-container>

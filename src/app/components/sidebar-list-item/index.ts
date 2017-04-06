@@ -6,7 +6,7 @@ const SidebarListItem: angular.IComponentOptions = {
     item: '<',
     isActive: '<',
     isConfig: '<',
-    editing: '=',
+    isEditing: '=',
     onSave: '&',
     onDelete: '&'
   }

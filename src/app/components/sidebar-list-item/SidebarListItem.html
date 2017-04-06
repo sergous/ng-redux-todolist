@@ -1,18 +1,18 @@
 <md-list-item ng-class="{'md-active': $ctrl.isActive}"
               ng-disabled="$ctrl.isActive">
   <md-button  class="md-raised"
-              ng-if="!$ctrl.editing"
+              ng-if="!$ctrl.isEditing"
               ng-class="{'md-primary': $ctrl.isActive}"
               ng-click="$ctrl.isActive">
       {{$ctrl.item.name}}
   </md-button>
-      <text-input ng-if="$ctrl.editing"
+      <text-input ng-if="$ctrl.isEditing"
           text="$ctrl.item.name"
           placeholder="New list name"
-          is-editing="$ctrl.editing"
-          on-save="$ctrl.onSave({name: text}); $ctrl.editing = false"
+          is-editing="$ctrl.isEditing"
+          on-save="$ctrl.onSave({name: text}); $ctrl.isEditing = false"
           ></text-input>
-  <md-button class="md-icon-button" ng-click="$ctrl.editing = true" ng-if="$ctrl.isConfig">
+  <md-button class="md-icon-button" ng-click="$ctrl.isEditing = true" ng-if="$ctrl.isConfig">
     <md-icon>mode_edit</md-icon>
   </md-button>
   <md-button class="md-icon-button" ng-click="$ctrl.onDelete({id: $ctrl.item.id})" ng-if="$ctrl.isConfig">

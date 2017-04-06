@@ -25,7 +25,7 @@ describe('TodoItem', () => {
     onComplete: onCompleteSpy,
     onSave: onSaveSpy,
     onDelete: onDeleteSpy,
-    editing: false,
+    isEditing: false,
     todo
   };
 
@@ -35,14 +35,14 @@ describe('TodoItem', () => {
       .component('todoItem', TodoItem);
     angular.mock.module('todoItem');
   });
-  describe('element', () => {
+  describe('component', () => {
     beforeEach(angular.mock.inject((
       $rootScope: angular.IRootScopeService,
       $compile: angular.ICompileService
     ) => {
       $scope = Object.assign($rootScope.$new(), bindings);
       element = $compile(`<todo-item todo="todo"
-                                     editing="editing"
+                                     is-editing="isEditing"
                                      on-save="onSave()"
                                      on-delete="onDelete()"
                                      on-complete="onComplete()"
@@ -66,16 +66,16 @@ describe('TodoItem', () => {
       it('should toggle editing', () => {
         editButton.click();
         $scope.$digest();
-        expect($scope.editing).toBeTruthy();
+        expect($scope.isEditing).toBeTruthy();
       });
       it('should show input', () => {
-        $scope.editing = true;
+        $scope.isEditing = true;
         $scope.$digest();
         expect(element.find('h3').length).toBe(0);
         expect(element.find('text-input').length).toBe(1);
       });
       it('should hide input', () => {
-        $scope.editing = false;
+        $scope.isEditing = false;
         $scope.$digest();
         expect(element.find('h3').length).toBe(1);
         expect(element.find('text-input').length).toBe(0);

@@ -19,7 +19,7 @@ describe('SidebarListItem', () => {
   const bindings = {
     onSave: onSaveSpy,
     onDelete: onDeleteSpy,
-    editing: false,
+    isEditing: false,
     isActive: true,
     isConfig: true,
     item
@@ -38,7 +38,7 @@ describe('SidebarListItem', () => {
     ) => {
       $scope = Object.assign($rootScope.$new(), bindings);
       element = $compile(`<sidebar-list-item  item="item"
-                                              editing="editing"
+                                              is-editing="isEditing"
                                               is-active="isActive"
                                               is-config="isConfig"
                                               on-save="onSave()"
@@ -65,16 +65,16 @@ describe('SidebarListItem', () => {
       it('should toggle editing', () => {
         editButton.click();
         $scope.$digest();
-        expect($scope.editing).toBeTruthy();
+        expect($scope.isEditing).toBeTruthy();
       });
       it('should hide input', () => {
-        $scope.editing = false;
+        $scope.isEditing = false;
         $scope.$digest();
         expect(element.find('md-button').length).toBe(3);
         expect(element.find('text-input').length).toBe(0);
       });
       it('should show input', () => {
-        $scope.editing = true;
+        $scope.isEditing = true;
         $scope.$digest();
         expect(element.find('md-button').length).toBe(2);
         const textInput = element.find('text-input');

@@ -21,7 +21,7 @@
           <todo-item
             ng-repeat="todo in $ctrl.todos | filter : $ctrl.listIdFilter($ctrl.listId) | filter : $ctrl.selectedFilter.filter"
             todo="todo"
-            editing="false"
+            is-editing="false"
             on-delete="$ctrl.deleteTodo(id)"
             on-complete="$ctrl.completeTodo(id)"
             on-save="$ctrl.editTodo(id, text)"

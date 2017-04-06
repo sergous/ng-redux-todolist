@@ -1,23 +1,23 @@
-<md-list-item ng-class="{'editing': $ctrl.editing, 'completed': $ctrl.todo.completed}">
+<md-list-item ng-class="{'edit': $ctrl.isEditing, 'completed': $ctrl.todo.completed}">
   <md-checkbox
     aria-label="Complete Toggle"
     ng-checked="$ctrl.todo.completed"
-    ng-disabled="$ctrl.editing"
+    ng-disabled="$ctrl.isEditing"
     ng-click="$ctrl.onComplete({id: $ctrl.todo.id})"
   ></md-checkbox>
-  <h3 ng-if="!$ctrl.editing">
+  <h3 ng-if="!$ctrl.isEditing">
     {{$ctrl.todo.text}}
   </h3>
   <text-input
-    ng-if="$ctrl.editing"
+    ng-if="$ctrl.isEditing"
     text="$ctrl.todo.text"
     placeholder="New todo name"
-    is-editing="$ctrl.editing"
-    on-save="$ctrl.onSave({id: $ctrl.todo.id, text}); $ctrl.editing = false"
+    is-editing="$ctrl.isEditing"
+    on-save="$ctrl.onSave({id: $ctrl.todo.id, text}); $ctrl.isEditing = false"
     ></text-input>
   <span flex=""></span>
   <span>
-    <md-button aria-label="Edit" ng-click="$ctrl.editing = !$ctrl.editing;">
+    <md-button aria-label="Edit" ng-click="$ctrl.isEditing = !$ctrl.isEditing;">
       <md-icon md-no-ink="" class="material-icons">mode_edit</md-icon> Edit
     </md-button>
   </span>

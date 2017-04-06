@@ -4,7 +4,7 @@ const TodoItem: angular.IComponentOptions = {
   template: require('./TodoItem.html'),
   bindings: {
     todo: '<',
-    editing: '=',
+    isEditing: '=',
     onDelete: '&',
     onComplete: '&',
     onSave: '&'

@@ -2,7 +2,7 @@
   <sidebar-list-item
     ng-repeat="item in $ctrl.lists | orderBy:'id' track by item.id"
     item="item"
-    editing='false'
+    is-editing='false'
     is-config="$ctrl.isConfig"
     on-delete="$ctrl.deleteList(id)"
     on-save="$ctrl.editList(item.id, name)"

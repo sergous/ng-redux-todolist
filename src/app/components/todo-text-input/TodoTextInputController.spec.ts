@@ -58,5 +58,23 @@ describe('TodoTextInput', () => {
         expect(component.text).toEqual('');
       }));
     });
+
+    describe('onBlur', () => {
+      let onBlurSpy;
+      beforeEach(() => {
+        onBlurSpy = jasmine.createSpy('onBlurSpy');
+      });
+
+      it('should call onBlur', angular.mock.inject($componentController => {
+        const bindings = {
+          onBlur: onBlurSpy,
+          newTodo: true,
+          text: 'Hello'
+        };
+        const component = $componentController('todoTextInput', {}, bindings);
+        component.handleBlur();
+        expect(component.onBlur).toHaveBeenCalled();
+      }));
+    });
   });
 });

@@ -1,6 +1,6 @@
 <md-list>
   <sidebar-list-item
-    ng-repeat="item in $ctrl.lists | orderBy:'id'"
+    ng-repeat="item in $ctrl.lists | orderBy:'id' track by item.id"
     item="item"
     editing='false'
     is-config="$ctrl.isConfig"
@@ -14,12 +14,12 @@
         <md-button ng-if="!$ctrl.isAdding" class="md-icon-button" ng-click="$ctrl.isAdding = true">
           <md-icon>add</md-icon>
         </md-button>
-        <todo-text-input flex="" ng-if="$ctrl.isAdding"
+        <text-input flex="" ng-if="$ctrl.isAdding"
           placeholder="New list name"
-          new-todo="$ctrl.isAdding"
-          on-blur="$ctrl.handleBlur()"
+          is-new="true"
+          is-editing="$ctrl.isAdding"
           on-save="$ctrl.addList(text); $ctrl.isAdding = false"
-          ></todo-text-input>
+          ></text-input>
       </span>
       <span flex="" class="text-right" ng-click="$ctrl.isConfig = !$ctrl.isConfig">
         <md-button class="md-icon-button" ng-class="{'md-warn': $ctrl.isConfig}">

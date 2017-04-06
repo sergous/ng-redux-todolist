@@ -5,11 +5,11 @@
   <md-content flex="" id="content">
     <div class="todoapp">
       <section class="main">
-        <todo-text-input
-          new-todo="true"
+        <text-input
+          is-new="true"
           on-save="$ctrl.addTodo(text, $ctrl.listId)"
           placeholder="What needs to be done?"
-        ></todo-text-input>
+        ></text-input>
         <md-tabs md-dynamic-height="">
           <md-tab ng-repeat="filter in $ctrl.filters"
                   label="{{filter.name}}"

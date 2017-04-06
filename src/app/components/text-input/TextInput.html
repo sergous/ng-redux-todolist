@@ -1,16 +1,16 @@
 <md-input-container class="md-icon-right md-block">
   <input
-    ng-class="{'edit': $ctrl.editing, 'new-todo': $ctrl.newTodo}"
+    ng-class="{'edit': $ctrl.isEditing, 'new': $ctrl.isNew}"
     ng-model="$ctrl.text"
     ng-keypress="$ctrl.handleSubmit($event)"
     ng-keyup="$ctrl.handleEsc($event)"
     init-focus=""
-    ng-required="!$ctrl.newTodo"
+    ng-required="!$ctrl.isNew"
     placeholder="{{$ctrl.placeholder}}"
     type="text"
   />
   <md-icon class="md-18">
     <span class="pointer" ng-click="$ctrl.handleSave()" ng-show="$ctrl.text">check</span>
-    <span class="pointer" ng-click="$ctrl.handleChancel()" ng-show="$ctrl.editing || $ctrl.text">close</span>
+    <span class="pointer" ng-click="$ctrl.handleChancel()" ng-show="$ctrl.isEditing || $ctrl.text">close</span>
   </md-icon>
 </md-input-container>

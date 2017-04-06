@@ -1,7 +1,7 @@
-export default class TodoTextInputController {
-  editing: boolean;
+export default class TextInputController {
+  isEditing: boolean;
   text: string;
-  newTodo: boolean;
+  isNew: boolean;
   onSave: Function;
   onChancel: Function;
 
@@ -15,7 +15,7 @@ export default class TodoTextInputController {
   }
 
   handleClear() {
-    if (!this.newTodo) return;
+    if (!this.isNew) return;
     this.text = '';
   }
 
@@ -24,8 +24,8 @@ export default class TodoTextInputController {
       this.onChancel();
     }
     this.handleClear();
-    if (!this.editing) return;
-    this.editing = false;
+    if (!this.isEditing) return;
+    this.isEditing = false;
   }
 
   handleEsc(e: any) {

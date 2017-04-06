@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 import MainSection from './main-section';
 import TodoItem from './todo-item';
-import TodoTextInput from './todo-text-input';
+import TextInput from './text-input';
 import TodosCount from './todos-count';
 import Footer from './footer';
 import SidebarList from './sidebar-list';
@@ -18,7 +18,7 @@ export default angular
   .directive('initFocus', initFocusDirective)
   .component('mainSection', MainSection)
   .component('todoItem', TodoItem)
-  .component('todoTextInput', TodoTextInput)
+  .component('textInput', TextInput)
   .component('footerComponent', Footer)
   .component('todosCount', TodosCount)
   .component('sidebarList', SidebarList)

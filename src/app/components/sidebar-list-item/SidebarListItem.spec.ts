@@ -54,7 +54,7 @@ describe('SidebarListItem', () => {
       $scope.$digest();
       const item = element.find('md-list-item')[0];
       expect(item.classList).toContain('md-active');
-      expect(element.find('todo-text-input').length).toBe(0);
+      expect(element.find('text-input').length).toBe(0);
       expect(listItem.textContent).toContain($scope.item.name);
       expect(listItem.classList).toContain('md-primary');
       expect(editButton.textContent).toContain('mode_edit');
@@ -71,13 +71,13 @@ describe('SidebarListItem', () => {
         $scope.editing = false;
         $scope.$digest();
         expect(element.find('md-button').length).toBe(3);
-        expect(element.find('todo-text-input').length).toBe(0);
+        expect(element.find('text-input').length).toBe(0);
       });
       it('should show input', () => {
         $scope.editing = true;
         $scope.$digest();
         expect(element.find('md-button').length).toBe(2);
-        const textInput = element.find('todo-text-input');
+        const textInput = element.find('text-input');
         expect(textInput.length).toBe(1);
       });
     });

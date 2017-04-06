@@ -56,7 +56,7 @@ describe('TodoItem', () => {
       $scope.$digest();
       expect(element.find('h3').length).toBe(1);
       expect(element.find('h3')[0].textContent).toContain('Hello');
-      expect(element.find('todo-text-input').length).toBe(0);
+      expect(element.find('text-input').length).toBe(0);
       expect(checkbox.getAttribute('aria-label')).toContain('Complete');
       expect(editButton.getAttribute('aria-label')).toBe('Edit');
       expect(deleteButton.getAttribute('aria-label')).toBe('Delete');
@@ -72,13 +72,13 @@ describe('TodoItem', () => {
         $scope.editing = true;
         $scope.$digest();
         expect(element.find('h3').length).toBe(0);
-        expect(element.find('todo-text-input').length).toBe(1);
+        expect(element.find('text-input').length).toBe(1);
       });
       it('should hide input', () => {
         $scope.editing = false;
         $scope.$digest();
         expect(element.find('h3').length).toBe(1);
-        expect(element.find('todo-text-input').length).toBe(0);
+        expect(element.find('text-input').length).toBe(0);
       });
     });
 

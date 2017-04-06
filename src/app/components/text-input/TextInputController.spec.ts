@@ -1,13 +1,13 @@
 import * as angular from 'angular';
 import 'angular-mocks';
-import TodoTextInput from './';
+import TextInput from './';
 
-describe('TodoTextInput', () => {
+describe('TextInput', () => {
   beforeEach(() => {
     angular
-      .module('todoTextInput', ['app/components/todo-text-input/TodoTextInput.html'])
-      .component('todoTextInput', TodoTextInput);
-    angular.mock.module('todoTextInput');
+      .module('TextInput', ['app/components/text-input/TextInput.html'])
+      .component('textInput', TextInput);
+    angular.mock.module('TextInput');
   });
 
   describe('controller', () => {
@@ -22,7 +22,7 @@ describe('TodoTextInput', () => {
       const bindings = {
         text: 'Hello'
       };
-      const component = $componentController('todoTextInput', {}, bindings);
+      const component = $componentController('textInput', {}, bindings);
       expect(component.text).toEqual('Hello');
     }));
 
@@ -30,10 +30,10 @@ describe('TodoTextInput', () => {
       it('should call onSave and clear text', angular.mock.inject($componentController => {
         const bindings = {
           onSave: onSaveSpy,
-          newTodo: true,
+          isNew: true,
           text: 'Hello'
         };
-        const component = $componentController('todoTextInput', {}, bindings);
+        const component = $componentController('textInput', {}, bindings);
         component.handleSubmit({keyCode: 13});
         expect(component.onSave).toHaveBeenCalled();
         expect(component.text).toEqual('');
@@ -43,11 +43,11 @@ describe('TodoTextInput', () => {
     describe('handleSave', () => {
       it('should call onSave and clear text', angular.mock.inject($componentController => {
         const bindings = {
-          newTodo: true,
+          isNew: true,
           onSave: onSaveSpy,
           text: 'Hello'
         };
-        const component = $componentController('todoTextInput', {}, bindings);
+        const component = $componentController('textInput', {}, bindings);
         component.handleSave();
         expect(component.onSave).toHaveBeenCalled();
         expect(component.text).toEqual('');
@@ -58,7 +58,7 @@ describe('TodoTextInput', () => {
           onSave: onSaveSpy,
           text: 'Hello'
         };
-        const component = $componentController('todoTextInput', {}, bindings);
+        const component = $componentController('textInput', {}, bindings);
         component.handleSave();
         expect(component.onSave).toHaveBeenCalled();
       }));
@@ -68,7 +68,7 @@ describe('TodoTextInput', () => {
           onSave: onSaveSpy,
           text: ''
         };
-        const component = $componentController('todoTextInput', {}, bindings);
+        const component = $componentController('textInput', {}, bindings);
         expect(component.text).toBe(bindings.text);
         component.handleSave();
         expect(onSaveSpy).not.toHaveBeenCalled();
@@ -80,7 +80,7 @@ describe('TodoTextInput', () => {
         const bindings = {
           onChancel: onChancelSpy,
         };
-        const component = $componentController('todoTextInput', {}, bindings);
+        const component = $componentController('textInput', {}, bindings);
         component.handleEsc({keyCode: 27});
         expect(component.onChancel).toHaveBeenCalled();
       }));
@@ -90,10 +90,10 @@ describe('TodoTextInput', () => {
       it('should call onChancel', angular.mock.inject($componentController => {
         const bindings = {
           onChancel: onChancelSpy,
-          newTodo: true,
+          isNew: true,
           text: ''
         };
-        const component = $componentController('todoTextInput', {}, bindings);
+        const component = $componentController('textInput', {}, bindings);
         component.handleChancel();
         expect(component.onChancel).toHaveBeenCalled();
         expect(component.text).toEqual('');

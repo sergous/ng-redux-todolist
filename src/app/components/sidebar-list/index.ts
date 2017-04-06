@@ -5,6 +5,7 @@ const SidebarList: angular.IComponentOptions = {
   template: require('./SidebarList.html'),
   controller: SidebarListController,
   bindings: {
+    isConfig: '<',
     listId: '<',
     onSelectList: '&'
   }

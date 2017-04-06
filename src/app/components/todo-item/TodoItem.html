@@ -22,7 +22,7 @@
     </md-button>
   </span>
   <span>
-    <md-button aria-label="Delete" class="md-icon-button" ng-click="$ctrl.onDelete({id: $ctrl.todo.id})">
+    <md-button aria-label="Delete" class="md-icon-button" ng-click="$ctrl.onDelete({id: $ctrl.todo.id})" ng-show="$ctrl.isConfig">
       <md-icon md-no-ink="" class="material-icons">delete_forever</md-icon>
     </md-button>
   </span>

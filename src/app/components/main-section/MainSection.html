@@ -1,18 +1,22 @@
 <div flex="" layout="row">
   <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
     <md-toolbar>
-      <h1 class="md-toolbar-tools">Todo Lists</h1>
+      <div flex="" layout="row">
+        <span flex="">
+          <h1 class="md-toolbar-tools">Todo Lists</h1>
+        </span>
+        <span layout-padding flex="" class="text-right" ng-click="$ctrl.isConfig = !$ctrl.isConfig">
+          <md-button class="md-icon-button" ng-class="{'md-warn': $ctrl.isConfig}">
+            <md-icon>settings</md-icon>
+          </md-button>
+        </span>
+      </div>
     </md-toolbar>
-    <sidebar-list on-select-list="$ctrl.handleSelectList(listId)" list-id="$ctrl.listId"></sidebar-list>
+    <sidebar-list on-select-list="$ctrl.handleSelectList(listId)" list-id="$ctrl.listId" is-config="$ctrl.isConfig"></sidebar-list>
   </md-sidenav>
   <md-content flex="" id="content">
     <div class="todoapp">
       <section class="main">
-        <text-input
-          is-new="true"
-          on-save="$ctrl.addTodo(text, $ctrl.listId)"
-          placeholder="What needs to be done?"
-        ></text-input>
         <md-tabs md-dynamic-height="">
           <md-tab ng-repeat="filter in $ctrl.filters"
                   label="{{filter.name}}"
@@ -20,9 +24,17 @@
                   md-on-select="$ctrl.selectedFilter = filter">
           </md-tab>
         </md-tabs>
+        <text-input
+          flex=""
+          layout-padding
+          is-new="true"
+          on-save="$ctrl.addTodo(text, $ctrl.listId)"
+          placeholder="What needs to be done?"
+        ></text-input>
         <md-list ng-cloak="">
           <todo-item
-            ng-repeat="todo in $ctrl.todos | filter : $ctrl.listIdFilter($ctrl.listId) | filter : $ctrl.selectedFilter.filter"
+            is-config="$ctrl.isConfig"
+            ng-repeat="todo in $ctrl.todos | filter : $ctrl.listIdFilter($ctrl.listId) | filter : $ctrl.selectedFilter.filter track by todo.id"
             todo="todo"
             is-editing="false"
             on-delete="$ctrl.deleteTodo(id)"

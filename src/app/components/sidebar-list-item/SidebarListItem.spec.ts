@@ -58,7 +58,7 @@ describe('SidebarListItem', () => {
       expect(listItem.textContent).toContain($scope.item.name);
       expect(listItem.classList).toContain('md-primary');
       expect(editButton.textContent).toContain('mode_edit');
-      expect(deleteButton.textContent).toContain('remove');
+      expect(deleteButton.textContent).toContain('delete_forever');
     });
 
     describe('edit button', () => {

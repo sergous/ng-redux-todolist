@@ -9,23 +9,14 @@
     ng-click="$ctrl.onSelectList({listId: item.id})"
     is-active="item.id == $ctrl.listId"></sidebar-list-item>
   <md-list-item>
-    <div flex="" layout="row">
-      <span flex="">
-        <md-button ng-if="!$ctrl.isAdding" class="md-icon-button" ng-click="$ctrl.isAdding = true">
-          <md-icon>add</md-icon>
-        </md-button>
-        <text-input flex="" ng-if="$ctrl.isAdding"
-          placeholder="New list name"
-          is-new="true"
-          is-editing="$ctrl.isAdding"
-          on-save="$ctrl.addList(text); $ctrl.isAdding = false"
-          ></text-input>
-      </span>
-      <span flex="" class="text-right" ng-click="$ctrl.isConfig = !$ctrl.isConfig">
-        <md-button class="md-icon-button" ng-class="{'md-warn': $ctrl.isConfig}">
-          <md-icon>settings</md-icon>
-        </md-button>
-      </span>
-    </div>
+    <md-button ng-if="!$ctrl.isAdding" class="md-icon-button" ng-click="$ctrl.isAdding = true">
+      <md-icon>add</md-icon>
+    </md-button>
+    <text-input flex="" layout-padding ng-if="$ctrl.isAdding"
+      placeholder="New list name"
+      is-new="true"
+      is-editing="$ctrl.isAdding"
+      on-save="$ctrl.addList(text); $ctrl.isAdding = false"
+      ></text-input>
   </md-list-item>
 </md-list>

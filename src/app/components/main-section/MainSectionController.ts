@@ -12,6 +12,7 @@ export default class MainSectionController {
   filters = VisibilityFilters;
   listIdFilter = listIdFilter;
   selectedFilter: IVisibilityFilter;
+  isConfig: boolean;
 
   /** @ngInject */
   constructor(

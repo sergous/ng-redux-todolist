@@ -9,8 +9,10 @@
     placeholder="{{$ctrl.placeholder}}"
     type="text"
   />
-  <md-icon class="md-18">
+  <md-icon class="md-18 md-icon2">
     <span class="pointer" ng-click="$ctrl.handleSave()" ng-show="$ctrl.text">check</span>
+  </md-icon>
+  <md-icon class="md-18">
     <span class="pointer" ng-click="$ctrl.handleChancel()" ng-show="$ctrl.isEditing || $ctrl.text">close</span>
   </md-icon>
 </md-input-container>

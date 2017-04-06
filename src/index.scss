@@ -95,3 +95,9 @@ span.name {
 .pointer {
   cursor: pointer !important;
 }
+
+md-input-container.md-icon-float > md-icon.md-icon2 {
+    top: 8px;
+    right: 36px;
+    left: auto;
+}

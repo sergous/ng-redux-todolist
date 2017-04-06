@@ -6,12 +6,12 @@
               ng-click="$ctrl.isActive">
       {{$ctrl.item.name}}
   </md-button>
-  <todo-text-input ng-if="$ctrl.editing"
-      text="$ctrl.item.name"
-      placeholder="New list name"
-      editing="true"
-      on-save="$ctrl.onSave({name: text}); $ctrl.editing = false"
-      ></todo-text-input>
+      <todo-text-input ng-if="$ctrl.editing"
+          text="$ctrl.item.name"
+          placeholder="New list name"
+          editing="$ctrl.editing"
+          on-save="$ctrl.onSave({name: text}); $ctrl.editing = false"
+          ></todo-text-input>
   <md-button class="md-icon-button" ng-click="$ctrl.editing = true" ng-if="$ctrl.isConfig">
     <md-icon>mode_edit</md-icon>
   </md-button>

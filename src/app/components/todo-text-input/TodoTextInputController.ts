@@ -3,6 +3,7 @@ export default class TodoTextInputController {
   text: string;
   newTodo: boolean;
   onSave: Function;
+  onBlur: Function;
 
   /** @ngInject */
   constructor() {
@@ -11,6 +12,7 @@ export default class TodoTextInputController {
   }
 
   handleBlur() {
+    this.onBlur();
     if (!this.text) return;
     if (this.text.length === 0) return;
     if (this.newTodo) return;

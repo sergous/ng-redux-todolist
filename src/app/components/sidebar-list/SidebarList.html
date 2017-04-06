@@ -16,7 +16,8 @@
         </md-button>
         <todo-text-input flex="" ng-if="$ctrl.isAdding"
           placeholder="New list name"
-          newTodo="true"
+          new-todo="$ctrl.isAdding"
+          on-blur="$ctrl.handleBlur()"
           on-save="$ctrl.addList(text); $ctrl.isAdding = false"
           ></todo-text-input>
       </span>

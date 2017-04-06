@@ -6,6 +6,7 @@ const TodoTextInput: angular.IComponentOptions = {
   controller: TodoTextInputController,
   bindings: {
     onSave: '&',
+    onBlur: '&',
     placeholder: '@',
     newTodo: '<',
     editing: '<',

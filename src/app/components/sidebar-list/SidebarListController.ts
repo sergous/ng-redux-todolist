@@ -21,11 +21,17 @@ export default class SidebarListController {
     )(this);
 
     $scope.$on('$destroy', disconnect);
+
+    this.handleBlur = this.handleBlur.bind(this);
   };
 
   onUpdate(state: any) {
     return {
       lists: state.lists
     };
+  }
+
+  handleBlur() {
+    this.isAdding = false;
   }
 }

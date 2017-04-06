@@ -1,5 +1,8 @@
 <div flex="" layout="row">
   <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+    <md-toolbar>
+      <h1 class="md-toolbar-tools">Todo Lists</h1>
+    </md-toolbar>
     <sidebar-list on-select-list="$ctrl.handleSelectList(listId)" list-id="$ctrl.listId"></sidebar-list>
   </md-sidenav>
   <md-content flex="" id="content">

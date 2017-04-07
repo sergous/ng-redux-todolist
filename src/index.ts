@@ -18,7 +18,9 @@ import components from './app/components';
 
 import './index.scss';
 import rootReducer from './app/reducers/index';
-import {App} from './app/containers/App';
+import { App } from './app/containers/App';
+import { localStorageMiddleware } from "./app/middleware/localStorage.middleware";
+import { promiseMiddleware } from "./app/middleware/promise.middleware";
 
 const logger = createLogger();
 
@@ -39,7 +41,7 @@ export default angular
   .config(($ngReduxProvider) => {
     $ngReduxProvider.createStoreWith(
       rootReducer,
-      [logger],
+      [logger, promiseMiddleware, localStorageMiddleware],
       [devToolsEnhancer({ realtime: true }), localStorageEnhancer]
     );
   })

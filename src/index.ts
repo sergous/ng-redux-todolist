@@ -42,7 +42,7 @@ export default angular
     $ngReduxProvider.createStoreWith(
       rootReducer,
       [logger, promiseMiddleware, localStorageMiddleware],
-      [devToolsEnhancer({ realtime: true }), localStorageEnhancer]
+      [/* devToolsEnhancer({ realtime: true }),*/ localStorageEnhancer]
     );
   })
   .name;

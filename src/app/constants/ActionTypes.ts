@@ -19,3 +19,6 @@ export const ASYNC_END = 'ASYNC_END';
 export const UPDATE_FIELD_AUTH = 'UPDATE_FIELD_AUTH';
 export const REDIRECT = 'REDIRECT';
 export const APP_LOAD = 'APP_LOAD';
+export const ROUTER_ON_START = '@@reduxUiRouter/onStart';
+export const ROUTER_ON_FINISH = '@@reduxUiRouter/onFinish';
+export const ROUTER_ON_SUCCESS = '@@reduxUiRouter/onSuccess';

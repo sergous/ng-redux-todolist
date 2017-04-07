@@ -9,10 +9,14 @@ const tokenPlugin = req => {
 };
 
 const Auth = {
-  current: () =>
-    new Promise((resolve) => resolve(localStorage.getItem('mockUser'))),
-  login: (email, password) =>
-    new Promise((resolve) => resolve(localStorage.getItem('mockUser'))),
+  current: () => {
+    const user = JSON.parse(localStorage.getItem('mockUser'));
+    return new Promise((resolve) => resolve( {user} ));
+  },
+  login: (email, password) => {
+    const user = JSON.parse(localStorage.getItem('mockUser'));
+    return new Promise((resolve) => resolve( {user} ));
+  },
   register: (username, email, password) => {
     const user = {
       username,
@@ -20,11 +24,11 @@ const Auth = {
       password,
       token: 'TOKENEXAMPLE'
     };
-    localStorage.setItem('mockUser', JSON.stringify( {user} ));
+    localStorage.setItem('mockUser', JSON.stringify( user ));
     return new Promise((resolve) => resolve( {user} ));
   },
   save: user => {
-    localStorage.setItem('mockUser', JSON.stringify( {user} ));
+    localStorage.setItem('mockUser', JSON.stringify( user ));
     return new Promise((resolve) => resolve( {user} ));
   }
 };

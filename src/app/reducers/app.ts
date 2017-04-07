@@ -15,17 +15,17 @@ export default (state = defaultState, action) => {
         currentUser: action.payload ? action.payload.user : null
       };
     case types.REDIRECT:
-      return { ...state, redirectTo: null };
+      return { ...state, redirectToState: null };
     case types.LOGOUT:
       return { ...state, redirectToState: 'login' };
-    // case types.LOGIN:
-    // case types.REGISTER:
-    //   return {
-    //     ...state,
-    //     redirectToState: action.error ? null : 'app',
-    //     token: action.error ? null : action.payload.user.token,
-    //     currentUser: action.error ? null : action.payload.user
-    //   };
+    case types.LOGIN:
+    case types.REGISTER:
+      return {
+        ...state,
+        redirectToState: action.error ? null : 'app',
+        token: action.error ? null : action.payload.user.token,
+        currentUser: action.error ? null : action.payload.user
+      };
     case types.HOME_PAGE_UNLOADED:
     case types.LOGIN_PAGE_UNLOADED:
     case types.REGISTER_PAGE_UNLOADED:

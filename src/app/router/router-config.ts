@@ -9,14 +9,17 @@ export default function routerConfig(
 
   $stateProvider
     .state('app', {
-      url: '/',
       component: 'app'
     })
-    .state('register', {
+    .state('app.main', {
+      url: '/',
+      component: 'mainSection'
+    })
+    .state('app.register', {
       url: '/register',
       component: 'register'
     })
-    .state('login', {
+    .state('app.login', {
       url: '/login',
       component: 'login'
     });

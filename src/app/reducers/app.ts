@@ -17,12 +17,12 @@ export default (state = defaultState, action) => {
     case types.REDIRECT:
       return { ...state, redirectToState: null };
     case types.LOGOUT:
-      return { ...state, redirectToState: 'login' };
+      return { ...state, redirectToState: 'app.login' };
     case types.LOGIN:
     case types.REGISTER:
       return {
         ...state,
-        redirectToState: action.error ? null : 'app',
+        redirectToState: action.error ? null : 'app.main',
         token: action.error ? null : action.payload.user.token,
         currentUser: action.error ? null : action.payload.user
       };

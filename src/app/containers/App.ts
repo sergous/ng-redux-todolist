@@ -1,6 +1,6 @@
 import AppController from "./AppController";
 
 export const App: angular.IComponentOptions = {
-  template: require('./App.html'),
+  template: '<ui-view></ui-view>',
   controller: AppController
 };

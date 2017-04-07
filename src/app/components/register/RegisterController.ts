@@ -12,7 +12,6 @@ export default class RegisterController {
   /** @ngInject */
   constructor(
     public $ngRedux: INgRedux,
-    public $state: any,
     $scope: IScope
   ) {
     this.inProgress = false;
@@ -36,6 +35,5 @@ export default class RegisterController {
 
   handleSubmit() {
     this.$ngRedux.dispatch(authActions.registerUser(this.username, this.email, this.password));
-    this.$state.go('app');
   }
 }

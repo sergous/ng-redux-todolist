@@ -11,7 +11,6 @@ export default class LoginController {
   /** @ngInject */
   constructor(
     public $ngRedux: INgRedux,
-    public $state: any,
     $scope: IScope
   ) {
     this.inProgress = false;
@@ -35,6 +34,5 @@ export default class LoginController {
 
   handleSubmit() {
     this.$ngRedux.dispatch(authActions.loginUser(this.email, this.password));
-    this.$state.go('app');
   }
 }

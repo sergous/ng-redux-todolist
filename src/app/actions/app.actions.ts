@@ -17,7 +17,7 @@ export function redirect(state: string) {
 }
 
 export function appLoad(payload: any, token: string) {
-  return {type: types.APP_LOAD, payload, token};
+  return {type: types.APP_LOAD, payload, token, skipTracking: true};
 }
 
 const appActions = {

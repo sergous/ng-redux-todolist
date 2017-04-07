@@ -1,4 +1,5 @@
 import * as types from '../constants/ActionTypes';
+import agent from '../agents/localStorage.agent';
 import AuthKeys from '../constants/AuthKeys';
 
 export function changeEmail(email: string) {
@@ -14,21 +15,17 @@ export function changeUsername(username: string) {
 }
 
 export function registerUser(username: string, email: string, password: string) {
-  const payload = {username, email, password};
+  const payload = agent.Auth.register(username, email, password);
   return {type: types.REGISTER, payload};
 }
 
-export function registerUnloaded() {
-  return {type: types.REGISTER_PAGE_UNLOADED};
-}
-
 export function loginUser(email: string, password: string) {
-  const payload = {email, password};
+  const payload = agent.Auth.login(email, password);
   return {type: types.LOGIN, payload};
 }
 
-export function loginUnloaded() {
-  return {type: types.LOGIN_PAGE_UNLOADED};
+export function logoutUser() {
+  return {type: types.LOGOUT};
 }
 
 const authActions = {
@@ -36,9 +33,8 @@ const authActions = {
   changePassword,
   changeUsername,
   registerUser,
-  registerUnloaded,
   loginUser,
-  loginUnloaded
+  logoutUser
 };
 
 export default authActions;

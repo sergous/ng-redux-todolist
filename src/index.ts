@@ -6,6 +6,7 @@ import 'angular-material';
 import 'angular-messages';
 
 import ngRedux from 'ng-redux';
+import ngReduxRouter from 'redux-ui-router';
 import { compose } from 'redux';
 import * as createLogger from 'redux-logger';
 import ngReduxDevTools from 'ng-redux-dev-tools';
@@ -33,6 +34,7 @@ export default angular
     'ngMaterial',
     router,
     ngRedux,
+    ngReduxRouter,
     ngReduxDevTools,
     components
   ])
@@ -41,7 +43,7 @@ export default angular
   .config(($ngReduxProvider) => {
     $ngReduxProvider.createStoreWith(
       rootReducer,
-      [logger, promiseMiddleware, localStorageMiddleware],
+      ['ngUiRouterMiddleware', logger, promiseMiddleware, localStorageMiddleware],
       [/* devToolsEnhancer({ realtime: true }),*/ localStorageEnhancer]
     );
   })

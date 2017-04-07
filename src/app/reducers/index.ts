@@ -1,4 +1,6 @@
 import {combineReducers} from 'redux';
+import {router} from 'redux-ui-router';
+
 import todos from './todos';
 import lists from './lists';
 import auth from './auth';
@@ -8,7 +10,8 @@ const rootReducer = combineReducers({
   todos,
   lists,
   auth,
-  app
+  app,
+  router
 });
 
 export default rootReducer;

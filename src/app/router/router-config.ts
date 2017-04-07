@@ -1,3 +1,5 @@
+import * as states from '../constants/RouterStates';
+
 /** @ngInject */
 export default function routerConfig(
   $urlRouterProvider: any,
@@ -8,18 +10,18 @@ export default function routerConfig(
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('app', {
+    .state(states.APP, {
       component: 'app'
     })
-    .state('app.main', {
+    .state(states.APP_MAIN, {
       url: '/',
       component: 'mainSection'
     })
-    .state('app.register', {
+    .state(states.APP_REGISTER, {
       url: '/register',
       component: 'register'
     })
-    .state('app.login', {
+    .state(states.APP_LOGIN, {
       url: '/login',
       component: 'login'
     });

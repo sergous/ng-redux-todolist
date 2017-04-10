@@ -7,7 +7,7 @@
     <a ui-sref="app.register">
       Need an account?
     </a>
-    <form ng-submit="$ctrl.handleSubmit()" name="loginForm">
+    <form ng-submit="$ctrl.handleSubmit()" name="loginForm" novalidate>
       <div flex-gt-sm="80">
         <ListErrors errors="$ctrl.errors" />
       </div>
@@ -17,6 +17,7 @@
           <input
             name="email"
             type="email"
+            required
             placeholder="Email"
             ng-model="$ctrl.email"
             ng-change="$ctrl.changeEmail($ctrl.email)"
@@ -33,6 +34,7 @@
           <md-icon>lock_outline</md-icon>
           <input
             name="password"
+            required
             type="password"
             placeholder="Password"
             ng-model="$ctrl.password"
@@ -51,7 +53,7 @@
         <md-button
           class="md-primary md-raised"
           type="submit"
-          ng-disabled="$ctrl.inProgress">
+          ng-disabled="$ctrl.inProgress || loginForm.$invalid">
           Login
         </md-button>
       </div>

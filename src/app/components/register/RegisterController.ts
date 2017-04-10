@@ -6,7 +6,6 @@ export default class RegisterController {
   email: string;
   username: string;
   password: string;
-  errors: any;
   inProgress: boolean;
 
   /** @ngInject */
@@ -15,7 +14,6 @@ export default class RegisterController {
     $scope: IScope
   ) {
     this.inProgress = false;
-    this.errors = {};
 
     this.handleSubmit = this.handleSubmit.bind(this);
 

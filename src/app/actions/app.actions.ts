@@ -1,4 +1,5 @@
 import * as types from '../constants/ActionTypes';
+import agent from '../agents/localStorage.agent';
 
 export function homeUnloaded() {
   return {type: types.HOME_PAGE_UNLOADED};
@@ -20,12 +21,18 @@ export function appLoad(payload: any, token: string) {
   return {type: types.APP_LOAD, payload, token, skipTracking: true};
 }
 
+export function validateToken(token: string) {
+  const payload = agent.Auth.validate(token);
+  return {type: types.VALIDATE_TOKEN, token, payload};
+}
+
 const appActions = {
   registerUnloaded,
   loginUnloaded,
   homeUnloaded,
   redirect,
-  appLoad
+  appLoad,
+  validateToken,
 };
 
 export default appActions;

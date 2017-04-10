@@ -8,11 +8,14 @@ const defaultState = {
 export default (state = defaultState, action) => {
   switch (action.type) {
     case types.APP_LOAD:
+    case types.VALIDATE_TOKEN:
       return {
         ...state,
         token: action.token || null,
         appLoaded: true,
-        currentUser: action.payload ? action.payload.user : null
+        currentUser: action.payload && action.payload.user
+                     ? action.payload.user
+                     : null
       };
     case types.REDIRECT:
       return { ...state, redirectToState: null };

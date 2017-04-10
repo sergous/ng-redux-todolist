@@ -13,9 +13,17 @@ const Auth = {
     const user = JSON.parse(localStorage.getItem('mockUser'));
     return new Promise((resolve) => resolve( {user} ));
   },
+  validate: (token: string) => {
+    const user = JSON.parse(localStorage.getItem('mockUser'));
+    const valid = user && user.token === token;
+    return new Promise((resolve, reject) =>
+      valid ? resolve( {user} ) : reject({errors: [new Error('Session not found')]}));
+  },
   login: (email, password) => {
     const user = JSON.parse(localStorage.getItem('mockUser'));
-    return new Promise((resolve) => resolve( {user} ));
+    const valid = user && email === user.email && password === user.password;
+    return new Promise((resolve, reject) =>
+      valid ? resolve( {user} ) : reject({errors: [new Error('User not found')]}));
   },
   register: (username, email, password) => {
     const user = {

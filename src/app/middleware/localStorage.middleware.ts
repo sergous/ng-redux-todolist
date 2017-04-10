@@ -3,7 +3,7 @@ import * as types from '../constants/ActionTypes';
 
 const localStorageMiddleware = store => next => action => {
   if (action.type === types.REGISTER || action.type === types.LOGIN) {
-    if (!action.error) {
+    if (!action.error && action.payload.user) {
       localStorage.setItem('sessionToken', action.payload.user.token);
       agent.setToken(action.payload.user.token);
     }

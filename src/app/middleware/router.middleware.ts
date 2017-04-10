@@ -14,6 +14,12 @@ const routerMiddleware = store => next => action => {
           store.dispatch(stateGo(state.app.redirectToState));
         }
         break;
+      case types.ROUTER_ON_START:
+        const token = localStorage.getItem('sessionToken');
+        if (token) {
+          store.dispatch(appActions.validateToken(token));
+        }
+        break;
       case types.ROUTER_ON_SUCCESS:
         if (action.payload.fromState.name === states.APP_LOGIN) {
           store.dispatch(appActions.loginUnloaded());

@@ -5,7 +5,6 @@ import { INgRedux } from "ng-redux";
 export default class LoginController {
   email: string;
   password: string;
-  errors: any;
   inProgress: boolean;
 
   /** @ngInject */
@@ -14,7 +13,6 @@ export default class LoginController {
     $scope: IScope
   ) {
     this.inProgress = false;
-    this.errors = {};
 
     this.handleSubmit = this.handleSubmit.bind(this);
 

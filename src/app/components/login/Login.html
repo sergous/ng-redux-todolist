@@ -8,9 +8,6 @@
       Need an account?
     </a>
     <form ng-submit="$ctrl.handleSubmit()" name="loginForm" novalidate>
-      <div flex-gt-sm="80">
-        <ListErrors errors="$ctrl.errors" />
-      </div>
       <div layout-gt-sm="row">
         <md-input-container class="md-icon-float md-block">
           <md-icon>email</md-icon>
@@ -56,6 +53,7 @@
           ng-disabled="$ctrl.inProgress || loginForm.$invalid">
           Login
         </md-button>
+        <list-errors errors="$ctrl.state.errors"></list-errors>
       </div>
     </form>
   </div>

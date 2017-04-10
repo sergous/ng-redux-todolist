@@ -5,6 +5,7 @@ import { INgRedux } from 'ng-redux';
 import completeReducer from '../../reducers/complete';
 import { SHOW_ALL } from '../../constants/TodoFilters';
 import VisibilityFilters, { IVisibilityFilter, listIdFilter } from '../../constants/VisibilityFilters';
+import { logoutUser } from "../../actions/auth.actions";
 
 export default class MainSectionController {
   todos: Todo[];
@@ -25,7 +26,7 @@ export default class MainSectionController {
 
     let disconnect = $ngRedux.connect(
       state => this.onUpdate(state),
-      todoActions
+      {logoutUser, ...todoActions}
     )(this);
 
     $scope.$on('$destroy', disconnect);

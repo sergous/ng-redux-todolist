@@ -9,7 +9,9 @@ const routerMiddleware = store => next => action => {
     const state = store.getState();
 
     switch (action.type) {
+      case types.REGISTER:
       case types.LOGIN:
+      case types.LOGOUT:
         if (state.app.redirectToState && state.router.currentState.name !== state.app.redirectToState) {
           store.dispatch(stateGo(state.app.redirectToState));
         }
@@ -21,8 +23,10 @@ const routerMiddleware = store => next => action => {
         }
         break;
       case types.ROUTER_ON_SUCCESS:
-        if (action.payload.fromState.name === states.APP_LOGIN) {
-          store.dispatch(appActions.loginUnloaded());
+        switch (action.payload.fromState.name) {
+          case states.APP_LOGIN     : store.dispatch(appActions.loginUnloaded()); break;
+          case states.APP_REGISTER  : store.dispatch(appActions.registerUnloaded()); break;
+          case states.APP_MAIN      : store.dispatch(appActions.homeUnloaded()); break;
         }
         break;
     }

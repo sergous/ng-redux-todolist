@@ -5,8 +5,11 @@
         <span flex="">
           <h1 class="md-toolbar-tools">Todo Lists</h1>
         </span>
-        <span layout-padding flex="" class="text-right" ng-click="$ctrl.isConfig = !$ctrl.isConfig">
-          <md-button class="md-icon-button" ng-class="{'md-warn': $ctrl.isConfig}">
+        <span layout-padding flex="" class="text-right">
+          <md-button class="md-icon-button" ng-click="$ctrl.logoutUser()">
+            <md-icon>power_settings_new</md-icon>
+          </md-button>
+          <md-button class="md-icon-button" ng-class="{'md-warn': $ctrl.isConfig}" ng-click="$ctrl.isConfig = !$ctrl.isConfig">
             <md-icon>settings</md-icon>
           </md-button>
         </span>

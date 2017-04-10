@@ -101,3 +101,11 @@ md-input-container.md-icon-float > md-icon.md-icon2 {
     right: 36px;
     left: auto;
 }
+
+.error-messages {
+  color:rgb(221,44,0) !important;
+  padding: 0;
+  li {
+    list-style: none
+  }
+}

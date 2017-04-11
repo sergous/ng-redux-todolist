@@ -1,4 +1,5 @@
 import * as types from '../constants/ActionTypes';
+import * as states from '../constants/RouterStates';
 
 const defaultState = {
   appName: 'TodoList',
@@ -20,19 +21,20 @@ export default (state = defaultState, action) => {
     case types.REDIRECT:
       return { ...state, redirectToState: null };
     case types.LOGOUT:
-      return { ...state, redirectToState: 'app.login' };
+      return { ...state, redirectToState: states.APP_LOGIN };
     case types.LOGIN:
     case types.REGISTER:
       return {
         ...state,
-        redirectToState: action.error ? null : 'app.main',
+        redirectToState: action.error ? null : states.APP_MAIN,
         token: action.error ? null : action.payload.user.token,
         currentUser: action.error ? null : action.payload.user
       };
     case types.HOME_PAGE_UNLOADED:
+      return { ...state, redirectToState: states.APP_MAIN, viewChangeCounter: state.viewChangeCounter + 1 };
     case types.LOGIN_PAGE_UNLOADED:
     case types.REGISTER_PAGE_UNLOADED:
-      return { ...state, redirectToState: null, viewChangeCounter: state.viewChangeCounter + 1 };
+      return { ...state, redirectToState: states.APP_LOGIN, viewChangeCounter: state.viewChangeCounter + 1 };
   }
 
   return state;

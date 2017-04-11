@@ -39,8 +39,13 @@ export const initApp = {
 };
 
 export const ASYNC_DELAY = 500;
-export const MOCK_USER_KEY = 'USERKEY';
+export const TOKEN_TTL_SEC = 60;
+export const SESSION_TTL_SEC = 5000;
+export const MOCK_USER_KEY = 'SERVER_USER';
 export const SESSION_TOKEN = 'TOKENEXAMPLE';
+export const SESSION_TOKEN_KEY = 'SESSION';
+export const TOKEN_TTL_KEY = 'TOKEN_EXPIRE_TIME';
+export const SESSION_TTL_KEY = 'SESSION_EXPIRE_TIME';
 
 export default {
   initUser,

@@ -3,7 +3,9 @@ import * as states from '../constants/RouterStates';
 import appActions from '../actions/app.actions';
 import { stateGo,
          stateReload,
-         stateTransitionTo } from "redux-ui-router";
+         stateTransitionTo
+} from "redux-ui-router";
+import { SESSION_TOKEN_KEY, SESSION_TTL_KEY, TOKEN_TTL_KEY } from "../constants";
 
 const routerMiddleware = store => next => action => {
     const state = store.getState();
@@ -16,11 +18,22 @@ const routerMiddleware = store => next => action => {
           store.dispatch(stateGo(state.app.redirectToState));
         }
         break;
+      case types.VALIDATE_TOKEN:
+        const sessionExpire = parseInt(localStorage.getItem(SESSION_TTL_KEY), 10);
+
+        // todo: redirect from register and login to main state if session exists
+        // if (state.router.currentState.name === states.APP_MAIN) break;
+        // if (sessionExpire < Date.now()) break;
+        // store.dispatch(stateGo(states.APP_MAIN));
+        break;
       case types.ROUTER_ON_START:
-        const token = localStorage.getItem('sessionToken');
-        if (token) {
-          store.dispatch(appActions.validateToken(token));
-        }
+        const token = state.app.token || localStorage.getItem(SESSION_TOKEN_KEY);
+        const tokenExpire = parseInt(localStorage.getItem(TOKEN_TTL_KEY), 10);
+
+        if (!token || !tokenExpire) break;
+        if (tokenExpire > Date.now()) break;
+
+        store.dispatch(appActions.validateToken(token));
         break;
       case types.ROUTER_ON_SUCCESS:
         switch (action.payload.fromState.name) {

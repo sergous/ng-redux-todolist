@@ -4,11 +4,13 @@ import 'angular-animate';
 import 'angular-aria';
 import 'angular-material';
 import TodoItem from './';
+import { ITodo } from "../../interfaces";
 
-const todo = {
+const todo: ITodo = {
         text: 'Hello',
         completed: false,
-        id: 0
+        id: 0,
+        listId: 0
       };
 
 describe('TodoItem', () => {

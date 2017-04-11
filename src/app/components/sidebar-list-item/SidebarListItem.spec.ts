@@ -1,8 +1,9 @@
 import * as angular from 'angular';
 import 'angular-mocks';
 import SidebarListItem from './';
+import { IListItem } from "../../interfaces/index";
 
-const item = {
+const item: IListItem = {
         name: 'Default',
         id: 0
       };

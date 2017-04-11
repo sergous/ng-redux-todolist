@@ -3,13 +3,14 @@ import { combineReducers } from 'redux';
 import lists from '../../reducers/lists';
 import SidebarList from './';
 import ngRedux from 'ng-redux';
+import { IListItem } from "../../interfaces";
 
 const reducer = combineReducers({
   lists
 });
 
 describe('SidebarList controller', () => {
-  const lists = [
+  const lists: IListItem[] = [
     {id: 0, name: 'Default'},
     {id: 1, name: 'Shopping List'}
   ];

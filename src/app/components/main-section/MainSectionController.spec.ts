@@ -13,7 +13,7 @@ const todosReducer = combineReducers({
 
 describe('MainSection controller', () => {
   let component;
-  const todos = [
+  const todos: ITodo[] = [
     {id: 0, text: 'Active task', completed: false, listId: 0},
     {id: 1, text: 'Done task', completed: true, listId: 0}
   ];

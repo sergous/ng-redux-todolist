@@ -1,3 +1,6 @@
+import { initUser, MOCK_USER_KEY, ASYNC_DELAY, SESSION_TOKEN, ERRORS } from "../constants";
+import { IUser } from "../interfaces";
+
 const encode = encodeURIComponent;
 const responseBody = res => res.body;
 
@@ -8,52 +11,54 @@ const tokenPlugin = req => {
   }
 };
 
-const asyncDelay = 500;
+function localStoreUser(user: IUser) {
+  localStorage.setItem(MOCK_USER_KEY, JSON.stringify( user ));
+}
 
 const Auth = {
   current: () => {
-    const user = JSON.parse(localStorage.getItem('mockUser'));
+    const user = JSON.parse(localStorage.getItem(MOCK_USER_KEY));
     return new Promise((resolve) => {
       const result = () => resolve( {user} );
-      setTimeout(result, asyncDelay);
+      setTimeout(result, ASYNC_DELAY);
     });
   },
   validate: (token: string) => {
-    const user = JSON.parse(localStorage.getItem('mockUser'));
+    const user = JSON.parse(localStorage.getItem(MOCK_USER_KEY));
     const valid = user && user.token === token;
     return new Promise((resolve, reject) => {
-      const result = () => valid ? resolve( {user} ) : reject({errors: [{message: 'Session not found'}]});
-      setTimeout(result, asyncDelay);
+      const result = () => valid ? resolve( {user} ) : reject({errors: [{message: ERRORS.AUTH.SESSION_NOT_FOUND}]});
+      setTimeout(result, ASYNC_DELAY);
     });
   },
   login: (email, password) => {
-    const user = JSON.parse(localStorage.getItem('mockUser'));
+    const user = JSON.parse(localStorage.getItem(MOCK_USER_KEY)) || localStoreUser(initUser);
     const valid = user && email === user.email && password === user.password;
     return new Promise((resolve, reject) => {
-      const result = () => valid ? resolve( {user} ) : reject({errors: [{message: 'User not found'}]});
-      return setTimeout(result, asyncDelay);
+      const result = () => valid ? resolve( {user} ) : reject({errors: [{message: ERRORS.AUTH.USER_NOT_FOUND}]});
+      return setTimeout(result, ASYNC_DELAY);
     });
   },
   register: (username, email, password) => {
-    const existingUser = JSON.parse(localStorage.getItem('mockUser'));
+    const existingUser = JSON.parse(localStorage.getItem(MOCK_USER_KEY));
     const user = {
       username,
       email,
       password,
-      token: 'TOKENEXAMPLE'
+      token: SESSION_TOKEN
     };
     const valid = user.email !== existingUser.email;
-    if (valid) localStorage.setItem('mockUser', JSON.stringify( user ));
+    if (valid) localStoreUser(user);
     return new Promise((resolve, reject) => {
-      const result = () => valid ? resolve( {user} ) : reject({errors: [{message: 'User already exist'}]});
-      setTimeout(result, asyncDelay);
+      const result = () => valid ? resolve( {user} ) : reject({errors: [{message: ERRORS.AUTH.USER_EXIST}]});
+      setTimeout(result, ASYNC_DELAY);
     });
   },
   save: user => {
-    localStorage.setItem('mockUser', JSON.stringify( user ));
+    localStoreUser(user);
     return new Promise((resolve) => {
       const result = () => resolve( {user} );
-      setTimeout(result, asyncDelay);
+      setTimeout(result, ASYNC_DELAY);
     });
   }
 };

@@ -1,24 +1,10 @@
 import {
   ADD_TODO, DELETE_TODO, EDIT_TODO, COMPLETE_TODO, COMPLETE_ALL, CLEAR_COMPLETED, DELETE_ALL
 } from '../constants/ActionTypes';
-import {assign} from '../assign';
+import { assign } from '../assign';
+import { initTodos } from "../constants";
 
-const initialState = [
-  {
-    text: 'Use Redux',
-    completed: false,
-    id: 0,
-    listId: 0
-  },
-  {
-    text: 'Get milk',
-    completed: false,
-    id: 1,
-    listId: 1
-  }
-];
-
-export default function todos(state: any = initialState, action: any) {
+export default function todos(state: any = initTodos, action: any) {
   switch (action.type) {
     case ADD_TODO:
       return [

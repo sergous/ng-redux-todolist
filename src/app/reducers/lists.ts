@@ -3,13 +3,9 @@ import {
 } from '../constants/ActionTypes';
 import { assign } from '../assign';
 import { IListItem } from "../interfaces";
+import { initList } from "../constants";
 
-export const initialList: IListItem[] = [
-  {id: 0, name: 'Default'},
-  {id: 1, name: 'Shopping List'},
-];
-
-export default function lists(state: any = initialList, action: any) {
+export default function lists(state: any = initList, action: any) {
   switch (action.type) {
     case ADD_LIST:
       return [

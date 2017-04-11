@@ -1,7 +1,7 @@
 import { INgRedux } from "ng-redux";
 import { IScope } from "@types/angular";
 import listActions from '../../actions/list.actions';
-import { initialList } from '../../reducers/lists';
+import { initList } from "../../constants";
 import { IListItem } from "../../interfaces";
 
 export default class SidebarListController {
@@ -14,7 +14,7 @@ export default class SidebarListController {
     public $ngRedux: INgRedux,
     $scope: IScope
   ) {
-    this.lists = initialList;
+    this.lists = initList;
 
     let disconnect = $ngRedux.connect(
       state => this.onUpdate(state),

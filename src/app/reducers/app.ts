@@ -1,12 +1,8 @@
 import * as types from '../constants/ActionTypes';
 import * as states from '../constants/RouterStates';
+import { initApp } from "../constants";
 
-const defaultState = {
-  appName: 'TodoList',
-  viewChangeCounter: 0
-};
-
-export default (state = defaultState, action) => {
+export default (state = initApp, action) => {
   switch (action.type) {
     case types.APP_LOAD:
     case types.VALIDATE_TOKEN:

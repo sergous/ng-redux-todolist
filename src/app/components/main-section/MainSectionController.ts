@@ -1,4 +1,3 @@
-import { Todo, initialTodo } from '../../todos/todos';
 import {IScope} from 'angular';
 import todoActions from '../../actions/todo.actions';
 import { INgRedux } from 'ng-redux';
@@ -6,10 +5,11 @@ import completeReducer from '../../reducers/complete';
 import { SHOW_ALL } from '../../constants/TodoFilters';
 import VisibilityFilters, { listIdFilter } from '../../constants/VisibilityFilters';
 import { logoutUser } from "../../actions/auth.actions";
-import { IVisibilityFilter } from "../../interfaces";
+import { IVisibilityFilter, ITodo } from "../../interfaces";
+import { initTodos } from "../../constants";
 
 export default class MainSectionController {
-  todos: Todo[];
+  todos: ITodo[];
   listId: number;
   filters = VisibilityFilters;
   listIdFilter = listIdFilter;
@@ -22,7 +22,7 @@ export default class MainSectionController {
     $scope: IScope
   ) {
     this.listId = 0;
-    this.todos = [initialTodo];
+    this.todos = initTodos;
     this.selectedFilter = VisibilityFilters[SHOW_ALL];
 
     let disconnect = $ngRedux.connect(

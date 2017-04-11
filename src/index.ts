@@ -14,7 +14,6 @@ import devToolsEnhancer from 'remote-redux-devtools';
 import * as persistState from 'redux-localstorage';
 
 import router from './app/router';
-import {TodoService} from './app/todos/todos';
 import components from './app/components';
 
 import './index.scss';
@@ -39,7 +38,6 @@ export default angular
     ngReduxDevTools,
     components
   ])
-  .service('todoService', TodoService)
   .component('app', App)
   .config(($ngReduxProvider) => {
     $ngReduxProvider.createStoreWith(

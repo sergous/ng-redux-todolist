@@ -1,15 +1,15 @@
 import {SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE} from './TodoFilters';
-import {Todo} from '../todos/todos';
+import { ITodo } from "../interfaces";
 
 function showAll(): boolean {
   return true;
 }
 
-function showCompleted(todo: Todo): boolean {
+function showCompleted(todo: ITodo): boolean {
   return todo.completed;
 }
 
-function showActive(todo: Todo): boolean {
+function showActive(todo: ITodo): boolean {
   return !todo.completed;
 }
 
@@ -20,7 +20,7 @@ export default {
 };
 
 export function listIdFilter(listId: number): Function {
-  return function listIdFilter(todo: Todo): boolean {
+  return function listIdFilter(todo: ITodo): boolean {
     return todo.listId === listId;
   };
 }

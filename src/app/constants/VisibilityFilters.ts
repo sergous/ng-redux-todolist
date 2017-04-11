@@ -13,12 +13,6 @@ function showActive(todo: Todo): boolean {
   return !todo.completed;
 }
 
-export interface IVisibilityFilter {
-    filter: Function;
-    type: string;
-    name: string;
-}
-
 export default {
   [SHOW_ALL]: {filter: showAll, type: SHOW_ALL, name: 'All'},
   [SHOW_ACTIVE]: {filter: showActive, type: SHOW_ACTIVE, name: 'Active'},

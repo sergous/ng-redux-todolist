@@ -1,12 +1,8 @@
 import {
   ADD_LIST, DELETE_LIST, EDIT_LIST
 } from '../constants/ActionTypes';
-import {assign} from '../assign';
-
-export interface IListItem {
-  id: number;
-  name: string;
-}
+import { assign } from '../assign';
+import { IListItem } from "../interfaces";
 
 export const initialList: IListItem[] = [
   {id: 0, name: 'Default'},

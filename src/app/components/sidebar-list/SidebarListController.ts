@@ -1,7 +1,8 @@
 import { INgRedux } from "ng-redux";
 import { IScope } from "@types/angular";
 import listActions from '../../actions/list.actions';
-import { initialList, IListItem } from '../../reducers/lists';
+import { initialList } from '../../reducers/lists';
+import { IListItem } from "../../interfaces";
 
 export default class SidebarListController {
   lists: IListItem[];

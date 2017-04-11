@@ -4,8 +4,9 @@ import todoActions from '../../actions/todo.actions';
 import { INgRedux } from 'ng-redux';
 import completeReducer from '../../reducers/complete';
 import { SHOW_ALL } from '../../constants/TodoFilters';
-import VisibilityFilters, { IVisibilityFilter, listIdFilter } from '../../constants/VisibilityFilters';
+import VisibilityFilters, { listIdFilter } from '../../constants/VisibilityFilters';
 import { logoutUser } from "../../actions/auth.actions";
+import { IVisibilityFilter } from "../../interfaces";
 
 export default class MainSectionController {
   todos: Todo[];

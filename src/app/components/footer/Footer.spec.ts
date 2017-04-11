@@ -2,13 +2,7 @@ import * as angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import 'angular-mocks';
 import Footer from './';
-
-interface IFooterScope extends angular.IScope {
-  activeCount?: number;
-  completedCount?: number;
-  onCompleteAll: Function;
-  onClearCompleted: Function;
-}
+import { IFooterScope } from "../../interfaces";
 
 describe('Footer component', () => {
   beforeEach(() => {

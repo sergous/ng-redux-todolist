@@ -1,6 +1,7 @@
 import * as angular from 'angular';
 import 'angular-mocks';
 import TodosCount from './';
+import { ITodosCountScope } from "../../interfaces";
 
 describe('TodosCount component', () => {
   beforeEach(() => {
@@ -10,12 +11,9 @@ describe('TodosCount component', () => {
     angular.mock.module('todosCount');
   });
 
-  interface IMyScope extends angular.IScope {
-    activeCount: number;
-  }
 
   it('should render correctly', angular.mock.inject(($rootScope: angular.IRootScopeService, $compile: angular.ICompileService) => {
-    const $scope: IMyScope = <IMyScope> $rootScope.$new();
+    const $scope: ITodosCountScope = <ITodosCountScope> $rootScope.$new();
     const element = $compile('<todos-count active-count="1"></todos-count>')($scope);
     $scope.$digest();
     const count = element.find('span');
@@ -27,7 +25,7 @@ describe('TodosCount component', () => {
   }));
 
   it('should render multiple count', angular.mock.inject(($rootScope: angular.IRootScopeService, $compile: angular.ICompileService) => {
-    const $scope: IMyScope = <IMyScope> $rootScope.$new();
+    const $scope: ITodosCountScope = <ITodosCountScope> $rootScope.$new();
     const element = $compile('<todos-count active-count="2"></todos-count>')($scope);
     $scope.$digest();
     const footer = element.find('strong');
@@ -36,7 +34,7 @@ describe('TodosCount component', () => {
   }));
 
   it('should render blank count', angular.mock.inject(($rootScope: angular.IRootScopeService, $compile: angular.ICompileService) => {
-    const $scope: IMyScope = <IMyScope> $rootScope.$new();
+    const $scope: ITodosCountScope = <ITodosCountScope> $rootScope.$new();
     const element = $compile('<todos-count></todos-count>')($scope);
     $scope.$digest();
     const footer = element.find('strong');

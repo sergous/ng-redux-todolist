@@ -5,14 +5,12 @@ import { initApp } from "../constants";
 export default (state = initApp, action) => {
   switch (action.type) {
     case types.APP_LOAD:
-    case types.VALIDATE_TOKEN:
       return {
         ...state,
-        token: action.token || null,
         appLoaded: true,
-        currentUser: action.payload && action.payload.user
-                     ? action.payload.user
-                     : null
+        payload: action.payload,
+        token: action.token,
+        skipTracking: action.skipTracking
       };
     case types.REDIRECT:
       return { ...state, redirectToState: null };
@@ -20,6 +18,7 @@ export default (state = initApp, action) => {
       return { ...state, redirectToState: states.APP_LOGIN };
     case types.LOGIN:
     case types.REGISTER:
+    case types.VALIDATE_TOKEN:
       return {
         ...state,
         redirectToState: action.error ? null : states.APP_MAIN,

@@ -65,5 +65,6 @@ const Auth = {
 
 export default {
   Auth,
-  setToken: _token => { token = _token; }
+  setToken: _token => { token = _token; },
+  localStoreUser
 };

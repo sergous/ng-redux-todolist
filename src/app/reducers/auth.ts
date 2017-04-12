@@ -1,25 +1,24 @@
-import {
-  LOGIN, REGISTER, LOGIN_PAGE_UNLOADED, REGISTER_PAGE_UNLOADED, ASYNC_START, UPDATE_FIELD_AUTH,
-} from '../constants/ActionTypes';
+import * as types from '../constants/ActionTypes';
+import { initAuth } from "../constants";
 
-export default function auth(state: any = [], action: any) {
+export default function auth(state: any = initAuth, action: any) {
   switch (action.type) {
-    case LOGIN:
-    case REGISTER:
+    case types.LOGIN:
+    case types.REGISTER:
       return {
         ...state,
         inProgress: false,
         errors: action.error ? action.payload.errors : null
       };
-    case LOGIN_PAGE_UNLOADED:
-    case REGISTER_PAGE_UNLOADED:
+    case types.LOGIN_PAGE_UNLOADED:
+    case types.REGISTER_PAGE_UNLOADED:
       return {};
-    case ASYNC_START:
-      if (action.subtype === LOGIN || action.subtype === REGISTER) {
+    case types.ASYNC_START:
+      if (action.subtype === types.LOGIN || action.subtype === types.REGISTER) {
         return { ...state, inProgress: true };
       }
       break;
-    case UPDATE_FIELD_AUTH:
+    case types.UPDATE_FIELD_AUTH:
       return { ...state, errors: [], [action.key]: action.value };
   }
 

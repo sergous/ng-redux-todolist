@@ -38,6 +38,11 @@ export const initApp = {
   viewChangeCounter: 0
 };
 
+export const initAuth = {
+  inProgress: false
+};
+
+export {AuthKeys};
 export const ASYNC_DELAY = 500;
 export const TOKEN_TTL_SEC = 60;
 export const SESSION_TTL_SEC = 5000;

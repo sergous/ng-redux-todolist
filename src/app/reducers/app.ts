@@ -2,7 +2,7 @@ import * as types from '../constants/ActionTypes';
 import * as states from '../constants/RouterStates';
 import { initApp } from "../constants";
 
-export default (state = initApp, action) => {
+export default (state: any = initApp, action) => {
   switch (action.type) {
     case types.APP_LOAD:
       return {

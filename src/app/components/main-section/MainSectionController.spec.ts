@@ -7,11 +7,10 @@ import MainSection from './';
 import { ITodo } from "../../interfaces";
 import { SHOW_COMPLETED } from '../../constants/TodoFilters';
 
-const todosReducer = combineReducers({
-  todos
-});
+const todosReducer = combineReducers({todos});
+const MAIN = 'mainSection';
 
-describe('MainSection controller', () => {
+describe(MAIN, () => {
   let component;
   const todos: ITodo[] = [
     {id: 0, text: 'Active task', completed: false, listId: 0},
@@ -21,18 +20,18 @@ describe('MainSection controller', () => {
 
   beforeEach(() => {
     angular
-      .module('mainSection', [ngRedux, 'app/components/main-section/MainSection.html'])
-      .component('mainSection', MainSection)
+      .module(MAIN, [ngRedux])
+      .component(MAIN, MainSection)
       .config(($ngReduxProvider) => {
         $ngReduxProvider.createStoreWith(
           todosReducer
         );
       });
-    angular.mock.module('mainSection');
+    angular.mock.module(MAIN);
   });
 
   beforeEach(angular.mock.inject($componentController => {
-    component = $componentController('mainSection', {}, {});
+    component = $componentController(MAIN, {}, {});
     component.deleteAll();
   }));
 
@@ -73,17 +72,23 @@ describe('MainSection controller', () => {
     expect(component.onUpdate).toHaveBeenCalledWith({todos: []});
   });
 
+  it('shoud call logoutUser', () => {
+    spyOn(component, 'onUpdate').and.callThrough();
+    component.logoutUser();
+    expect(component.onUpdate).toHaveBeenCalled();
+  });
+
   describe('counters', () => {
     it('shoud call handleActiveCount', angular.mock.inject($componentController => {
       const bindings = { todos };
-      const component = $componentController('mainSection', {}, bindings);
+      const component = $componentController(MAIN, {}, bindings);
       const active = component.handleActiveCount();
       expect(active).toEqual(1);
     }));
 
     it('shoud call handleCompletedCount', angular.mock.inject($componentController => {
       const bindings = { todos };
-      const component = $componentController('mainSection', {}, bindings);
+      const component = $componentController(MAIN, {}, bindings);
       const completed = component.handleCompletedCount();
       expect(completed).toEqual(1);
     }));

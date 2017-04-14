@@ -101,7 +101,7 @@ describe('auth reducer', () => {
         value: textFieldValue
       })
     ).toEqual({
-      errors: [],
+      errors: null,
       [AuthKeys.email]: textFieldValue
     });
 
@@ -112,7 +112,7 @@ describe('auth reducer', () => {
         value: textFieldValue
       })
     ).toEqual({
-      errors: [],
+      errors: null,
       [AuthKeys.password]: textFieldValue
     });
   });

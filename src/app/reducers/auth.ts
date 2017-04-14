@@ -19,7 +19,7 @@ export default function auth(state: any = initAuth, action: any) {
       }
       break;
     case types.UPDATE_FIELD_AUTH:
-      return { ...state, errors: [], [action.key]: action.value };
+      return { ...state, errors: null, [action.key]: action.value };
   }
 
   return state;

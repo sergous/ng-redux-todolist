@@ -1,0 +1,21 @@
+{
+  "name": "ng-redux-todolist",
+  "scripts": {
+    "postdeploy": "npm install"
+  },
+  "env": {
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
